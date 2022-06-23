@@ -1,3 +1,4 @@
+import 'package:bluetick/app/module/sign_in/view/onBoarding.dart';
 import 'package:flutter/material.dart';
 
 import 'app/module/get_started/views/admin_sign_up.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const OnBoardingScreen(),
     );
   }
 }
