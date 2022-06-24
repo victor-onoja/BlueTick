@@ -1,3 +1,4 @@
+import 'package:bluetick/app/module/groupchat/views/groupchatScreen.dart';
 import 'package:bluetick/app/module/sign_in/view/onBoarding.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoardingScreen(),
+      home: const groupChatscreen(),
     );
   }
 }
