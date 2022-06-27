@@ -13,38 +13,109 @@ class _groupChatscreenState extends State<groupChatscreen> {
   @override
   Widget build(BuildContext context) {
     const gcdp = 'assets/groupchatdp.png';
+    const msg1 = 'assets/message1.png';
+    const msg2 = 'assets/message2.png';
+    const msg3 = 'assets/message3.png';
+    const msg4 = 'assets/message4.png';
+    const msg5 = 'assets/message5.png';
+    const gcbg = 'assets/groupchatbg.png';
 
     return SafeArea(
       child: Scaffold(
-          backgroundColor: AppTheme.darkBlue,
+          //backgroundColor: AppTheme.darkBlue,
           appBar: AppBar(
-              backgroundColor: AppTheme.offWhite,
-              elevation: 0.0,
-              title: Text(
-                'Design Group 2',
-                style: GoogleFonts.montserrat(color: AppTheme.offBlack),
-              ),
-              centerTitle: true,
-              actions: const [
-                Icon(
-                  Icons.call,
-                  color: AppTheme.offBlack,
-                )
+            iconTheme: IconThemeData(color: AppTheme.offBlack),
+            backgroundColor: AppTheme.offWhite,
+            elevation: 0.0,
+            title: Row(
+              children: [
+                const Image(
+                  image: AssetImage(gcdp),
+                  height: kToolbarHeight,
+                  width: 48,
+                ),
+                SizedBox(
+                  width: 80,
+                ),
+                Text(
+                  'Design Group 2',
+                  style: GoogleFonts.montserrat(color: AppTheme.offBlack),
+                ),
               ],
-              leading: Image(image: AssetImage(gcdp))),
+            ),
+            centerTitle: true,
+            actions: [
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.call,
+                      color: AppTheme.offBlack,
+                    ),
+                  )),
+            ],
+            // leading: BackButton(
+            //   color: AppTheme.offBlack,
+            // ),
+          ),
           body: Stack(
             children: <Widget>[
               Container(
                 height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fill, image: AssetImage(gcbg))),
+              ),
+              Container(
+                height: double.infinity,
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 13.0,
-                  ),
-                  child: Column(
-                    children: <Widget>[],
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 33.0,
+                    ),
+                    child: Column(children: <Widget>[
+                      Align(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Container(
+                          child: const Image(image: AssetImage(msg1)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.topStart,
+                        child: Container(
+                          child: Image(image: AssetImage(msg2)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Align(
+                          alignment: AlignmentDirectional.topEnd,
+                          child: Container(
+                            child: Image(image: AssetImage(msg3)),
+                          )),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Align(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Container(
+                            child: Image(image: AssetImage(msg4)),
+                          )),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Align(
+                          alignment: AlignmentDirectional.topStart,
+                          child: Container(
+                            child: Image(image: AssetImage(msg5)),
+                          )),
+                    ])),
               ),
               Container(
                 width: double.infinity,
@@ -58,7 +129,7 @@ class _groupChatscreenState extends State<groupChatscreen> {
                 ),
               ),
               Align(
-                alignment: Alignment(0, 0.98),
+                alignment: Alignment(0, 1.0),
                 child: Container(
                     width: double.infinity,
                     height: 32.0,
