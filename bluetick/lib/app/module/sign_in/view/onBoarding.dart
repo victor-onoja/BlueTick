@@ -25,7 +25,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               children: [
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 100),
+                    padding: const EdgeInsets.only(top: 200),
                     child: Stack(
                       children: [
                         Align(
@@ -35,19 +35,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, -0.30),
+                          alignment: Alignment(0, -0.28),
                           child: Container(
                             child: Text(
                               'BlueTick',
                               style: GoogleFonts.montserrat(
-                                  color: AppTheme.mainBlue,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 80),
+                                color: AppTheme.mainBlue,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 80,
+                              ),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, -0.08),
+                          alignment: Alignment(0, -0.05),
                           child: Container(
                             child: Text(
                               'Closer Than You Think',

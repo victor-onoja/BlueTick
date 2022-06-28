@@ -35,7 +35,7 @@ class _groupChatscreenState extends State<groupChatscreen> {
                   width: 48,
                 ),
                 SizedBox(
-                  width: 80,
+                  width: 65,
                 ),
                 Text(
                   'Design Group 2',
@@ -46,7 +46,7 @@ class _groupChatscreenState extends State<groupChatscreen> {
             centerTitle: true,
             actions: [
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -124,7 +124,8 @@ class _groupChatscreenState extends State<groupChatscreen> {
                 child: Center(
                   child: Text(
                     'Vera McBerth, John Mac is typing',
-                    style: GoogleFonts.montserrat(color: AppTheme.offBlack),
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.offBlack, fontStyle: FontStyle.italic),
                   ),
                 ),
               ),
@@ -158,11 +159,12 @@ class _groupChatscreenState extends State<groupChatscreen> {
                             style: const TextStyle(color: AppTheme.offWhite),
                             decoration: InputDecoration(
                                 border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.only(left: 15, bottom: 17),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
                                 hintText: 'send message',
                                 hintStyle: GoogleFonts.montserrat(
-                                    color: AppTheme.offWhite)),
+                                  color: AppTheme.offWhite,
+                                )),
                           ),
                         )),
                         IconButton(
