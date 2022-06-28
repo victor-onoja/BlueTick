@@ -63,8 +63,72 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                 ),
-                Container(),
-                Container()
+                Container(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 180, left: 50, bottom: 240),
+                    child: Stack(
+                      children: [
+                        Align(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Container(
+                              child: Text(
+                                'Check-in Remotely',
+                                style: GoogleFonts.montserrat(
+                                    color: AppTheme.mainBlue,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )),
+                        Align(
+                          alignment: AlignmentDirectional.bottomStart,
+                          child: Container(
+                            child: Text(
+                              'Check-in from wherever you are;\nRemotely, in the office or on site.',
+                              style: GoogleFonts.montserrat(
+                                  color: AppTheme.mainBlue,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 140, left: 50, bottom: 210),
+                    child: Stack(
+                      children: [
+                        Align(
+                            alignment: AlignmentDirectional.topStart,
+                            child: Container(
+                              child: Text(
+                                'Manage Your Team &\nConnect With Co-Workers',
+                                style: GoogleFonts.montserrat(
+                                    color: AppTheme.mainBlue,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )),
+                        Align(
+                          alignment: AlignmentDirectional.bottomStart,
+                          child: Container(
+                            child: Text(
+                              'Manage your staff and members location\nConnect with co-workers and see those closer to you\nEnhance productivity',
+                              style: GoogleFonts.montserrat(
+                                  color: AppTheme.mainBlue,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
             Container(
