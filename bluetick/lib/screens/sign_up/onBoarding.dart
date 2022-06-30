@@ -1,8 +1,10 @@
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:bluetick/widgets/sign_up_button.dart';
-import 'package:bluetick/util/app_theme.dart';
+
+import '../../components/app_theme.dart';
+import '../../components/widgets/widgets.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _controller = PageController();
   @override
   Widget build(BuildContext context) {
-    const lg = 'assets/logo.png';
+    const lg = 'Assets/logo.png';
     return Scaffold(
         backgroundColor: AppTheme.offWhite,
         body: Stack(
@@ -72,13 +74,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Align(
                             alignment: AlignmentDirectional.topStart,
                             child: Container(
-                              child: Text(
-                                'Check-in Remotely',
-                                style: GoogleFonts.montserrat(
-                                    color: AppTheme.mainBlue,
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                              child: Image.asset('Assets/onboarding2.png'),
+                              // Text(
+                              //   'Check-in Remotely',
+                              //   style: GoogleFonts.montserrat(
+                              //       color: AppTheme.mainBlue,
+                              //       fontSize: 23,
+                              //       fontWeight: FontWeight.w600),
+                              // ),
                             )),
                         Align(
                           alignment: AlignmentDirectional.bottomStart,
@@ -148,7 +151,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Container(
               alignment: Alignment(0, 0.80),
               child: SignUpButton(
-                onTapButton: () {},
+                onTapButton: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => const LoginScreen()));
+                },
                 buttonColor: AppTheme.mainBlue,
                 text: 'Continue',
                 textColor: AppTheme.white,

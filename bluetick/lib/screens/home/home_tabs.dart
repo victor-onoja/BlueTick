@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/app_theme.dart';
+import '../groupchat/groupchatScreen.dart';
 import 'notification.dart';
 
 class HomeTab extends StatefulWidget {
@@ -26,7 +27,7 @@ class _HomeTabState extends State<HomeTab> {
           HomeScreen(),
           Notifications(),
           Broadcast(),
-          Messages(),
+          groupChatscreen()
         ],
         onPageChanged: onPageClicked,
         controller: pageController,

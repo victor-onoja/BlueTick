@@ -1,5 +1,5 @@
-import 'package:bluetick/app/module/groupchat/views/groupchatScreen.dart';
-import 'package:bluetick/app/module/sign_in/view/onBoarding.dart';
+import 'package:bluetick/screens/sign_up/onBoarding.dart';
+import 'package:bluetick/screens/sign_up/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'screens/sign_in/login.dart';
@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-
       builder: (context, child) => ResponsiveWrapper.builder(child,
           maxWidth: 1200,
           minWidth: 350,
@@ -26,12 +24,11 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
-
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoardingScreen(),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:bluetick/util/app_theme.dart';
+import 'package:flutter/services.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../components/app_theme.dart';
 
 class groupChatscreen extends StatefulWidget {
   const groupChatscreen({Key? key}) : super(key: key);
@@ -12,21 +15,23 @@ class groupChatscreen extends StatefulWidget {
 class _groupChatscreenState extends State<groupChatscreen> {
   @override
   Widget build(BuildContext context) {
-    const gcdp = 'assets/groupchatdp.png';
-    const msg1 = 'assets/message1.png';
-    const msg2 = 'assets/message2.png';
-    const msg3 = 'assets/message3.png';
-    const msg4 = 'assets/message4.png';
-    const msg5 = 'assets/message5.png';
-    const gcbg = 'assets/groupchatbg.png';
+    const gcdp = 'Assets/groupchatdp.png';
+    const msg1 = 'Assets/message1.png';
+    const msg2 = 'Assets/message2.png';
+    const msg3 = 'Assets/message3.png';
+    const msg4 = 'Assets/message4.png';
+    const msg5 = 'Assets/message5.png';
+    const gcbg = 'Assets/groupchatbg.png';
 
     return SafeArea(
       child: Scaffold(
-          //backgroundColor: AppTheme.darkBlue,
           appBar: AppBar(
             iconTheme: IconThemeData(color: AppTheme.offBlack),
             backgroundColor: AppTheme.offWhite,
             elevation: 0.0,
+            systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+            ),
             title: Row(
               children: [
                 const Image(
@@ -35,7 +40,7 @@ class _groupChatscreenState extends State<groupChatscreen> {
                   width: 48,
                 ),
                 SizedBox(
-                  width: 65,
+                  width: 40, //65,
                 ),
                 Text(
                   'Design Group 2',
@@ -43,10 +48,11 @@ class _groupChatscreenState extends State<groupChatscreen> {
                 ),
               ],
             ),
-            centerTitle: true,
+            centerTitle: false,
             actions: [
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -55,9 +61,6 @@ class _groupChatscreenState extends State<groupChatscreen> {
                     ),
                   )),
             ],
-            // leading: BackButton(
-            //   color: AppTheme.offBlack,
-            // ),
           ),
           body: Stack(
             children: <Widget>[
