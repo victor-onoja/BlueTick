@@ -264,13 +264,13 @@ class HomeScreen extends StatelessWidget {
                 '05/21',
                 style: GoogleFonts.montserrat(
                   fontSize: ResponsiveValue(context,
-                      defaultValue: 50.0,
+                      defaultValue: 40.0,
                       valueWhen: const [
                         Condition.smallerThan(
                           name: MOBILE,
-                          value: 60.0,
+                          value: 50.0,
                         ),
-                        Condition.largerThan(name: TABLET, value: 80.0),
+                        Condition.largerThan(name: TABLET, value: 60.0),
                       ]).value,
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.normal,

@@ -74,14 +74,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Align(
                             alignment: AlignmentDirectional.topStart,
                             child: Container(
-                              child: Image.asset('Assets/onboarding2.png'),
-                              // Text(
-                              //   'Check-in Remotely',
-                              //   style: GoogleFonts.montserrat(
-                              //       color: AppTheme.mainBlue,
-                              //       fontSize: 23,
-                              //       fontWeight: FontWeight.w600),
-                              // ),
+                              child: Text(
+                                'Check-in Remotely',
+                                style: GoogleFonts.montserrat(
+                                    color: AppTheme.mainBlue,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             )),
                         Align(
                           alignment: AlignmentDirectional.bottomStart,
