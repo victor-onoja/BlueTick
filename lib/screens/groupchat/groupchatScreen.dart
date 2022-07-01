@@ -70,12 +70,6 @@ class _groupChatscreenState extends State<groupChatscreen> {
                     ),
                   )),
             ],
-            leading: BackButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const HomeTab()));
-              },
-            ),
           ),
           body: Stack(
             children: <Widget>[

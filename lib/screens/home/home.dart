@@ -29,18 +29,17 @@ class HomeScreen extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        actions: const [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(
-                //top: 2, bottom: 2,
-                right: 10.96,
-              ),
-              child: CircleAvatar(
-                radius: 31.95,
-                backgroundImage: AssetImage(
+        actions: [
+          Container(
+            height: 45, //31.95,
+            width: 45, //31.96,
+            margin: EdgeInsets.only(right: 11),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
                   'Assets/sample_pic.png',
                 ),
+                fit: BoxFit.contain,
               ),
             ),
           ),

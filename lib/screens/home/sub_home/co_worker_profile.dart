@@ -14,6 +14,7 @@ class WorkerScreen extends StatelessWidget {
     String about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     const String direction = "Lagos 6km away";
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
@@ -49,8 +50,9 @@ class WorkerScreen extends StatelessWidget {
                 Positioned(
                     child: IconButton(
                         color: Colors.black,
-                        onPressed: () => Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const HomeTab())),
+                        onPressed: () => null,
+                        // => Navigator.push(context,
+                        //     MaterialPageRoute(builder: (_) => const HomeTab())),
                         icon: const Icon(Icons.arrow_back))),
                 Positioned(
                     left: 2,
