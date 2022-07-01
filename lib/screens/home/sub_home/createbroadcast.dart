@@ -51,7 +51,7 @@ class CreateBroadcastState extends State<CreateBroadcast> {
                     color: Colors.black,
                     onPressed: () => null,
                     icon: ImageIcon(
-                      const AssetImage('assets/icons/Vector.png'),
+                      const AssetImage('Assets/icons/Vector.png'),
                       color: blackerBlack,
                     )),
                 title: TextField(
