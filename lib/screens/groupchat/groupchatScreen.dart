@@ -1,9 +1,11 @@
+import 'package:bluetick/screens/home/sub_home/co_worker_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/app_theme.dart';
+import '../home/home_tabs.dart';
 
 class groupChatscreen extends StatefulWidget {
   const groupChatscreen({Key? key}) : super(key: key);
@@ -34,10 +36,16 @@ class _groupChatscreenState extends State<groupChatscreen> {
             ),
             title: Row(
               children: [
-                const Image(
-                  image: AssetImage(gcdp),
-                  height: kToolbarHeight,
-                  width: 48,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => WorkerScreen()));
+                  },
+                  child: const Image(
+                    image: AssetImage(gcdp),
+                    height: kToolbarHeight,
+                    width: 48,
+                  ),
                 ),
                 SizedBox(
                   width: 40, //65,
@@ -61,6 +69,12 @@ class _groupChatscreenState extends State<groupChatscreen> {
                     ),
                   )),
             ],
+            leading: BackButton(
+              onPressed: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => const HomeTab()));
+              },
+            ),
           ),
           body: Stack(
             children: <Widget>[
