@@ -1,5 +1,6 @@
+import 'package:bluetick/screens/home/home.dart';
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:flutter/material.dart';
-
 import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 import '../../../components/ui/ui_utils.dart';
@@ -24,7 +25,9 @@ class MessageListState extends State<MessageList> {
         foregroundColor: offWhite,
         elevation: 0.0,
         leading: IconButton(
-            onPressed: () => null, icon: const Icon(Icons.arrow_back)),
+            onPressed: () => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => const HomeTab())),
+            icon: const Icon(Icons.arrow_back)),
         title: Text(
           'Messages',
           textAlign: TextAlign.center,
@@ -35,7 +38,6 @@ class MessageListState extends State<MessageList> {
           ),
         ),
       ),
-      bottomNavigationBar: generalBottomNavigationBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 50),
         child: SizedBox(

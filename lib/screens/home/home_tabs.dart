@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../components/app_theme.dart';
 import '../groupchat/groupchatScreen.dart';
 import 'notification.dart';
+import 'sub_home/messagelist.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -27,7 +28,8 @@ class _HomeTabState extends State<HomeTab> {
           HomeScreen(),
           Notifications(),
           Broadcast(),
-          groupChatscreen()
+          MessageList(),
+          // groupChatscreen()
         ],
         onPageChanged: onPageClicked,
         controller: pageController,
