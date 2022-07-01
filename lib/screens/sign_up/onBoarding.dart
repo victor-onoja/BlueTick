@@ -74,13 +74,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Align(
                             alignment: AlignmentDirectional.topStart,
                             child: Container(
-                              child: Text(
-                                'Check-in Remotely',
-                                style: GoogleFonts.montserrat(
-                                    color: AppTheme.mainBlue,
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                              child:
+                                  Image.asset('Assets/Check-in remotely.png'),
+
+                              // Text(
+                              //   'Check-in Remotely',
+                              //   style: GoogleFonts.montserrat(
+                              //       color: AppTheme.mainBlue,
+                              //       fontSize: 23,
+                              //       fontWeight: FontWeight.w600),
+                              // ),
                             )),
                         Align(
                           alignment: AlignmentDirectional.bottomStart,
@@ -107,12 +110,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Align(
                             alignment: AlignmentDirectional.topStart,
                             child: Container(
-                              child: Text(
-                                'Manage Your Team &\nConnect With Co-Workers',
-                                style: GoogleFonts.montserrat(
-                                    color: AppTheme.mainBlue,
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w600),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Manage Your Team &\nConnect With Co-Workers',
+                                    style: GoogleFonts.montserrat(
+                                        color: AppTheme.mainBlue,
+                                        fontSize: 23,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Image.asset('Assets/onboarding3.png'),
+                                ],
                               ),
                             )),
                         Align(

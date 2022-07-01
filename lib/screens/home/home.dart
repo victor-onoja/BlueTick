@@ -175,20 +175,20 @@ class HomeScreen extends StatelessWidget {
           BoxShadow(
             offset: Offset(12, 12),
             spreadRadius: 0,
-            blurRadius: 8,
-            color: Color.fromRGBO(9, 16, 32, 0.4),
+            blurRadius: 16,
+            color: Color.fromRGBO(9, 16, 32, 0.1),
           ),
           BoxShadow(
             offset: Offset(-12, -12),
             spreadRadius: 0,
-            blurRadius: 8,
-            color: Color.fromRGBO(150, 167, 208, 0.4),
+            blurRadius: 16,
+            color: Color.fromRGBO(150, 167, 208, 0.1),
           ),
           BoxShadow(
             offset: Offset(0, 8),
             spreadRadius: 0,
-            blurRadius: 8,
-            color: Color.fromRGBO(22, 40, 80, 0.6),
+            blurRadius: 16,
+            color: Color.fromRGBO(22, 40, 80, 0.5),
           ),
         ],
         gradient: LinearGradient(
@@ -196,10 +196,10 @@ class HomeScreen extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             //Color(0xff162850),
-            AppTheme.darkBlue.withOpacity(0.5),
+            AppTheme.darkBlue.withOpacity(0.8),
             AppTheme.mainBlue,
             AppTheme.mainBlue,
-            AppTheme.mainBlue.withOpacity(0.3),
+            AppTheme.mainBlue.withOpacity(0.6),
           ],
           // stops: const [
           //   0.3,
