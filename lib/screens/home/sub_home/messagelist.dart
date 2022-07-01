@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 import '../../../components/ui/ui_utils.dart';
+import '../../groupchat/groupchatScreen.dart';
 import 'co_worker_profile.dart';
 
 class MessageList extends StatefulWidget {
@@ -52,10 +53,10 @@ class MessageListState extends State<MessageList> {
                   decoration: BoxDecoration(color: mainBlue),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => WorkerScreen(),
+                          builder: (_) => const groupChatscreen(),
                         ),
                       );
                     },
