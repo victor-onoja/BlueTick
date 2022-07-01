@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/sign_up/onBoarding.dart';
 import 'package:bluetick/screens/sign_up/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

@@ -17,6 +17,7 @@ class CreateBroadcastState extends State<CreateBroadcast> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(

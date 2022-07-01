@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/app_theme.dart';
 import '../home/home_tabs.dart';
+import 'groupchatTwo.dart';
 
 class groupChatscreen extends StatefulWidget {
   const groupChatscreen({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _groupChatscreenState extends State<groupChatscreen> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => WorkerScreen()));
+                        MaterialPageRoute(builder: (_) => GroupChat()));
                   },
                   child: const Image(
                     image: AssetImage(gcdp),
@@ -69,12 +70,6 @@ class _groupChatscreenState extends State<groupChatscreen> {
                     ),
                   )),
             ],
-            leading: BackButton(
-              onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const HomeTab()));
-              },
-            ),
           ),
           body: Stack(
             children: <Widget>[

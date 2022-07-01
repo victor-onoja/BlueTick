@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/config/config_sheet.dart';
@@ -13,6 +14,7 @@ class WorkerScreen extends StatelessWidget {
     String about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     const String direction = "Lagos 6km away";
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
@@ -49,6 +51,8 @@ class WorkerScreen extends StatelessWidget {
                     child: IconButton(
                         color: Colors.black,
                         onPressed: () => null,
+                        // => Navigator.push(context,
+                        //     MaterialPageRoute(builder: (_) => const HomeTab())),
                         icon: const Icon(Icons.arrow_back))),
                 Positioned(
                     left: 2,
