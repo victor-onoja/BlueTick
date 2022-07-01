@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../components/app_theme.dart';
+
 class AttachmentTab extends StatelessWidget {
   const AttachmentTab({Key? key}) : super(key: key);
 
@@ -106,12 +108,56 @@ class AttachmentTab extends StatelessWidget {
             color: Colors.grey,
           ),
           Text(
-            "Lorem ipsum dolor sit amet, Chuks the boss",
-            style: TextStyle(color: Colors.white),
+            'Lorem ipsum dolor sit amet, Ibrahim the boss',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              color: AppTheme.white,
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Text(
-            "Lorem ipsum dolor sit amet, Chuks the boss",
-            style: TextStyle(color: Colors.white),
+            'Lorem ipsum dolor sit amet, Bishop the boss',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              color: AppTheme.white,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, Victor the boss',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              color: AppTheme.white,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, Chuks the boss',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              color: AppTheme.white,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Lorem ipsum dolor sit amet, Ola the boss',
+            style: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              color: AppTheme.white,
+            ),
           ),
         ],
       ),

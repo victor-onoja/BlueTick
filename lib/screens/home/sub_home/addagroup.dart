@@ -26,12 +26,14 @@ class AddGroupState extends State<AddGroup> {
           toolbarHeight: 44,
           backgroundColor: mainBlue,
           leading: IconButton(
-              onPressed: () => null, icon: const Icon(Icons.arrow_back)),
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back)),
           centerTitle: true,
           title: const Text(
             'Add a Group',
             style: TextStyle(fontSize: 24),
           ),
+
           actions: [
             IconButton(onPressed: () => null, icon: const Icon(Icons.check))
           ],

@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/config/config_sheet.dart';
@@ -48,7 +49,8 @@ class WorkerScreen extends StatelessWidget {
                 Positioned(
                     child: IconButton(
                         color: Colors.black,
-                        onPressed: () => null,
+                        onPressed: () => Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const HomeTab())),
                         icon: const Icon(Icons.arrow_back))),
                 Positioned(
                     left: 2,

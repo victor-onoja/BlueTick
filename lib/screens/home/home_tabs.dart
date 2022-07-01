@@ -29,12 +29,9 @@ class _HomeTabState extends State<HomeTab> {
       body: PageView(
         children: const [
           HomeScreen(),
-          // Notifications(),
-          // AddGroup(),
-          GroupChat(),
+          Notifications(),
           CreateBroadcast(),
           MessageList(),
-          //groupChatscreen()
         ],
         onPageChanged: onPageClicked,
         controller: pageController,

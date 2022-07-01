@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../components/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../home/sub_home/addagroup.dart';
 import 'groupchatTwo_TabOne.dart';
 import 'groupchatTwo_TabTwo.dart';
 
@@ -28,8 +29,16 @@ class GroupChat extends StatelessWidget {
                 actions: [
                   Column(
                     children: [
-                      Image.asset("Assets/icons/add group.png",
-                          alignment: Alignment.topRight),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const AddGroup()));
+                        },
+                        child: Image.asset("Assets/icons/add group.png",
+                            alignment: Alignment.topRight),
+                      ),
                       const SizedBox(height: 12),
                       Image.asset("Assets/icons/edit.png",
                           alignment: Alignment.bottomRight),
