@@ -54,7 +54,7 @@ class _InvitationLinkState extends State<InvitationLink> {
               onTapButton: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                  return const HomeTab();
+                  return HomeTab();
                 }));
               },
             ),
