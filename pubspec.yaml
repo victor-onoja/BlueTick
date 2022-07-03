@@ -38,6 +38,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+1
   responsive_framework: ^0.1.9
   flutter_launcher_icons: ^0.9.2
+  flutter_inset_box_shadow: ^1.0.8
 
 
 
