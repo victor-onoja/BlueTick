@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/home.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/sign_up/onBoarding.dart';
 import 'package:bluetick/screens/sign_up/splash_screen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(), //SplashScreen(),
     );
   }
 }

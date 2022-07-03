@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -172,41 +173,27 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
           BoxShadow(
-            offset: Offset(12, 12),
+            offset: Offset(0, 8),
             spreadRadius: 0,
             blurRadius: 16,
-            color: Color.fromRGBO(9, 16, 32, 0.1),
+            inset: false,
+            color: Color.fromRGBO(22, 40, 80, 0.4),
+          ),
+          BoxShadow(
+            offset: Offset(12, 12),
+            spreadRadius: 0,
+            blurRadius: 12,
+            inset: true,
+            color: Color.fromRGBO(9, 16, 32, 0.6),
           ),
           BoxShadow(
             offset: Offset(-12, -12),
             spreadRadius: 0,
-            blurRadius: 16,
-            color: Color.fromRGBO(150, 167, 208, 0.1),
-          ),
-          BoxShadow(
-            offset: Offset(0, 8),
-            spreadRadius: 0,
-            blurRadius: 16,
-            color: Color.fromRGBO(22, 40, 80, 0.5),
+            blurRadius: 12,
+            inset: true,
+            color: Color.fromRGBO(150, 167, 208, 0.6),
           ),
         ],
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            //Color(0xff162850),
-            AppTheme.darkBlue.withOpacity(0.8),
-            AppTheme.mainBlue,
-            AppTheme.mainBlue,
-            AppTheme.mainBlue.withOpacity(0.6),
-          ],
-          // stops: const [
-          //   0.3,
-          //   0.5,
-          //   0.7,
-          //   0.9,
-          // ],
-        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
