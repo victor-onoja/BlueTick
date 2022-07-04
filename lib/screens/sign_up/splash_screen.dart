@@ -4,6 +4,7 @@ import 'package:bluetick/screens/sign_up/onBoarding.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/app_theme.dart';
+import 'onboarding_animation.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const OnBoardingScreen(),
+          builder: (_) => const OnBoardingScreenAnimation(),
         ),
       );
     });
