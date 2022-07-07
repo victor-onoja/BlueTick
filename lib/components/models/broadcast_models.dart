@@ -87,98 +87,112 @@ Map<String, dynamic> messageListItem = {
     'name': 'Fredrick Drey',
     'message': 'General briefing is rescheduled for 10am..',
     'isAdmin': true,
-    'isCheck': false
+    'alert': '3',
+    'isCheck': true,
   },
   'id1': {
     'profile_pic': 'Assets/images/Ellipse 10(10).png',
     'name': 'Bethie Drey',
     'message': 'Please check your email for confirmation',
     'isAdmin': false,
-    'isCheck': false
+    'alert': '2',
+    'isCheck': true,
   },
   'id2': {
     'profile_pic': 'Assets/images/group.png',
     'name': 'Design group 2',
     'message': 'Vera: Let\'s just revisit it',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': true,
+    'alert': '15',
   },
   'id3': {
     'profile_pic': 'Assets/images/Ellipse 10(12).png',
     'name': 'Fredrick Drey',
     'message': 'Warm Regards',
     'isAdmin': true,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id4': {
     'profile_pic': 'Assets/images/Ellipse 10(13).png',
     'name': 'Vera McBerth',
     'message': 'Alrights, thanks for the insight',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id5': {
     'profile_pic': 'Assets/images/Ellipse 10(14).png',
     'name': 'Tim So',
     'message': 'Yes, please',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id6': {
     'profile_pic': 'Assets/images/Ellipse 10(15).png',
     'name': 'Dera Seth',
     'message': 'I will forward it now',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id7': {
     'profile_pic': 'Assets/images/Ellipse 10(9).png',
     'name': 'Fredrick Drey',
     'message': 'General briefing is rescheduled for 10am..',
     'isAdmin': true,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id8': {
     'profile_pic': 'Assets/images/Ellipse 10(10).png',
     'name': 'Bethie Drey',
     'message': 'Please check your email for confirmation',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': 7,
   },
   'id9': {
     'profile_pic': 'Assets/images/group.png',
     'name': 'Design group 2',
     'message': 'Vera: Let\'s just revisit it',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': true,
+    'alert': '7',
   },
   'id10': {
     'profile_pic': 'Assets/images/Ellipse 10(12).png',
     'name': 'Fredrick Drey',
     'message': 'Warm Regards',
     'isAdmin': true,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id11': {
     'profile_pic': 'Assets/images/Ellipse 10(13).png',
     'name': 'Vera McBerth',
     'message': 'Alrights, thanks for the insight',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id12': {
     'profile_pic': 'Assets/images/Ellipse 10(14).png',
     'name': 'Tim So',
     'message': 'Yes, please',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
   'id13': {
     'profile_pic': 'Assets/images/Ellipse 10(15).png',
     'name': 'Dera Seth',
     'message': 'I will forward it now',
     'isAdmin': false,
-    'isCheck': false
+    'isCheck': false,
+    'alert': '7',
   },
 };
 String adminStatus(Map item, int index) {
