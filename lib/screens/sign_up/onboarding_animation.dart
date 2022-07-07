@@ -68,6 +68,7 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
                     dotColor: AppTheme.blue2),
               ),
             ),
+            // const Spacer(),
             Container(
               alignment: Alignment(0, 0.80),
               child: SignUpButton(

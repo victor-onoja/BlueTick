@@ -1,5 +1,7 @@
+import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/screens/home/home.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
@@ -83,7 +85,7 @@ class MessageListState extends State<MessageList> {
                           trailing: Wrap(
                             alignment: WrapAlignment.center,
                             crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: 12,
+                            spacing: 4,
                             children: [
                               Text(
                                 adminStatus(messageListItem, index),
@@ -92,29 +94,52 @@ class MessageListState extends State<MessageList> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600),
                               ),
-                              FormField(
-                                builder: (FormFieldState<dynamic> field) {
-                                  return GestureDetector(
-                                      onTap: () => setState(() {
-                                            messageListItem['id$index']
-                                                    ['isCheck'] =
-                                                !messageListItem['id$index']
-                                                    ['isCheck'];
-                                          }),
-                                      child: Container(
-                                        alignment: Alignment.topCenter,
-                                        height: 16,
-                                        width: 16,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(color: offWhite),
-                                            color: messageListItem['id$index']
-                                                    ['isCheck']
-                                                ? darkBlue
-                                                : offWhite),
-                                      ));
-                                },
-                              )
+                              // FormField(
+                              //   builder: (FormFieldState<dynamic> field) {
+                              //     return GestureDetector(
+                              //         onTap: () => setState(() {
+                              //               messageListItem['id$index']
+                              //                       ['isCheck'] =
+                              //                   !messageListItem['id$index']
+                              //                       ['isCheck'];
+                              //             }),
+                              //         child: Container(
+                              //           alignment: Alignment.topCenter,
+                              //           height: 16,
+                              //           width: 16,
+                              //           decoration: BoxDecoration(
+                              //               shape: BoxShape.circle,
+                              //               border: Border.all(color: offWhite),
+                              //               color: messageListItem['id$index']
+                              //                       ['isCheck']
+                              //                   ? darkBlue
+                              //                   : offWhite),
+                              //         ));
+                              //   },
+                              // )
+                              messageListItem['id$index']['isCheck']
+                                  ? Container(
+                                      height: 20,
+                                      width: 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: offWhite,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          messageListItem['id$index']['alert']
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: AppTheme.darkBlue,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12),
+                                        ),
+                                      ),
+                                    )
+                                  : Text(
+                                      '',
+                                    ),
                             ],
                           ),
                         ),
