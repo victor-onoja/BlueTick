@@ -1,4 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
+import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,6 +25,9 @@ class SignUpButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(150, 53),
             //side: BorderSide(),
+            shadowColor: mainBlue.withOpacity(0.5),
+            elevation: 6,
+
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),

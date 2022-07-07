@@ -3,6 +3,8 @@ import 'package:bluetick/screens/home/sub_home/co_worker_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../home/sub_home/staff_profile_admin.dart';
+
 class MemberTab extends StatelessWidget {
   const MemberTab({Key? key}) : super(key: key);
 
@@ -19,8 +21,8 @@ class MemberTab extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => WorkerScreen()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => StaffProfileAdmin()));
           },
           child: onlineStaff(
             name: 'John Mac',
