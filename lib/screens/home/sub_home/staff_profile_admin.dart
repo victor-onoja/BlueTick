@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../components/app_theme.dart';
 import '../../../components/config/config_sheet.dart';
 import '../../../components/ui/ui_utils.dart';
+import 'live_location.dart';
 
 class StaffProfileAdmin extends StatelessWidget {
   StaffProfileAdmin();
@@ -115,6 +116,16 @@ class StaffProfileAdmin extends StatelessWidget {
                   SizedBox(
                       height: 52,
                       child: ListTile(
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) => liveLocationMap(),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12)),
+                              ));
+                        },
                         horizontalTitleGap: 0,
                         tileColor: blue2,
                         leading: ImageIcon(
