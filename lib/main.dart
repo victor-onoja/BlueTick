@@ -1,3 +1,5 @@
+import 'package:bluetick/screens/chatScreen/chatScreen.dart';
+import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
 import 'package:bluetick/screens/home/home.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+
       home: const SplashScreen(),
+
     );
   }
 }
