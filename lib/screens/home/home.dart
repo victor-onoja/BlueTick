@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
@@ -54,9 +55,15 @@ class HomeScreen extends StatelessWidget {
             ),
             checkInHeader(context),
             searchStaff(),
-            onlineStaff(
-              name: 'John Mac',
-              time: "8:11",
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => StaffProfileAdmin()));
+              },
+              child: onlineStaff(
+                name: 'John Mac',
+                time: "8:11",
+              ),
             ),
             onlineStaff(
               name: 'Sandra Who',

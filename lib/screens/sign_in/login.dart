@@ -60,17 +60,17 @@ class LoginScreen extends StatelessWidget {
                             alignment: WrapAlignment.center,
                             children: [
                               Text(
-                                'You have a link?',
+                                'You have a link? ',
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: AppTheme.mainBlue,
+                                  color: AppTheme.offBlack,
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () => null,
                                 child: Text(
-                                  '\tJoin a workspace',
+                                  'Join a workspace',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
@@ -83,7 +83,12 @@ class LoginScreen extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: GestureDetector(
-                            onTap: () => null,
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AdminSignUp(),
+                              ),
+                            ),
                             child: Text(
                               'Create a new workspace',
                               style: GoogleFonts.montserrat(
