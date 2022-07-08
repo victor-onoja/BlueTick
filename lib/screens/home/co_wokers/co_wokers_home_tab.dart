@@ -9,7 +9,7 @@ import '../../chatScreen/chatScreen.dart';
 import '../notification.dart';
 
 import '../sub_home/messagelist.dart';
-import '../sub_home/staffhomepage.dart';
+import 'staffhomepage.dart';
 import 'co_workers.dart';
 import 'co_workers_drawer.dart';
 
@@ -86,7 +86,9 @@ class _CoWorkerHomeTabState extends State<CoWorkerHomeTab> {
               icon: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset('Assets/notification.png'),
+                  Image.asset(
+                    'Assets/notification.png',
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
@@ -108,7 +110,11 @@ class _CoWorkerHomeTabState extends State<CoWorkerHomeTab> {
               icon: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset('Assets/icons/coworker.png'),
+                  Image.asset(
+                    'Assets/icons/coworker.png',
+                    scale: 0.8,
+                    fit: BoxFit.cover,
+                  ),
                   Text(
                     'Co-Workers',
                     style: GoogleFonts.montserrat(

@@ -85,214 +85,247 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                 thickness: 2,
                 color: Colors.grey,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        muted = !muted;
-                      });
-                    },
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: muted ? mainBlue : Colors.white,
-                        borderRadius: BorderRadius.circular(100),
-                        gradient: LinearGradient(
-                          colors: muted
-                              ? [
-                                  Color(0xff5F8CF2),
-                                  Color(0xff162850),
-                                ]
-                              : [Colors.white, Colors.white],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        // image: DecorationImage(
-                        //   image: AssetImage('',
-                        //
-                        //   )
-                        // ),
-                        border: Border.all(color: Color(0xff5F8CF2), width: 3),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff5F8CF2),
-                            blurRadius: 15,
-                            blurStyle: BlurStyle.inner,
-                            inset: true,
-                          ),
-                        ],
-                      ),
-                      child: Image.asset(
-                        muted
-                            ? 'Assets/icons/muted.png'
-                            : 'Assets/icons/unmute voice.png',
-                        color: muted ? Colors.white : mainBlue,
-                      ),
-                      //  color: imageColor,
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        endCall = !endCall;
-                      });
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                          color: endCall ? Colors.white : mainBlue,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          muted = !muted;
+                        });
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: muted ? mainBlue : Colors.white,
                           borderRadius: BorderRadius.circular(100),
                           gradient: LinearGradient(
-                            colors: endCall
+                            colors: muted
                                 ? [
-                                    Colors.white,
-                                    Colors.white,
-                                  ]
-                                : [
                                     Color(0xff5F8CF2),
                                     Color(0xff162850),
+                                  ]
+                                : [
+                                    Color(0xff96A7D0),
+                                    Color(0xffFBFBFB),
+                                    Colors.white,
                                   ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),
+                          border: Border.all(
+                              color: muted
+                                  ? Color(0xff5F8CF2)
+                                  : Color(0xffFBFBFB)
+                                      .withOpacity(0.5), //Color(0xff96A7D0),
+                              width: 3),
                           boxShadow: [
                             BoxShadow(
-                              color: endCall
-                                  ? Color(0xffD6240C)
-                                  : Color(0xff5F8CF2), // Color(0xff5F8CF2),
-                              blurRadius: 5,
-                              blurStyle: BlurStyle.solid,
+                              color: Color.fromRGBO(149, 177, 244, 0.25),
+                              blurRadius: 4,
+                              offset: const Offset(-4, -8),
+                              // blurStyle: BlurStyle.inner,
+                              inset: true,
+                            ),
+                            BoxShadow(
+                              color: Color.fromRGBO(44, 79, 160, 0.45),
+                              blurRadius: 4,
+                              offset: const Offset(4, 8),
                               inset: true,
                             ),
                           ],
-                          border: Border.all(
-                            color:
-                                endCall ? Color(0xffD6240C) : Color(0xff5F8CF2),
-                            width: 3,
-                          )),
-                      child: Image.asset(
-                        'Assets/icons/end call.png',
-                        color: endCall ? Color(0xffD6240C) : Color(0xff5F8CF2),
+                        ),
+                        child: Image.asset(
+                          muted
+                              ? 'Assets/icons/muted.png'
+                              : 'Assets/icons/min.png', //'Assets/icons/unmute voice.png',
+                          color: muted ? Colors.white : mainBlue,
+                        ),
+                        //  color: imageColor,
                       ),
-                      //  color: imageColor,
                     ),
-                  ),
 
-                  // Image.asset("assets/images/Component 3.png"),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        rec = !rec;
-                      });
-                    },
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: rec ? mainBlue : Colors.white,
-                        borderRadius: BorderRadius.circular(100),
-                        gradient: LinearGradient(
-                          colors: rec
-                              ? [
-                                  Color(0xff5F8CF2),
-                                  Color(0xff162850),
-                                ]
-                              : [
-                                  Color(0xffffffff),
-                                  Color(0xffffffff),
-                                ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          endCall = !endCall;
+                        });
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                            color: endCall ? Colors.white : mainBlue,
+                            borderRadius: BorderRadius.circular(100),
+                            gradient: LinearGradient(
+                              colors: endCall
+                                  ? [
+                                      Colors.white,
+                                      Colors.white,
+                                    ]
+                                  : [
+                                      Color(0xff5F8CF2),
+                                      Color(0xff162850),
+                                    ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: endCall
+                                    ? Color(0xffF28F8F)
+                                    : Color(0xff5F8CF2), // Color(0xff5F8CF2),
+                                blurRadius: 4,
+                                offset: const Offset(-4, -8),
+                                blurStyle: BlurStyle.solid,
+                                inset: true,
+                              ),
+                            ],
+                            border: Border.all(
+                              color: endCall
+                                  ? Color(0xffD6240C)
+                                  : Color(0xff5F8CF2),
+                              width: 3,
+                            )),
+                        child: Image.asset(
+                          'Assets/icons/end call.png',
+                          color:
+                              endCall ? Color(0xffD6240C) : Color(0xff5F8CF2),
                         ),
-                        // image: DecorationImage(
-                        //   image: AssetImage('',
-                        //
-                        //   )
-                        // ),
-                        border: Border.all(color: Color(0xff5F8CF2), width: 3),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff5F8CF2),
-                            blurRadius: 15,
-                            offset: const Offset(3, 5),
-                            blurStyle: BlurStyle.outer,
-                            inset: true,
-                          ),
-                        ],
+                        //  color: imageColor,
                       ),
-                      child: Center(
-                        child: Text(
-                          'REC',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.normal,
-                            color: rec ? Color(0xffD6240C) : mainBlue,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      //  color: imageColor,
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        speaker = !speaker;
-                      });
-                    },
-                    child: Container(
-                      height: 80,
-                      width: 80,
-                      padding: EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: speaker ? mainBlue : Colors.white,
-                        borderRadius: BorderRadius.circular(100),
-                        gradient: LinearGradient(
-                          colors: speaker
-                              ? [
-                                  Color(0xff5F8CF2),
-                                  Color(0xff162850),
-                                ]
-                              : [
-                                  Color(0xffffffff),
-                                  Color(0xffffffff),
-                                ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        // image: DecorationImage(
-                        //   image: AssetImage('',
-                        //
-                        //   )
-                        // ),
-                        border: Border.all(color: Color(0xff5F8CF2), width: 3),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff5F8CF2),
-                            blurRadius: 10,
-                            blurStyle: BlurStyle.inner,
-                            inset: true,
+
+                    // Image.asset("assets/images/Component 3.png"),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          rec = !rec;
+                        });
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: rec ? mainBlue : Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          gradient: LinearGradient(
+                            colors: rec
+                                ? [
+                                    Color(0xff5F8CF2),
+                                    Color(0xff162850),
+                                  ]
+                                : [
+                                    Color(0xff96A7D0),
+                                    Color(0xffFBFBFB),
+                                    Colors.white,
+                                  ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
                           ),
-                        ],
+                          border: Border.all(
+                              color: rec
+                                  ? Color(0xff5F8CF2)
+                                  : Color(0xffFBFBFB).withOpacity(0.5),
+                              width: 3),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(149, 177, 244, 0.25),
+                              blurRadius: 4,
+                              offset: const Offset(-4, -8),
+                              // blurStyle: BlurStyle.inner,
+                              inset: true,
+                            ),
+                            BoxShadow(
+                              color: Color.fromRGBO(44, 79, 160, 0.45),
+                              blurRadius: 4,
+                              offset: const Offset(4, 8),
+                              // blurStyle: BlurStyle.inner,
+                              inset: true,
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'REC',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FontStyle.normal,
+                              letterSpacing: 0.7,
+                              color: rec ? Color(0xffD6240C) : mainBlue,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        //  color: imageColor,
                       ),
-                      child: Image.asset(
-                        'Assets/icons/speaker.png',
-                        color: speaker ? Colors.white : mainBlue,
-                      ),
-                      //  color: imageColor,
                     ),
-                  ),
-                ],
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          speaker = !speaker;
+                        });
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        padding: EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: speaker ? mainBlue : Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                          gradient: LinearGradient(
+                            colors: speaker
+                                ? [
+                                    Color(0xff5F8CF2),
+                                    Color(0xff162850),
+                                  ]
+                                : [
+                                    Color(0xff96A7D0),
+                                    Color(0xffFBFBFB),
+                                    Colors.white,
+                                  ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          border: Border.all(
+                              color: speaker
+                                  ? Color(0xff5F8CF2)
+                                  : Color(0xffFBFBFB).withOpacity(0.5),
+                              width: 3),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(149, 177, 244, 0.25),
+                              blurRadius: 4,
+                              offset: const Offset(-4, -8),
+                              // blurStyle: BlurStyle.inner,
+                              inset: true,
+                            ),
+                            BoxShadow(
+                              color: Color.fromRGBO(44, 79, 160, 0.45),
+                              blurRadius: 4,
+                              offset: const Offset(4, 8),
+                              // blurStyle: BlurStyle.inner,
+                              inset: true,
+                            ),
+                          ],
+                        ),
+                        child: Image.asset(
+                          'Assets/icons/speaker.png',
+                          color: speaker ? Colors.white : mainBlue,
+                        ),
+                        //  color: imageColor,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Divider(
                 thickness: 2,

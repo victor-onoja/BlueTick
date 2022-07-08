@@ -7,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:intl/intl.dart';
 
-import '../co_wokers/co_workers_drawer.dart';
+import '../todo_scree.dart';
+import 'co_workers_drawer.dart';
 
 class StaffHomePage extends StatefulWidget {
   const StaffHomePage({Key? key}) : super(key: key);
@@ -236,6 +237,8 @@ class StaffHomePageState extends State<StaffHomePage> {
       ),
       actions: [
         GestureDetector(
+          onTap: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => TodoScreen())),
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: Image.asset(
