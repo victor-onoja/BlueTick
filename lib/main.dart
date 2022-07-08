@@ -14,23 +14,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        builder: (context, child) => ResponsiveWrapper.builder(child,
-                maxWidth: 1200,
-                minWidth: 350,
-                defaultScale: true,
-                breakpoints: const [
-                  ResponsiveBreakpoint.resize(350, name: MOBILE),
-                  ResponsiveBreakpoint.autoScale(600, name: TABLET),
-                  ResponsiveBreakpoint.resize(800, name: DESKTOP),
-                  ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
-                  ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
-                ]),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: callScreen() //const SplashScreen(),
-        );
+      builder: (context, child) => ResponsiveWrapper.builder(child,
+          maxWidth: 1200,
+          minWidth: 350,
+          defaultScale: true,
+          breakpoints: const [
+            ResponsiveBreakpoint.resize(350, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(600, name: TABLET),
+            ResponsiveBreakpoint.resize(800, name: DESKTOP),
+            ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
+            ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
+          ]),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const SplashScreen(),
+    );
   }
 }
