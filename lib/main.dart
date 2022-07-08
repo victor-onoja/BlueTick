@@ -1,5 +1,7 @@
+
 import 'package:bluetick/screens/home/co_wokers/co_worker_create_group.dart';
 import 'package:bluetick/screens/home/sub_home/call_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'screens/home/co_wokers/co_worker_add_to_call.dart';
@@ -30,7 +32,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+
       home: const SplashScreen(),
+
     );
   }
 }
