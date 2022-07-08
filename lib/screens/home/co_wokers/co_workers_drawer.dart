@@ -1,10 +1,10 @@
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../components/app_theme.dart';
-import '../sign_in/login.dart';
+import '../../../components/app_theme.dart';
 
-class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({Key? key}) : super(key: key);
+class CoWorkersDrawer extends StatelessWidget {
+  const CoWorkersDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +50,6 @@ class HomeDrawer extends StatelessWidget {
                 thickness: 1,
               ),
               textContainer(text: 'Create Groups', onPressed: () {}),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(text: 'Create Broadcast', onPressed: () {}),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(text: 'Invite Staff', onPressed: () {}),
               const Divider(
                 color: AppTheme.blue2,
                 thickness: 1,
