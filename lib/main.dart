@@ -1,10 +1,5 @@
-import 'package:bluetick/screens/chatScreen/chatScreen.dart';
-import 'package:bluetick/screens/home/co_wokers/co_worker_create_group.dart';
-import 'package:bluetick/screens/home/sub_home/call_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'screens/home/co_wokers/co_worker_add_to_call.dart';
 import 'screens/sign_up/splash_screen.dart';
 
 void main() {
@@ -16,24 +11,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        builder: (context, child) => ResponsiveWrapper.builder(child,
-                maxWidth: 1200,
-                minWidth: 350,
-                defaultScale: true,
-                breakpoints: const [
-                  ResponsiveBreakpoint.resize(350, name: MOBILE),
-                  ResponsiveBreakpoint.autoScale(600, name: TABLET),
-                  ResponsiveBreakpoint.resize(800, name: DESKTOP),
-                  ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
-                  ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
-                ]),
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Chatscreen() // const SplashScreen(),
-
-        );
+      builder: (context, child) => ResponsiveWrapper.builder(child,
+          maxWidth: 1200,
+          minWidth: 350,
+          defaultScale: true,
+          breakpoints: const [
+            ResponsiveBreakpoint.resize(350, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(600, name: TABLET),
+            ResponsiveBreakpoint.resize(800, name: DESKTOP),
+            ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
+            ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
+          ]),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const SplashScreen(),
+    );
   }
 }

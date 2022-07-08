@@ -1,10 +1,12 @@
 import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
+import 'package:bluetick/screens/home/todo_scree.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../components/app_theme.dart';
+import '../../components/config/config_sheet.dart';
 import 'home_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,9 +16,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
-      appBar: AppBar(
+      appBar:
+          // GeneralAppBar(),
+          AppBar(
         centerTitle: true,
         elevation: 0,
+        // leading: IconButton(
+        //   icon: const ImageIcon(AssetImage('Assets/images/Group 7.png')),
+        //   onPressed: () => null,
+        //   //     Navigator.push(
+        //   //   context,
+        //   //   MaterialPageRoute(
+        //   //     builder: (_) => Drawer(child: const HomeDrawer()),
+        //   //   ),
+        //   // ),
+        // ),
         backgroundColor: AppTheme.mainBlue,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
@@ -32,15 +46,27 @@ class HomeScreen extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         actions: [
-          Container(
-            height: 45, //31.95,
-            width: 45, //31.96,
-            margin: EdgeInsets.only(right: 11),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  'Assets/sample_pic.png',
-                ),
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const TodoScreen(),
+              ),
+            ),
+            child: Container(
+              height: 45, //31.95,
+              width: 45, //31.96,
+              margin: EdgeInsets.only(right: 11),
+              decoration: const BoxDecoration(
+                  // image: DecorationImage(
+                  //   image: AssetImage(
+                  //     'hello',
+                  //   ),
+                  //   fit: BoxFit.contain,
+                  // ),
+                  ),
+              child: Image.asset(
+                'Assets/sample_pic.png',
                 fit: BoxFit.contain,
               ),
             ),
@@ -244,7 +270,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Check in:',
+                'Clock in:',
                 style: GoogleFonts.montserrat(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -299,12 +325,17 @@ class HomeScreen extends StatelessWidget {
                   height: 31.95,
                   width: 31.96,
                   decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'Assets/sample_pic.png',
+                      // image: DecorationImage(
+                      //   image: AssetImage(
+                      //     //todo Change is image
+                      //     'Assets/saasdklmple_pic.png',
+                      //   ),
+                      //   fit: BoxFit.contain,
+                      // ),
                       ),
-                      fit: BoxFit.contain,
-                    ),
+                  child: Image.asset(
+                    'Assets/sample_pic.png',
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -337,7 +368,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           Text(
-            'Check in ${time}am',
+            'Clock in ${time}am',
             style: GoogleFonts.montserrat(
               fontSize: 12,
               fontWeight: FontWeight.w600,
@@ -369,12 +400,16 @@ class HomeScreen extends StatelessWidget {
               height: 31.95,
               width: 31.96,
               decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    'Assets/sample_pic.png',
+                  // image: DecorationImage(
+                  //   image: AssetImage(
+                  //     'Assets/sample_pic.png',
+                  //   ),
+                  //   fit: BoxFit.contain,
+                  // ),
                   ),
-                  fit: BoxFit.contain,
-                ),
+              child: Image.asset(
+                'Assets/sample_pic.png',
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -406,6 +441,42 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  AppBar GeneralAppBar() {
+    return AppBar(
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: const [0.0, 68.11],
+                colors: [linearBlue1, darkBlue])),
+      ),
+      centerTitle: true,
+      leading: IconButton(
+        icon: const ImageIcon(AssetImage('Assets/images/Group 7.png')),
+        onPressed: () => null,
+      ),
+      title: const Text(
+        'BlueTick',
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 23.96),
+      ),
+      actions: [
+        GestureDetector(
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Image.asset(
+              'Assets/images/Ellipse 20.png',
+              fit: BoxFit.contain,
+            ),
+          ),
+          //     const CircleAvatar(
+          //   backgroundImage: AssetImage(''),
+          // ),
+        )
+      ],
     );
   }
 }

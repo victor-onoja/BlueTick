@@ -1,6 +1,7 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +22,8 @@ class EmailVerification extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: BackButton(
           color: darkBlue,
+          onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginScreen())),
         ),
       ),
       body: SingleChildScrollView(
