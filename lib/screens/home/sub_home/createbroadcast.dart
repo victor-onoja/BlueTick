@@ -26,7 +26,8 @@ class CreateBroadcastState extends State<CreateBroadcast> {
           toolbarHeight: 44,
           backgroundColor: mainBlue,
           leading: IconButton(
-              onPressed: () => null, icon: const Icon(Icons.arrow_back)),
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back)),
           centerTitle: true,
           title: const Text(
             'Create New Broadcast',

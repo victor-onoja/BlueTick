@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../components/widgets/widgets.dart';
 import '../home/home_tabs.dart';
+import 'staff_sign_up.dart';
 
 class InvitationLink extends StatefulWidget {
   const InvitationLink({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _InvitationLinkState extends State<InvitationLink> {
               onTapButton: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                  return HomeTab();
+                  return StaffSignUp();
                 }));
               },
             ),

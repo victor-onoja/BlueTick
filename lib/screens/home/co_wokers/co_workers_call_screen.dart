@@ -5,15 +5,16 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 import '../../../components/app_theme.dart';
+import 'co_worker_add_to_call.dart';
 
-class callScreen extends StatefulWidget {
-  const callScreen({Key? key}) : super(key: key);
+class CoWorkersCallScreen extends StatefulWidget {
+  const CoWorkersCallScreen({Key? key}) : super(key: key);
 
   @override
-  State<callScreen> createState() => _callScreenState();
+  State<CoWorkersCallScreen> createState() => _CoWorkersCallScreenState();
 }
 
-class _callScreenState extends State<callScreen> {
+class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
   bool muted = true;
   bool endCall = true;
   bool rec = true;
@@ -49,7 +50,10 @@ class _callScreenState extends State<callScreen> {
 
           actions: [
             //IconButton(onPressed: () => null, icon: const Icon(Icons.check))
-            Image.asset("Assets/icons/add to call.png")
+            GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => CoWorkerAddToCall())),
+                child: Image.asset("Assets/icons/add to call.png"))
           ],
         ),
         body: SingleChildScrollView(

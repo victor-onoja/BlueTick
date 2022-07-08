@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../components/app_theme.dart';
+import '../../chatScreen/chatScreen.dart';
 import '../notification.dart';
 
 import '../sub_home/messagelist.dart';
+import '../sub_home/staffhomepage.dart';
 import 'co_workers.dart';
 import 'co_workers_drawer.dart';
 
@@ -27,15 +29,15 @@ class _CoWorkerHomeTabState extends State<CoWorkerHomeTab> {
     return Scaffold(
       body: PageView(
         children: const [
-          HomeScreen(),
+          StaffHomePage(),
           Notifications(),
           Workers(),
-          MessageList(),
+          Chatscreen(),
         ],
         onPageChanged: onPageClicked,
         controller: pageController,
       ),
-      drawer: CoWorkersDrawer(),
+      // drawer: CoWorkersDrawer(),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
