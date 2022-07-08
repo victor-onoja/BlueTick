@@ -74,7 +74,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                 height: 25,
               ),
               const GeneralTextField(
-                  hintText: 'Department', textType: TextInputType.name),
+                  hintText: 'Role', textType: TextInputType.name),
               const SizedBox(
                 height: 25,
               ),
