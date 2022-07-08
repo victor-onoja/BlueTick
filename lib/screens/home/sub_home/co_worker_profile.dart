@@ -50,7 +50,7 @@ class WorkerScreen extends StatelessWidget {
                 Positioned(
                     child: IconButton(
                         color: Colors.black,
-                        onPressed: () => null,
+                        onPressed: () => Navigator.pop(context),
                         // => Navigator.push(context,
                         //     MaterialPageRoute(builder: (_) => const HomeTab())),
                         icon: const Icon(Icons.arrow_back))),

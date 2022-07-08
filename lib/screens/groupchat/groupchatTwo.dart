@@ -22,9 +22,12 @@ class GroupChat extends StatelessWidget {
               SliverAppBar(
                 backgroundColor: AppTheme.blue2,
                 expandedHeight: 177,
-                leading: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
+                leading: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
                 ),
                 actions: [
                   Column(
