@@ -15,12 +15,12 @@ const Color _offWhite = Color(0xFFF3F6FF);
 const Color _mainBlue = Color(0xFF2C4FA0);
 const Color _blue2 = Color(0xFF96A7D0);
 const Color _linearBlue1 = Color(0xFF244BA9);
-const Color _linearBlue2 = Color(0xFF162850);
 const Color _darkBlue = Color(0xFF162850);
 const Color _darkBlue2 = Color(0xFF091020);
 
 const Color _offBlack = Color(0xFF1E1E1E);
 const Color _blackerBlack = Color(0xFF000000);
+const Color _warningRed = Color(0xFFD6240C);
 
 
 Color get white => _white;
@@ -29,12 +29,12 @@ Color get offWhite => _offWhite;
 Color get mainBlue => _mainBlue;
 Color get blue2 => _blue2;
 Color get linearBlue1 => _linearBlue1;
-Color get linearBlue2 => _linearBlue2;
 Color get darkBlue => _darkBlue;
 Color get darkBlue2 => _darkBlue2;
 
 Color get offBlack => _offBlack;
 Color get blackerBlack => _blackerBlack;
+Color get warningRed => _warningRed;
 
 final TextStyle _style1 = TextStyle(
     fontSize: 16, fontWeight: FontWeight.w600, color: mainBlue);
