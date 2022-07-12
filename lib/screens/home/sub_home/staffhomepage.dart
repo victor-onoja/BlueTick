@@ -23,13 +23,6 @@ class StaffHomePageState extends State<StaffHomePage> {
   Timer? timer;
   Duration? duration = const Duration(hours: 00);
 
-  @override
-  void setState(VoidCallback fn) {
-
-    super.setState(fn);
-    date = DateFormat.yMd().format(DateTime.now());
-    dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
-  }
 
 
   void startTimer() {
@@ -64,6 +57,10 @@ class StaffHomePageState extends State<StaffHomePage> {
   @override
   void initState() {
     super.initState();
+    setState((){
+      date = DateFormat('dd/MM/yyyy').format(DateTime.now());
+      dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
+    });
   }
 
 
