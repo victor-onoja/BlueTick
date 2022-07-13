@@ -117,12 +117,25 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: muted
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB)
-                                      .withOpacity(0.5), //Color(0xff96A7D0),
-                              width: 3),
+                          border: muted
+                              ? Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff5F8CF2).withOpacity(0.3),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xff162850).withOpacity(0.7),
+                                    width: 3,
+                                  ),
+                                  -0.7)
+                              : Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff96A7D0).withOpacity(.23),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xffFBFBFB).withOpacity(0.77),
+                                    width: 3,
+                                  ),
+                                  -0.7),
                           boxShadow: [
                             BoxShadow(
                               color: Color.fromRGBO(149, 177, 244, 0.25),
@@ -230,11 +243,25 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: rec
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB).withOpacity(0.5),
-                              width: 3),
+                          border: rec
+                              ? Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff5F8CF2).withOpacity(0.3),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xff162850).withOpacity(0.7),
+                                    width: 3,
+                                  ),
+                                  -0.7)
+                              : Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff96A7D0).withOpacity(.23),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xffFBFBFB).withOpacity(0.77),
+                                    width: 3,
+                                  ),
+                                  -0.7),
                           boxShadow: [
                             BoxShadow(
                               color: Color.fromRGBO(149, 177, 244, 0.25),
@@ -295,11 +322,25 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: speaker
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB).withOpacity(0.5),
-                              width: 3),
+                          border: speaker
+                              ? Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff5F8CF2).withOpacity(0.3),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xff162850).withOpacity(0.7),
+                                    width: 3,
+                                  ),
+                                  -0.7)
+                              : Border.lerp(
+                                  Border.all(
+                                      color: Color(0xff96A7D0).withOpacity(.23),
+                                      width: 3),
+                                  Border.all(
+                                    color: Color(0xffFBFBFB).withOpacity(0.77),
+                                    width: 3,
+                                  ),
+                                  -0.7),
                           boxShadow: [
                             BoxShadow(
                               color: Color.fromRGBO(149, 177, 244, 0.25),
