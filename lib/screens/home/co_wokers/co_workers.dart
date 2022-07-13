@@ -4,15 +4,15 @@ import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 import '../../../components/ui/ui_utils.dart';
 
-class CreateBroadcast extends StatefulWidget {
-  const CreateBroadcast({Key? key}) : super(key: key);
+class Workers extends StatefulWidget {
+  const Workers({Key? key}) : super(key: key);
 
   @override
-  CreateBroadcastState createState() => CreateBroadcastState();
+  WorkersState createState() => WorkersState();
 }
 
-class CreateBroadcastState extends State<CreateBroadcast> {
-  CreateBroadcastState();
+class WorkersState extends State<Workers> {
+  WorkersState();
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +26,12 @@ class CreateBroadcastState extends State<CreateBroadcast> {
           toolbarHeight: 44,
           backgroundColor: mainBlue,
           leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.arrow_back)),
+              onPressed: () => null, icon: const Icon(Icons.arrow_back)),
           centerTitle: true,
           title: const Text(
-            'Create New Broadcast',
+            'Workers',
             style: TextStyle(fontSize: 24),
           ),
-          actions: [
-            IconButton(onPressed: () => null, icon: const Icon(Icons.check))
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(children: [
@@ -97,7 +93,6 @@ class CreateBroadcastState extends State<CreateBroadcast> {
                                   maxRadius: 15,
                                   backgroundImage: AssetImage(
                                       profileItems['id$index']['profile_pic'])),
-                              //child: profileItems['id$index']['profile_pic']),
                               title: Text(
                                 profileItems['id$index']['profile_name'],
                                 style: const TextStyle(
@@ -110,40 +105,13 @@ class CreateBroadcastState extends State<CreateBroadcast> {
                                       fontWeight: FontWeight.w500,
                                       fontSize: 12,
                                       color: Colors.white)),
-                              trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      adminStatus(profileItems, index),
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12),
-                                    ),
-                                    FormField(
-                                      builder: (FormFieldState<dynamic> field) {
-                                        return Checkbox(
-                                            //fillColor: MaterialStateProperty.resolveWith((states) => null),
-                                            activeColor: Colors.transparent,
-                                            shape: const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(2))),
-                                            side: MaterialStateBorderSide
-                                                .resolveWith((states) =>
-                                                    const BorderSide(
-                                                        width: 2,
-                                                        color: Colors.white)),
-                                            value: profileItems['id$index']
-                                                ['check'],
-                                            onChanged: (value) {
-                                              setState(() {
-                                                profileItems['id$index']
-                                                    ['check'] = value;
-                                              });
-                                            });
-                                      },
-                                    ),
-                                  ])));
+                              trailing: Text(
+                                adminStatus(profileItems, index),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12),
+                              )));
                     }))
           ]),
         ),

@@ -4,15 +4,15 @@ import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 import '../../../components/ui/ui_utils.dart';
 
-class CreateBroadcast extends StatefulWidget {
-  const CreateBroadcast({Key? key}) : super(key: key);
+class CoWorkerCreateGroup extends StatefulWidget {
+  const CoWorkerCreateGroup({Key? key}) : super(key: key);
 
   @override
-  CreateBroadcastState createState() => CreateBroadcastState();
+  CoWorkerCreateGroupState createState() => CoWorkerCreateGroupState();
 }
 
-class CreateBroadcastState extends State<CreateBroadcast> {
-  CreateBroadcastState();
+class CoWorkerCreateGroupState extends State<CoWorkerCreateGroup> {
+  CoWorkerCreateGroupState();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CreateBroadcastState extends State<CreateBroadcast> {
               icon: const Icon(Icons.arrow_back)),
           centerTitle: true,
           title: const Text(
-            'Create New Broadcast',
+            'Create Group',
             style: TextStyle(fontSize: 24),
           ),
           actions: [

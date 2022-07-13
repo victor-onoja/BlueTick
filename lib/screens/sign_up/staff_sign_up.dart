@@ -1,9 +1,11 @@
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/sign_up/invitation_link.dart';
 import 'package:bluetick/components/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/widgets/widgets.dart';
+import '../home/co_wokers/co_wokers_home_tab.dart';
 
 class StaffSignUp extends StatefulWidget {
   const StaffSignUp({Key? key}) : super(key: key);
@@ -74,7 +76,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                 height: 25,
               ),
               const GeneralTextField(
-                  hintText: 'Department', textType: TextInputType.name),
+                  hintText: 'Role', textType: TextInputType.name),
               const SizedBox(
                 height: 25,
               ),
@@ -102,7 +104,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const InvitationLink(),
+                      builder: (_) => const CoWorkerHomeTab(),
                     ),
                   );
                 },

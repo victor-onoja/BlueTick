@@ -69,7 +69,7 @@ class _AdminSignUpState extends State<AdminSignUp> {
               ),
               SignUpButton(
                 textColor: AppTheme.mainBlue,
-                text: 'Confirm',
+                text: 'Continue',
                 buttonColor: AppTheme.blue2,
                 onTapButton: () {
                   Navigator.push(
