@@ -97,13 +97,15 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                         });
                       },
                       child: Container(
-                        height: 80,
-                        width: 80,
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(3),
                         decoration: BoxDecoration(
-                          color: muted ? mainBlue : Colors.white,
-                          borderRadius: BorderRadius.circular(100),
                           gradient: LinearGradient(
+                            begin:
+                                muted ? Alignment.topCenter : Alignment.topLeft,
+                            end: muted
+                                ? Alignment.bottomCenter
+                                : Alignment.bottomRight,
+                            stops: [0.35, 0.85],
                             colors: muted
                                 ? [
                                     Color(0xff5F8CF2),
@@ -112,40 +114,55 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                                 : [
                                     Color(0xff96A7D0),
                                     Color(0xffFBFBFB),
-                                    Colors.white,
                                   ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: muted
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB)
-                                      .withOpacity(0.5), //Color(0xff96A7D0),
-                              width: 3),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(149, 177, 244, 0.25),
-                              blurRadius: 4,
-                              offset: const Offset(-4, -8),
-                              // blurStyle: BlurStyle.inner,
-                              inset: true,
-                            ),
-                            BoxShadow(
-                              color: Color.fromRGBO(44, 79, 160, 0.45),
-                              blurRadius: 4,
-                              offset: const Offset(4, 8),
-                              inset: true,
-                            ),
-                          ],
+                          shape: BoxShape.circle,
                         ),
-                        child: Image.asset(
-                          muted
-                              ? 'Assets/icons/muted.png'
-                              : 'Assets/icons/min.png', //'Assets/icons/unmute voice.png',
-                          color: muted ? Colors.white : mainBlue,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: muted ? mainBlue : Colors.white,
+                            borderRadius: BorderRadius.circular(100),
+                            gradient: LinearGradient(
+                              colors: muted
+                                  ? [
+                                      Color(0xff5F8CF2),
+                                      Color(0xff162850),
+                                    ]
+                                  : [
+                                      Color(0xff96A7D0),
+                                      Color(0xffFBFBFB),
+                                      Colors.white,
+                                    ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(149, 177, 244, 0.25),
+                                blurRadius: 4,
+                                offset: const Offset(-4, -8),
+                                // blurStyle: BlurStyle.inner,
+                                inset: true,
+                              ),
+                              BoxShadow(
+                                color: Color.fromRGBO(44, 79, 160, 0.45),
+                                blurRadius: 4,
+                                offset: const Offset(4, 8),
+                                inset: true,
+                              ),
+                            ],
+                          ),
+                          child: Image.asset(
+                            muted
+                                ? 'Assets/icons/muted.png'
+                                : 'Assets/icons/min.png', //'Assets/icons/unmute voice.png',
+                            color: muted ? Colors.white : mainBlue,
+                          ),
+                          //  color: imageColor,
                         ),
-                        //  color: imageColor,
                       ),
                     ),
 
@@ -157,48 +174,76 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        height: 80,
-                        width: 80,
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(3),
                         decoration: BoxDecoration(
-                            color: endCall ? Colors.white : mainBlue,
-                            borderRadius: BorderRadius.circular(100),
-                            gradient: LinearGradient(
-                              colors: endCall
-                                  ? [
-                                      Colors.white,
-                                      Colors.white,
-                                    ]
-                                  : [
-                                      Color(0xff5F8CF2),
-                                      Color(0xff162850),
-                                    ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: endCall
-                                    ? Color(0xffF28F8F)
-                                    : Color(0xff5F8CF2), // Color(0xff5F8CF2),
-                                blurRadius: 4,
-                                offset: const Offset(-4, -8),
-                                blurStyle: BlurStyle.solid,
-                                inset: true,
-                              ),
-                            ],
-                            border: Border.all(
-                              color: endCall
-                                  ? Color(0xffD6240C)
-                                  : Color(0xff5F8CF2),
-                              width: 3,
-                            )),
-                        child: Image.asset(
-                          'Assets/icons/end call.png',
-                          color:
-                              endCall ? Color(0xffD6240C) : Color(0xff5F8CF2),
+                          gradient: LinearGradient(
+                            begin: endCall
+                                ? Alignment.topCenter
+                                : Alignment.topLeft,
+                            end: endCall
+                                ? Alignment.bottomCenter
+                                : Alignment.bottomRight,
+                            stops: [0.35, 0.85],
+                            colors: endCall
+                                ? [
+                                    Color(0xffD6240C),
+                                    Color(0xffD6240C)
+                                    // Color(0xff5F8CF2),
+                                    // Color(0xff162850),
+                                  ]
+                                : [
+                                    // Color(0xff5F8CF2),
+                                    // Color(0xff162850),
+                                    Color(0xff96A7D0),
+                                    Color(0xffFBFBFB),
+                                  ],
+                          ),
+                          shape: BoxShape.circle,
                         ),
-                        //  color: imageColor,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                              color: endCall ? Colors.white : mainBlue,
+                              borderRadius: BorderRadius.circular(100),
+                              gradient: LinearGradient(
+                                colors: endCall
+                                    ? [
+                                        Colors.white,
+                                        Colors.white,
+                                      ]
+                                    : [
+                                        Color(0xff5F8CF2),
+                                        Color(0xff162850),
+                                      ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: endCall
+                                      ? Color(0xffF28F8F)
+                                      : Color(0xff5F8CF2), // Color(0xff5F8CF2),
+                                  blurRadius: 4,
+                                  offset: const Offset(-4, -8),
+                                  blurStyle: BlurStyle.solid,
+                                  inset: true,
+                                ),
+                              ],
+                              border: Border.all(
+                                color: endCall
+                                    ? Color(0xffD6240C)
+                                    : Color(0xff5F8CF2),
+                                width: 3,
+                              )),
+                          child: Image.asset(
+                            'Assets/icons/end call.png',
+                            color:
+                                endCall ? Color(0xffD6240C) : Color(0xff5F8CF2),
+                          ),
+                          //  color: imageColor,
+                        ),
                       ),
                     ),
 
@@ -210,13 +255,15 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                         });
                       },
                       child: Container(
-                        height: 80,
-                        width: 80,
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(3),
                         decoration: BoxDecoration(
-                          color: rec ? mainBlue : Colors.white,
-                          borderRadius: BorderRadius.circular(100),
                           gradient: LinearGradient(
+                            begin:
+                                rec ? Alignment.topCenter : Alignment.topLeft,
+                            end: rec
+                                ? Alignment.bottomCenter
+                                : Alignment.bottomRight,
+                            stops: [0.35, 0.85],
                             colors: rec
                                 ? [
                                     Color(0xff5F8CF2),
@@ -225,47 +272,85 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                                 : [
                                     Color(0xff96A7D0),
                                     Color(0xffFBFBFB),
-                                    Colors.white,
                                   ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: rec
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB).withOpacity(0.5),
-                              width: 3),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(149, 177, 244, 0.25),
-                              blurRadius: 4,
-                              offset: const Offset(-4, -8),
-                              // blurStyle: BlurStyle.inner,
-                              inset: true,
-                            ),
-                            BoxShadow(
-                              color: Color.fromRGBO(44, 79, 160, 0.45),
-                              blurRadius: 4,
-                              offset: const Offset(4, 8),
-                              // blurStyle: BlurStyle.inner,
-                              inset: true,
-                            ),
-                          ],
+                          shape: BoxShape.circle,
                         ),
-                        child: Center(
-                          child: Text(
-                            'REC',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 19,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FontStyle.normal,
-                              letterSpacing: 0.7,
-                              color: rec ? Color(0xffD6240C) : mainBlue,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: rec ? mainBlue : Colors.white,
+                            borderRadius: BorderRadius.circular(100),
+                            gradient: LinearGradient(
+                              colors: rec
+                                  ? [
+                                      Color(0xff5F8CF2),
+                                      Color(0xff162850),
+                                    ]
+                                  : [
+                                      Color(0xff96A7D0),
+                                      Color(0xffFBFBFB),
+                                      Colors.white,
+                                    ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
                             ),
-                            textAlign: TextAlign.center,
+                            border: rec
+                                ? Border.lerp(
+                                    Border.all(
+                                        color:
+                                            Color(0xff5F8CF2).withOpacity(0.3),
+                                        width: 3),
+                                    Border.all(
+                                      color: Color(0xff162850).withOpacity(0.7),
+                                      width: 3,
+                                    ),
+                                    -0.7)
+                                : Border.lerp(
+                                    Border.all(
+                                        color:
+                                            Color(0xff96A7D0).withOpacity(.23),
+                                        width: 3),
+                                    Border.all(
+                                      color:
+                                          Color(0xffFBFBFB).withOpacity(0.77),
+                                      width: 3,
+                                    ),
+                                    -0.7),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(149, 177, 244, 0.25),
+                                blurRadius: 4,
+                                offset: const Offset(-4, -8),
+                                // blurStyle: BlurStyle.inner,
+                                inset: true,
+                              ),
+                              BoxShadow(
+                                color: Color.fromRGBO(44, 79, 160, 0.45),
+                                blurRadius: 4,
+                                offset: const Offset(4, 8),
+                                // blurStyle: BlurStyle.inner,
+                                inset: true,
+                              ),
+                            ],
                           ),
+                          child: Center(
+                            child: Text(
+                              'REC',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 19,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.normal,
+                                letterSpacing: 0.7,
+                                color: rec ? Color(0xffD6240C) : mainBlue,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          //  color: imageColor,
                         ),
-                        //  color: imageColor,
                       ),
                     ),
                     GestureDetector(
@@ -275,13 +360,16 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                         });
                       },
                       child: Container(
-                        height: 80,
-                        width: 80,
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(3),
                         decoration: BoxDecoration(
-                          color: speaker ? mainBlue : Colors.white,
-                          borderRadius: BorderRadius.circular(100),
                           gradient: LinearGradient(
+                            begin: speaker
+                                ? Alignment.topCenter
+                                : Alignment.topLeft,
+                            end: speaker
+                                ? Alignment.bottomCenter
+                                : Alignment.bottomRight,
+                            stops: [0.35, 0.85],
                             colors: speaker
                                 ? [
                                     Color(0xff5F8CF2),
@@ -290,89 +378,88 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                                 : [
                                     Color(0xff96A7D0),
                                     Color(0xffFBFBFB),
-                                    Colors.white,
                                   ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
                           ),
-                          border: Border.all(
-                              color: speaker
-                                  ? Color(0xff5F8CF2)
-                                  : Color(0xffFBFBFB).withOpacity(0.5),
-                              width: 3),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(149, 177, 244, 0.25),
-                              blurRadius: 4,
-                              offset: const Offset(-4, -8),
-                              // blurStyle: BlurStyle.inner,
-                              inset: true,
-                            ),
-                            BoxShadow(
-                              color: Color.fromRGBO(44, 79, 160, 0.45),
-                              blurRadius: 4,
-                              offset: const Offset(4, 8),
-                              // blurStyle: BlurStyle.inner,
-                              inset: true,
-                            ),
-                          ],
+                          shape: BoxShape.circle,
                         ),
-                        child: Image.asset(
-                          'Assets/icons/speaker.png',
-                          color: speaker ? Colors.white : mainBlue,
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: speaker ? mainBlue : Colors.white,
+                            borderRadius: BorderRadius.circular(100),
+                            gradient: LinearGradient(
+                              colors: speaker
+                                  ? [
+                                      Color(0xff5F8CF2),
+                                      Color(0xff162850),
+                                    ]
+                                  : [
+                                      Color(0xff96A7D0),
+                                      Color(0xffFBFBFB),
+                                      Colors.white,
+                                    ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            border: speaker
+                                ? Border.lerp(
+                                    Border.all(
+                                        color:
+                                            Color(0xff5F8CF2).withOpacity(0.3),
+                                        width: 3),
+                                    Border.all(
+                                      color: Color(0xff162850).withOpacity(0.7),
+                                      width: 3,
+                                    ),
+                                    -0.7)
+                                : Border.lerp(
+                                    Border.all(
+                                        color:
+                                            Color(0xff96A7D0).withOpacity(.23),
+                                        width: 3),
+                                    Border.all(
+                                      color:
+                                          Color(0xffFBFBFB).withOpacity(0.77),
+                                      width: 3,
+                                    ),
+                                    -0.7),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(149, 177, 244, 0.25),
+                                blurRadius: 4,
+                                offset: const Offset(-4, -8),
+                                // blurStyle: BlurStyle.inner,
+                                inset: true,
+                              ),
+                              BoxShadow(
+                                color: Color.fromRGBO(44, 79, 160, 0.45),
+                                blurRadius: 4,
+                                offset: const Offset(4, 8),
+                                // blurStyle: BlurStyle.inner,
+                                inset: true,
+                              ),
+                            ],
+                          ),
+                          child: Image.asset(
+                            'Assets/icons/speaker.png',
+                            color: speaker ? Colors.white : mainBlue,
+                          ),
+                          //  color: imageColor,
                         ),
-                        //  color: imageColor,
                       ),
                     ),
                   ],
                 ),
               ),
-              Divider(
-                thickness: 2,
-                color: Colors.grey,
+              const SizedBox(
+                height: 10,
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Container CallButton({
-    required String imagePath,
-    required Color imageColor,
-  }) {
-    return Container(
-      height: 80,
-      width: 80,
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: mainBlue,
-        borderRadius: BorderRadius.circular(100),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xff5F8CF2),
-            Color(0xff162850),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-        // image: DecorationImage(
-        //   image: AssetImage('',
-        //
-        //   )
-        // ),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xff5F8CF2),
-            blurRadius: 3,
-            blurStyle: BlurStyle.inner,
-            inset: true,
-          ),
-        ],
-      ),
-      child: Image.asset(imagePath),
-      //  color: imageColor,
     );
   }
 }
