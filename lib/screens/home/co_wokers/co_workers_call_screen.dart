@@ -453,52 +453,13 @@ class _CoWorkersCallScreenState extends State<CoWorkersCallScreen> {
                   ],
                 ),
               ),
-              Divider(
-                thickness: 2,
-                color: Colors.grey,
+              const SizedBox(
+                height: 10,
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Container CallButton({
-    required String imagePath,
-    required Color imageColor,
-  }) {
-    return Container(
-      height: 80,
-      width: 80,
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: mainBlue,
-        borderRadius: BorderRadius.circular(100),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xff5F8CF2),
-            Color(0xff162850),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-        // image: DecorationImage(
-        //   image: AssetImage('',
-        //
-        //   )
-        // ),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xff5F8CF2),
-            blurRadius: 3,
-            blurStyle: BlurStyle.inner,
-            inset: true,
-          ),
-        ],
-      ),
-      child: Image.asset(imagePath),
-      //  color: imageColor,
     );
   }
 }
