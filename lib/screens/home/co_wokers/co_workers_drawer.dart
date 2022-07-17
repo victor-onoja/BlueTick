@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
 import 'package:bluetick/screens/home/todo_scree.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,13 @@ class CoWorkersDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Drawer(
       child: Scaffold(
         backgroundColor: AppTheme.mainBlue,
+        resizeToAvoidBottomInset: false,
         body: Container(
+          // height: screenHeight,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -40,7 +44,7 @@ class CoWorkersDrawer extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               textContainer(
                   text: 'Home',
@@ -57,8 +61,10 @@ class CoWorkersDrawer extends StatelessWidget {
               textContainer(
                   text: 'Profile',
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => TodoScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PersonalProfile()));
                   }),
               const Divider(
                 color: AppTheme.blue2,
@@ -72,6 +78,16 @@ class CoWorkersDrawer extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => CoWorkerCreateGroup()));
                   }),
+              const Divider(
+                color: AppTheme.blue2,
+                thickness: 1,
+              ),
+              textContainer(text: 'Help Center', onPressed: () {}),
+              const Divider(
+                color: AppTheme.blue2,
+                thickness: 1,
+              ),
+              textContainer(text: 'About Bluetick', onPressed: () {}),
               const Divider(
                 color: AppTheme.blue2,
                 thickness: 1,

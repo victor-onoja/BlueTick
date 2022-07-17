@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'invitationb1.dart';
+
 class InvitationScreen extends StatefulWidget {
   const InvitationScreen({Key? key}) : super(key: key);
 
@@ -55,10 +57,22 @@ class _InvitationScreenState extends State<InvitationScreen> {
             const SizedBox(
               height: 80,
             ),
-            InvitationCard(
-                imagePath: 'Assets/icons/admin_invite_photo.png',
-                cardLabel: 'Manage employees\n and workspace',
-                cardStatus: 'Admin'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => InvitationB1()));
+              },
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => InvitationB1()));
+                },
+                child: InvitationCard(
+                    imagePath: 'Assets/icons/admin_invite_photo.png',
+                    cardLabel: 'Manage employees\n and workspace',
+                    cardStatus: 'Admin'),
+              ),
+            ),
             InvitationCard(
                 cardStatus: 'Staff',
                 cardLabel: 'View staff members\n in your team',

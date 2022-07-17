@@ -44,8 +44,8 @@ dependencies:
   flutter_switch: ^0.3.2
   passwordfield: ^0.1.0
   textfield_tags: ^2.0.0
-
   google_maps_flutter: ^2.0.2
+
 
 
 
