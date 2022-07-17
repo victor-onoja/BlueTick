@@ -56,11 +56,12 @@ class MessageListState extends State<MessageList> {
                       decoration: BoxDecoration(color: mainBlue),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                               builder: (_) => const groupChatscreen(),
                             ),
+                            (route) => false,
                           );
                         },
                         child: ListTile(

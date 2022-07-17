@@ -13,52 +13,54 @@ class BroadcastScreen extends StatefulWidget {
 class _BroadcastScreenState extends State<BroadcastScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("Assets/groupchatbg.png"),
-            fit: BoxFit.cover,
-          ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: AppTheme.offBlack),
+        backgroundColor: AppTheme.offWhite,
+        elevation: 0.0,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
         ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            iconTheme: IconThemeData(color: AppTheme.offBlack),
-            backgroundColor: AppTheme.offWhite,
-            elevation: 0.0,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {},
+        ),
+        automaticallyImplyLeading: false,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.call))],
+        title: Row(
+          children: [
+            GestureDetector(
+              onTap: () {},
+              child: const Image(
+                image: AssetImage('Assets/brdcsticn.png'),
+                // height: kToolbarHeight,
+                // width: 48,
+              ),
             ),
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {},
+            SizedBox(
+              width: 40, //65,
             ),
-            automaticallyImplyLeading: false,
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.call))],
-            title: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: const Image(
-                    image: AssetImage('Assets/brdcsticn.png'),
-                    // height: kToolbarHeight,
-                    // width: 48,
-                  ),
-                ),
-                SizedBox(
-                  width: 40, //65,
-                ),
-                Text(
-                  'Send Broadcast',
-                  style: GoogleFonts.montserrat(
-                      color: AppTheme.offBlack, fontWeight: FontWeight.w500),
-                ),
-              ],
+            Text(
+              'Send Broadcast',
+              style: GoogleFonts.montserrat(
+                  color: AppTheme.offBlack, fontWeight: FontWeight.w500),
             ),
-            centerTitle: false,
+          ],
+        ),
+        centerTitle: false,
+      ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("Assets/groupchatbg.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          body: Column(
+          Column(
             children: [
               Container(
                 width: double.infinity,
@@ -133,7 +135,7 @@ class _BroadcastScreenState extends State<BroadcastScreen> {
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

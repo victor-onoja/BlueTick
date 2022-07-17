@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/app_theme.dart';
+import '../home/group_call_screen.dart';
 import '../home/home_tabs.dart';
 import 'groupchatTwo.dart';
 
@@ -63,7 +64,15 @@ class _groupChatscreenState extends State<groupChatscreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => GroupCallScreen(),
+                        ),
+                        (route) => true,
+                      );
+                    },
                     icon: Icon(
                       Icons.call,
                       color: AppTheme.offBlack,

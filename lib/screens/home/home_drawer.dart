@@ -1,9 +1,11 @@
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/home/sub_home/createbroadcast.dart';
+import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/app_theme.dart';
 import '../sign_in/login.dart';
+import 'invitation_screens/invitation_screen.dart';
 import 'sub_home/addagroup.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -26,6 +28,7 @@ class HomeDrawer extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -54,7 +57,14 @@ class HomeDrawer extends StatelessWidget {
               color: AppTheme.blue2,
               thickness: 1,
             ),
-            textContainer(text: 'Profile', onPressed: () {}),
+            textContainer(
+                text: 'Profile',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const PersonalProfile()));
+                }),
             const Divider(
               color: AppTheme.blue2,
               thickness: 1,
@@ -81,7 +91,24 @@ class HomeDrawer extends StatelessWidget {
               color: AppTheme.blue2,
               thickness: 1,
             ),
-            textContainer(text: 'Invite Staff', onPressed: () {}),
+            textContainer(
+                text: 'Invite Staff',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => InvitationScreen()));
+                }),
+            const Divider(
+              color: AppTheme.blue2,
+              thickness: 1,
+            ),
+            textContainer(text: 'Help Center', onPressed: () {}),
+            const Divider(
+              color: AppTheme.blue2,
+              thickness: 1,
+            ),
+            textContainer(text: 'About Bluetick', onPressed: () {}),
             const Divider(
               color: AppTheme.blue2,
               thickness: 1,
@@ -110,7 +137,7 @@ class HomeDrawer extends StatelessWidget {
   Container textContainer(
       {required String text, required VoidCallback onPressed}) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: InkWell(
         onTap: onPressed,

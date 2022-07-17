@@ -167,8 +167,8 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                                 shape: BoxShape.circle,
                               ),
                               child: Container(
-                                height: 80,
-                                width: 80,
+                                height: 76,
+                                width: 76,
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: muted ? mainBlue : Colors.white,
@@ -250,8 +250,8 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                                 shape: BoxShape.circle,
                               ),
                               child: Container(
-                                height: 80,
-                                width: 80,
+                                height: 76,
+                                width: 76,
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                     color: endCall ? Colors.white : mainBlue,
@@ -329,8 +329,8 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                                 shape: BoxShape.circle,
                               ),
                               child: Container(
-                                height: 80,
-                                width: 80,
+                                height: 76,
+                                width: 76,
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: rec ? mainBlue : Colors.white,
@@ -394,7 +394,7 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                                   child: Text(
                                     'REC',
                                     style: GoogleFonts.montserrat(
-                                      fontSize: 19,
+                                      fontSize: 17,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FontStyle.normal,
                                       letterSpacing: 0.7,
@@ -437,8 +437,8 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                                 shape: BoxShape.circle,
                               ),
                               child: Container(
-                                height: 80,
-                                width: 80,
+                                height: 76,
+                                width: 76,
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: speaker ? mainBlue : Colors.white,
