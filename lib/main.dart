@@ -1,11 +1,8 @@
-
-import 'package:bluetick/screens/home/co_wokers/co_worker_create_group.dart';
-import 'package:bluetick/screens/home/sub_home/call_screen.dart';
-
+import 'package:bluetick/screens/sign_up/onBoarding.dart';
+import 'package:bluetick/screens/sign_up/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'screens/home/co_wokers/co_worker_add_to_call.dart';
-import 'screens/sign_up/splash_screen.dart';
+import 'screens/sign_in/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,14 +24,11 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
-      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-
       home: const SplashScreen(),
-
     );
   }
 }
