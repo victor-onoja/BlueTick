@@ -1,3 +1,4 @@
+import 'package:bluetick/screens/chatScreen/broadcastScreen.dart';
 import 'package:bluetick/screens/home/broadcast.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/group_call_screen.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: Broadcast(),
     );
   }
 }
