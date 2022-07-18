@@ -60,6 +60,10 @@ class _groupChatscreenState extends State<groupChatscreen> {
                 ),
               ],
             ),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context),
+            ),
             centerTitle: false,
             actions: [
               Padding(
