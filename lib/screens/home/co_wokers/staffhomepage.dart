@@ -88,6 +88,7 @@ class StaffHomePageState extends State<StaffHomePage> {
             margin: const EdgeInsets.only(top: 50, bottom: 20),
             height: 275.92,
             width: 341,
+            //alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 79),
             decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[

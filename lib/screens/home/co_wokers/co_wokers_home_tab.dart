@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../components/app_theme.dart';
 import '../../chatScreen/chatScreen.dart';
-import '../notification.dart';
+import '../notifications.dart';
 
 import '../sub_home/messagelist.dart';
 import 'staffhomepage.dart';

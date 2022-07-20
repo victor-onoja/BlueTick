@@ -1,8 +1,7 @@
-
+import 'package:bluetick/screens/home/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'screens/sign_up/splash_screen.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +24,7 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
