@@ -25,7 +25,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: const [
+        children: [
           HomeScreen(),
           Notifications(),
           CreateBroadcast(),
