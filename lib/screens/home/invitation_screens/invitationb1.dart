@@ -4,6 +4,7 @@ import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../../components/config/config_sheet.dart';
 import '../../../components/ui/ui_utils.dart';
+import 'invite_button.dart';
 
 class InvitationB1 extends StatefulWidget {
   const InvitationB1({Key? key}) : super(key: key);
@@ -47,7 +48,10 @@ class _InvitationB1State extends State<InvitationB1> {
         title: Text(
           'Invite Member',
           style: GoogleFonts.montserrat(
-              fontSize: 24, fontWeight: FontWeight.w500, color: offWhite),
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            color: offWhite,
+          ),
         ),
         centerTitle: true,
         backgroundColor: mainBlue,
@@ -198,27 +202,12 @@ class _InvitationB1State extends State<InvitationB1> {
                 ),
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: ElevatedButton(
-                  onPressed: () => null,
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.resolveWith((states) =>
-                          const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16.0)))),
-                      backgroundColor:
-                          MaterialStateColor.resolveWith((states) => mainBlue),
-                      fixedSize: MaterialStateProperty.resolveWith(
-                          (states) => const Size(396, 63))),
-                  child: Text(
-                    'Send Invite (s)',
-                    style: GoogleFonts.montserrat(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ))
+            InviteButton(
+              onTap: () {},
+              text: 'Send Invite (s)',
+              textColor: Colors.white,
+              buttonColor: mainBlue,
+            ),
           ],
         ),
       ),

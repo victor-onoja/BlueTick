@@ -21,23 +21,24 @@ class SignUpButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 12),
       child: ElevatedButton(
-          onPressed: onTapButton,
-          style: ElevatedButton.styleFrom(
-            minimumSize: const Size(150, 53),
-            //side: BorderSide(),
-            shadowColor: mainBlue.withOpacity(0.5),
-            elevation: 6,
+        onPressed: onTapButton,
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(150, 53),
+          //side: BorderSide(),
+          shadowColor: mainBlue.withOpacity(0.5),
+          elevation: 6,
 
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
-            ),
-            primary: buttonColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
           ),
-          child: Text(
-            text,
-            style: GoogleFonts.montserrat(
-                fontSize: 24, fontWeight: FontWeight.w600, color: textColor),
-          )),
+          primary: buttonColor,
+        ),
+        child: Text(
+          text,
+          style: GoogleFonts.montserrat(
+              fontSize: 24, fontWeight: FontWeight.w600, color: textColor),
+        ),
+      ),
     );
   }
 }
