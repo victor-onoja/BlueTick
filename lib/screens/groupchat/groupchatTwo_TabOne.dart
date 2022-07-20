@@ -24,8 +24,12 @@ class MemberTab extends StatelessWidget {
             Navigator.push(context,
                 MaterialPageRoute(builder: (_) => StaffProfileAdmin()));
           },
-          child: onlineStaff(
-            name: 'John Mac',
+          child: GestureDetector(
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => WorkerScreen())),
+            child: onlineStaff(
+              name: 'John Mac',
+            ),
           ),
         ),
         onlineeStaff(

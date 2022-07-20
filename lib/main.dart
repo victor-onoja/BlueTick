@@ -1,8 +1,8 @@
-import 'package:bluetick/screens/sign_up/onBoarding.dart';
-import 'package:bluetick/screens/sign_up/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'screens/sign_in/login.dart';
+import 'screens/sign_up/splash_screen.dart';
+
 
 void main() {
   runApp(const MyApp());

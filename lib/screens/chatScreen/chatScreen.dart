@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/app_theme.dart';
+import '../home/co_wokers/co_workers_call_screen.dart';
 import '../home/home_tabs.dart';
 
 class Chatscreen extends StatefulWidget {
@@ -33,6 +34,9 @@ class _ChatscreenState extends State<Chatscreen> {
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
             ),
+            leading: BackButton(
+              onPressed: () => Navigator.pop(context),
+            ),
             title: Row(
               children: [
                 GestureDetector(
@@ -58,7 +62,12 @@ class _ChatscreenState extends State<Chatscreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => CoWorkersCallScreen()));
+                    },
                     icon: Icon(
                       Icons.call,
                       color: AppTheme.offBlack,

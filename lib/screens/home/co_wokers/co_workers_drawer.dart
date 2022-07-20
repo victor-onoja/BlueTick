@@ -1,17 +1,24 @@
+import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
+import 'package:bluetick/screens/home/todo_scree.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../components/app_theme.dart';
+import 'co_wokers_home_tab.dart';
+import 'co_worker_create_group.dart';
 
 class CoWorkersDrawer extends StatelessWidget {
   const CoWorkersDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Drawer(
       child: Scaffold(
         backgroundColor: AppTheme.mainBlue,
+        resizeToAvoidBottomInset: false,
         body: Container(
+          // height: screenHeight,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -37,19 +44,50 @@ class CoWorkersDrawer extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
-              textContainer(text: 'Home', onPressed: () {}),
+              textContainer(
+                  text: 'Home',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CoWorkerHomeTab()));
+                  }),
               const Divider(
                 color: AppTheme.blue2,
                 thickness: 1,
               ),
-              textContainer(text: 'Profile', onPressed: () {}),
+              textContainer(
+                  text: 'Profile',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PersonalProfile()));
+                  }),
               const Divider(
                 color: AppTheme.blue2,
                 thickness: 1,
               ),
-              textContainer(text: 'Create Groups', onPressed: () {}),
+              textContainer(
+                  text: 'Create Groups',
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CoWorkerCreateGroup()));
+                  }),
+              const Divider(
+                color: AppTheme.blue2,
+                thickness: 1,
+              ),
+              textContainer(text: 'Help Center', onPressed: () {}),
+              const Divider(
+                color: AppTheme.blue2,
+                thickness: 1,
+              ),
+              textContainer(text: 'About Bluetick', onPressed: () {}),
               const Divider(
                 color: AppTheme.blue2,
                 thickness: 1,
@@ -81,7 +119,7 @@ class CoWorkersDrawer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12.0),
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onPressed,
         child: Text(
           text,
