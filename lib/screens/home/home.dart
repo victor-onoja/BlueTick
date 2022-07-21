@@ -1,5 +1,5 @@
 import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
-import 'package:bluetick/screens/home/todo_scree.dart';
+import 'package:bluetick/screens/home/todo_screen.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';

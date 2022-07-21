@@ -19,18 +19,6 @@ class Notifications extends StatelessWidget {
           Icons.arrow_back,
           color: AppTheme.offWhite,
         ),
-        // actions: [
-        //   Column(
-        //     children: [
-        //       GestureDetector(
-        //         onTap: () {
-        //           Navigator.pop(
-        //               context, MaterialPageRoute(builder: (_) => HomeScreen()));
-        //         },
-        //       ),
-        //     ],
-        //   ),
-        // ],
         title: Text(
           "Notifications",
           style: GoogleFonts.montserrat(
@@ -47,7 +35,6 @@ class Notifications extends StatelessWidget {
             height: 10.0,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(

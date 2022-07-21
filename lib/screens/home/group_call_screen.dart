@@ -1,4 +1,4 @@
-import 'package:bluetick/screens/home/todo_scree.dart';
+import 'package:bluetick/screens/home/todo_screen.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
