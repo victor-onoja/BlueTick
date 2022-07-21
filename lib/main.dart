@@ -1,6 +1,11 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/screens/home/notifications.dart';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'screens/sign_up/splash_screen.dart';
+
+import 'screens/chatScreen/adminBroadcastScreen.dart';
+import 'screens/home/contact_us_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,12 +27,16 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
-      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      initialRoute: AppRouter.splashScreen,
+      routes: AppRouter.routes,
+      onGenerateRoute: AppRouter.generateRoute,
+
+      //  home: ContactUs() //const SplashScreen(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/app_theme.dart';
 
-import 'notification.dart';
+import 'notifications.dart';
 
 import 'sub_home/createbroadcast.dart';
 import 'sub_home/messagelist.dart';
@@ -25,7 +25,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: const [
+        children: [
           HomeScreen(),
           Notifications(),
           CreateBroadcast(),

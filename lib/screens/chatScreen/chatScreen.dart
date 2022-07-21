@@ -1,11 +1,12 @@
+import 'package:bluetick/components/models/chatMessage_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 import '../../components/app_theme.dart';
 import '../home/co_wokers/co_workers_call_screen.dart';
-import '../home/home_tabs.dart';
 
 class Chatscreen extends StatefulWidget {
   const Chatscreen({Key? key}) : super(key: key);
@@ -18,138 +19,140 @@ class _ChatscreenState extends State<Chatscreen> {
   @override
   Widget build(BuildContext context) {
     const cdp = 'Assets/chatdp.png';
-    const c1 = 'Assets/chat1.png';
 
-    const c3 = 'Assets/chat3.png';
-    const c4 = 'Assets/chat4.png';
-    const vn = 'Assets/vn.png';
     const gcbg = 'Assets/groupchatbg.png';
 
     return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(
-            iconTheme: IconThemeData(color: AppTheme.offBlack),
-            backgroundColor: AppTheme.offWhite,
-            elevation: 0.0,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-            ),
-            leading: BackButton(
-              onPressed: () => Navigator.pop(context),
-            ),
-            title: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: const Image(
-                    image: AssetImage(cdp),
-                    height: kToolbarHeight,
-                    width: 48,
-                  ),
+        child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage(gcbg),
+              fit: BoxFit.cover,
+            )),
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                iconTheme: IconThemeData(color: AppTheme.offBlack),
+                backgroundColor: AppTheme.offWhite,
+                elevation: 0.0,
+                systemOverlayStyle: const SystemUiOverlayStyle(
+                  statusBarColor: Colors.transparent,
                 ),
-                SizedBox(
-                  width: 40, //65,
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.pop(context),
                 ),
-                Text(
-                  'John Mac',
-                  style: GoogleFonts.montserrat(color: AppTheme.offBlack),
+                title: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Image(
+                        image: AssetImage(cdp),
+                        // height: kToolbarHeight,
+                        // width: 48,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 40, //65,
+                    ),
+                    Text(
+                      'John Mac',
+                      style: GoogleFonts.montserrat(color: AppTheme.offBlack),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            centerTitle: false,
-            actions: [
-              Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => CoWorkersCallScreen()));
-                    },
-                    icon: Icon(
-                      Icons.call,
-                      color: AppTheme.offBlack,
+                centerTitle: false,
+                actions: [
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 8),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => CoWorkersCallScreen()));
+                        },
+                        icon: Icon(
+                          Icons.call,
+                          color: AppTheme.offBlack,
+                        ),
+                      )),
+                ],
+              ),
+              body: Column(
+                children: [
+                  Container(
+                      width: double.infinity,
+                      height: 20,
+                      color: AppTheme.blue2,
+                      child: Center(
+                        child: Center(
+                            child: Text(
+                          'Product Manager',
+                          style: GoogleFonts.montserrat(
+                              color: AppTheme.offBlack,
+                              fontStyle: FontStyle.italic),
+                        )),
+                      )),
+                  Expanded(
+                      child: GroupedListView<CHATMessage, DateTime>(
+                    elements: chatmsg,
+                    groupBy: (chatmsg) => DateTime(2022),
+                    padding: EdgeInsets.all(16),
+                    groupHeaderBuilder: (CHATMessage chatmsg) => SizedBox(),
+                    itemBuilder: (context, CHATMessage chatmsg) => Align(
+                      alignment: chatmsg.isSentByMe
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
+                      child: Padding(
+                        padding: chatmsg.isSentByMe
+                            ? const EdgeInsets.only(bottom: 8.0, left: 140)
+                            : const EdgeInsets.only(bottom: 8.0, right: 140),
+                        child: chatmsg.messageTypeAudio
+                            ? Container(
+                                decoration: BoxDecoration(
+                                    color: chatmsg.isSentByMe
+                                        ? AppTheme.blue2
+                                        : AppTheme.offWhite,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: Row(
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.play_arrow_sharp)),
+                                        Spacer(),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.delete))
+                                      ],
+                                    )))
+                            : Container(
+                                decoration: BoxDecoration(
+                                    color: chatmsg.isSentByMe
+                                        ? AppTheme.blue2
+                                        : AppTheme.offWhite,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: chatmsg.media != null
+                                        ? Column(
+                                            children: [
+                                              Text(chatmsg.text!),
+                                              Image.asset(chatmsg.media!)
+                                            ],
+                                          )
+                                        : Column(
+                                            children: [Text(chatmsg.text!)],
+                                          ))),
+                      ),
                     ),
                   )),
-            ],
-          ),
-          body: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.fill, image: AssetImage(gcbg))),
-              ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 33.0,
-                    ),
-                    child: Column(children: <Widget>[
-                      Align(
-                        alignment: AlignmentDirectional.topStart,
-                        child: Container(
-                          child: const Image(image: AssetImage(c1)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional.topStart,
-                        child: Container(
-                          child: Image(image: AssetImage(c1)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: Container(
-                            child: Image(image: AssetImage(c3)),
-                          )),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Align(
-                          alignment: AlignmentDirectional.topStart,
-                          child: Container(
-                            child: Image(image: AssetImage(c4)),
-                          )),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: Container(
-                            child: Image(image: AssetImage(vn)),
-                          )),
-                    ])),
-              ),
-              Container(
-                width: double.infinity,
-                height: 20,
-                color: AppTheme.blue2,
-                child: Center(
-                  child: Text(
-                    'Product Manager',
-                    style: GoogleFonts.montserrat(
-                        color: AppTheme.offBlack, fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment(0, 1.0),
-                child: Container(
+                  Container(
                     width: double.infinity,
-                    height: 32.0,
+                    height: 32,
                     color: AppTheme.offWhite,
                     child: Row(
                       children: <Widget>[
@@ -166,22 +169,27 @@ class _ChatscreenState extends State<Chatscreen> {
                               color: AppTheme.offBlack,
                             )),
                         Expanded(
-                            child: Container(
-                          decoration: BoxDecoration(
-                              color: AppTheme.mainBlue,
-                              borderRadius: BorderRadius.circular(5.0)),
-                          height: 28,
-                          child: TextField(
-                            style: const TextStyle(color: AppTheme.offWhite),
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
-                                hintText: 'send message',
-                                hintStyle: GoogleFonts.montserrat(
-                                  color: AppTheme.offWhite,
-                                )),
-                          ),
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: AppTheme.mainBlue,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: TextField(
+                                textCapitalization:
+                                    TextCapitalization.sentences,
+                                style:
+                                    const TextStyle(color: AppTheme.offWhite),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding:
+                                      EdgeInsets.only(left: 8, bottom: 10.5),
+                                  hintText: 'send message',
+                                  hintStyle: GoogleFonts.montserrat(
+                                    color: AppTheme.offWhite,
+                                  ),
+                                ),
+                              )),
                         )),
                         IconButton(
                             onPressed: () {},
@@ -194,12 +202,12 @@ class _ChatscreenState extends State<Chatscreen> {
                             icon: Icon(
                               Icons.send_outlined,
                               color: AppTheme.offBlack,
-                            )),
+                            ))
                       ],
-                    )),
-              )
-            ],
-          )),
-    );
+                    ),
+                  )
+                ],
+              ),
+            )));
   }
 }
