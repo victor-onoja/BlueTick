@@ -4,12 +4,15 @@ import 'package:bluetick/screens/chatScreen/chatScreen.dart';
 import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
 import 'package:bluetick/screens/home/broadcast.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
+import 'package:bluetick/screens/home/co_wokers/staffhomepage.dart';
 import 'package:bluetick/screens/home/contact_us_screen.dart';
 import 'package:bluetick/screens/home/group_call_screen.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';
 import 'package:bluetick/screens/home/invitation_screens/test_tag.dart';
 import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
+import 'package:bluetick/screens/sign_up/admin_sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'screens/sign_up/splash_screen.dart';
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Chatscreen(),
+      home: StaffHomePage(),
     );
   }
 }
