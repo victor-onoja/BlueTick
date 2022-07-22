@@ -4,9 +4,13 @@ import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';
+import 'package:bluetick/screens/home/sub_home/addagroup.dart';
+import 'package:bluetick/screens/home/sub_home/createbroadcast.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:bluetick/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
+
+import '../../../screens/home/sub_home/subHome.dart';
 
 class AppRouter {
   static const String adminBroadcastScreen = 'adminBroadcastScreen';
@@ -150,6 +154,21 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => const AdminBroadcastScreen());
 
+      ///sub_home section
+
+      case AppRouter.addAGroup:
+        return MaterialPageRoute(builder: (context) => const AddGroup());
+      case AppRouter.createBroadCast:
+        return MaterialPageRoute(builder: (context) => const CreateBroadcast());
+      case AppRouter.liveLocation:
+        return MaterialPageRoute(builder: (context) => const liveLocationMap());
+      case AppRouter.messageList:
+        return MaterialPageRoute(builder: (context) => const MessageList());
+      case AppRouter.personalProfile:
+        return MaterialPageRoute(builder: (context) => const PersonalProfile());
+      case AppRouter.staffProfileAdmin:
+        return MaterialPageRoute(builder: (context) => StaffProfileAdmin());
+
       default:
         return MaterialPageRoute(
           builder: (context) => SizedBox(
@@ -206,5 +225,12 @@ class AppRouter {
     ///GroupChats
     AppRouter.chatScreen: (context) => const Chatscreen(),
     AppRouter.adminBroadcastScreen: (context) => const AdminBroadcastScreen(),
+
+    AppRouter.addAGroup: (context) => const AddGroup(),
+    AppRouter.createBroadCast: (context) => const CreateBroadcast(),
+    AppRouter.liveLocation: (context) => const liveLocationMap(),
+    AppRouter.messageList: (context) => const MessageList(),
+    AppRouter.personalProfile: (context) => const PersonalProfile(),
+    AppRouter.staffProfileAdmin: (context) => StaffProfileAdmin(),
   };
 }

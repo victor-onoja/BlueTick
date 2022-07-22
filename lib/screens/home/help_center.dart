@@ -5,6 +5,7 @@ import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../../components/config/config_sheet.dart';
 import '../../../components/ui/ui_utils.dart';
+import '../../components/constants/app_router/app_router.dart';
 import 'invitation_screens/invite_button.dart';
 
 class HelpCenter extends StatefulWidget {
@@ -20,8 +21,9 @@ class _HelpCenterState extends State<HelpCenter> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Navigator.of(context).pop,
-            icon: const Icon(Icons.arrow_back)),
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back),
+        ),
         title: Text(
           'Help Center',
           style: GoogleFonts.montserrat(
@@ -38,7 +40,13 @@ class _HelpCenterState extends State<HelpCenter> {
           children: [
             Image.asset('Assets/Call center.png'),
             InviteButton(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  AppRouter.contactUsScreen,
+                  //  MaterialPageRoute(builder: (_) => const HelpCenter()),
+                );
+              },
               text: 'Contact Us', //  ->',
               textColor: Colors.white,
               buttonColor: mainBlue,

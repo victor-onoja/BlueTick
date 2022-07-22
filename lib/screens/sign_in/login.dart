@@ -5,6 +5,7 @@ import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/widgets/widgets.dart';
+import '../home/home.dart';
 import '../sign_up/invitation_link.dart';
 
 class LoginScreen extends StatelessWidget {
