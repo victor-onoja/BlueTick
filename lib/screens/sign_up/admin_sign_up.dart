@@ -3,6 +3,7 @@ import 'package:bluetick/components/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../components/widgets/widgets.dart';
 import 'email_verification.dart';
 
@@ -24,6 +25,7 @@ class _AdminSignUpState extends State<AdminSignUp> {
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
         ),
+        iconTheme: IconThemeData(color: AppTheme.offWhite),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 44.0, vertical: 24),
@@ -66,6 +68,46 @@ class _AdminSignUpState extends State<AdminSignUp> {
               ),
               const SizedBox(
                 height: 25,
+              ),
+              SizedBox(
+                height: 62,
+              ),
+              Text(
+                'By clicking “Continue”, I agree to the',
+                style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.offWhite,
+                ),
+              ),
+              RichText(
+                  text: TextSpan(
+                      text: 'Terms of Service',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.blue2,
+                      ),
+                      children: <TextSpan>[
+                    TextSpan(
+                      text: ' and',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.offWhite,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' Privacy Policy.',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.blue2,
+                      ),
+                    )
+                  ])),
+              SizedBox(
+                height: 40,
               ),
               SignUpButton(
                 textColor: AppTheme.mainBlue,

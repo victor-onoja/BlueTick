@@ -27,8 +27,9 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(30),
                   child: Column(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 200),
+                      Image.asset('Assets/BTlogo.png'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 100),
                         child: GeneralTextField(
                           textType: TextInputType.emailAddress,
                           hintText: 'Email Address',
@@ -40,8 +41,24 @@ class LoginScreen extends StatelessWidget {
                               hintText: 'Password',
                               textType: TextInputType.visiblePassword,
                               showPassword: true)),
+                      SizedBox(
+                        height: 11,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Forgot Password',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.mainBlue,
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 100),
+                        padding: const EdgeInsets.only(top: 78),
                         child: SignUpButton(
                           onTapButton: () {
                             Navigator.push(

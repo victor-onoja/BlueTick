@@ -83,141 +83,152 @@ class StaffHomePageState extends State<StaffHomePage> {
         // bottomNavigationBar: homeBottomNavigationBar(),
         drawer: CoWorkersDrawer(),
         body: SingleChildScrollView(
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Container(
-            margin: const EdgeInsets.only(top: 50, bottom: 20),
-            height: 275.92,
-            width: 341,
-            //alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 79),
-            decoration: BoxDecoration(
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      inset: true,
-                      color: darkBlue,
-                      blurRadius: 8,
-                      offset: const Offset(8, 8)),
-                  BoxShadow(
-                      inset: true,
-                      color: darkBlue,
-                      blurRadius: 8,
-                      offset: const Offset(-8, -8))
-                ],
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-                border: Border.all(
-                    color: darkBlue, width: 3, style: BorderStyle.solid),
-                gradient: RadialGradient(
-                    colors: [offWhite, blue2], stops: const [0.0, 84.21])),
-            child: Wrap(
-              direction: Axis.vertical,
-              children: [
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Text(
-                      '${dateTime ?? 'Present Time'} \n${date ?? 'Today\'s Date'}',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                            color: darkBlue),
-                      ),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 15, bottom: 5),
-                    child: Text(
-                      'Current work hour',
-                      style: GoogleFonts.montserrat(
-                          textStyle: TextStyle(
-                              color: darkBlue,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600)),
-                    )),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                  height: 47,
-                  width: 136,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: blue2,
-                          offset: const Offset(2, 2),
-                          blurRadius: 8.0,
-                          inset: true,
-                        ),
-                        BoxShadow(
-                          color: offWhite,
-                          offset: const Offset(-2, -2),
-                          blurRadius: 8.0,
-                          inset: true,
-                        )
-                      ],
-                      border: Border.all(
-                        color: darkBlue,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                      borderRadius: const BorderRadius.all(Radius.circular(4))),
-                  alignment: Alignment.center,
-                  child: Text('$hours:$minutes:$seconds',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.montserrat(
-                          textStyle: TextStyle(
-                              color: darkBlue,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600))),
-                )
-              ],
-            ),
-          ),
-          Stack(children: [
-            Positioned(
-                child: SizedBox(
-                    child:
-                        Image.asset('Assets/images/bluetick_background.png'))),
-            Positioned(
-                top: 45,
-                left: 79,
-                child: FlutterSwitch(
-                  showOnOff: true,
-                  padding: 8.0,
-                  duration: const Duration(milliseconds: 200),
-                  borderRadius: 12.15,
-                  valueFontSize: 16.23,
-                  switchBorder: Border.all(color: offWhite, width: 3.04),
-                  inactiveColor: darkBlue,
-                  activeColor: darkBlue,
-                  inactiveTextColor: Colors.white,
-                  activeTextColor: Colors.white,
-                  inactiveIcon: const Icon(Icons.arrow_forward_rounded),
-                  inactiveText: "Swipe to Clock in",
-                  activeIcon: const Icon(Icons.arrow_back_rounded),
-                  activeText: "Swipe to Clock out",
-                  inactiveTextFontWeight: FontWeight.w600,
-                  activeTextFontWeight: FontWeight.w600,
-                  toggleBorder: Border.all(color: blue2, width: 2.0),
-                  width: 236.74,
-                  height: 80.86,
-                  toggleSize: 60.86,
-                  value: check,
-                  onToggle: (bool value) {
-                    if (value == true) {
-                      startTimer();
-                    } else {
-                      stopTimer();
-                    }
 
-                    setState(() {
-                      check = value;
-                    });
-                  },
-                )),
-          ]),
-        ])));
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+              Container(
+                margin: const EdgeInsets.only(top: 50, bottom: 20),
+                height: 275.92,
+                width: 341,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 45,
+                ),
+                decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+
+                      
+                      
+                          inset: true,
+                          color: darkBlue,
+                          blurRadius: 8,
+                          offset: const Offset(8, 8)),
+                      BoxShadow(
+                          inset: true,
+                          color: darkBlue,
+                          blurRadius: 8,
+                          offset: const Offset(-8, -8))
+                    ],
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
+                    border: Border.all(
+                        color: darkBlue, width: 3, style: BorderStyle.solid),
+                    gradient: RadialGradient(
+                        colors: [offWhite, blue2], stops: const [0.0, 84.21])),
+                child: Center(
+                  child: Wrap(
+                    direction: Axis.vertical,
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Text(
+                            '${dateTime ?? 'Present Time'} \n${date ?? 'Today\'s Date'}',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w500,
+                                  color: darkBlue),
+                            ),
+                          )),
+                      Padding(
+                          padding: const EdgeInsets.only(top: 15, bottom: 5),
+                          child: Text(
+                            'Current work hour',
+                            style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(
+                                    color: darkBlue,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600)),
+                          )),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 30),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 6),
+                        height: 47,
+                        width: 136,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: blue2,
+                                offset: const Offset(2, 2),
+                                blurRadius: 8.0,
+                                inset: true,
+                              ),
+                              BoxShadow(
+                                color: offWhite,
+                                offset: const Offset(-2, -2),
+                                blurRadius: 8.0,
+                                inset: true,
+                              )
+                            ],
+                            border: Border.all(
+                              color: darkBlue,
+                              width: 1,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(4))),
+                        alignment: Alignment.center,
+                        child: Text('$hours:$minutes:$seconds',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(
+                                    color: darkBlue,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600))),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Stack(children: [
+                Positioned(
+                    child: SizedBox(
+                        child: Image.asset(
+                            'Assets/images/bluetick_background.png'))),
+                Positioned(
+                    top: 45,
+                    left: 79,
+                    child: FlutterSwitch(
+                      showOnOff: true,
+                      padding: 8.0,
+                      duration: const Duration(milliseconds: 200),
+                      borderRadius: 12.15,
+                      valueFontSize: 16.23,
+                      switchBorder: Border.all(color: offWhite, width: 3.04),
+                      inactiveColor: darkBlue,
+                      activeColor: darkBlue,
+                      inactiveTextColor: Colors.white,
+                      activeTextColor: Colors.white,
+                      inactiveIcon: const Icon(Icons.arrow_forward_rounded),
+                      inactiveText: "Swipe to Clock in",
+                      activeIcon: const Icon(Icons.arrow_back_rounded),
+                      activeText: "Swipe to Clock out",
+                      inactiveTextFontWeight: FontWeight.w600,
+                      activeTextFontWeight: FontWeight.w600,
+                      toggleBorder: Border.all(color: blue2, width: 2.0),
+                      width: 236.74,
+                      height: 80.86,
+                      toggleSize: 60.86,
+                      value: check,
+                      onToggle: (bool value) {
+                        if (value == true) {
+                          startTimer();
+                        } else {
+                          stopTimer();
+                        }
+
+                        setState(() {
+                          check = value;
+                        });
+                      },
+                    )),
+              ]),
+            ])));
   }
 
   AppBar GeneralAppBar() {
