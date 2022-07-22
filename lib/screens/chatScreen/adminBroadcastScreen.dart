@@ -7,14 +7,14 @@ import 'package:grouped_list/grouped_list.dart';
 
 import '../../components/app_theme.dart';
 
-class Broadcast extends StatefulWidget {
-  const Broadcast({Key? key}) : super(key: key);
+class AdminBroadcastScreen extends StatefulWidget {
+  const AdminBroadcastScreen({Key? key}) : super(key: key);
 
   @override
-  State<Broadcast> createState() => _BroadcastState();
+  State<AdminBroadcastScreen> createState() => _AdminBroadcastScreenState();
 }
 
-class _BroadcastState extends State<Broadcast> {
+class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

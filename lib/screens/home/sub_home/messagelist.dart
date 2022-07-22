@@ -7,7 +7,7 @@ import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 import '../../../components/ui/ui_utils.dart';
 import '../../groupchat/groupchatScreen.dart';
-import 'co_worker_profile.dart';
+import '../co_wokers/co_worker_profile.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({Key? key}) : super(key: key);

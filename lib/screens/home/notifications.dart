@@ -1,5 +1,6 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bluetick/screens/home/home.dart';
 
@@ -12,23 +13,12 @@ class Notifications extends StatelessWidget {
       backgroundColor: AppTheme.blue2,
       appBar: AppBar(
         toolbarHeight: 44,
+        elevation: 0,
         backgroundColor: AppTheme.mainBlue,
         leading: Icon(
           Icons.arrow_back,
           color: AppTheme.offWhite,
         ),
-        actions: [
-          Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(
-                      context, MaterialPageRoute(builder: (_) => HomeScreen()));
-                },
-              ),
-            ],
-          ),
-        ],
         title: Text(
           "Notifications",
           style: GoogleFonts.montserrat(
@@ -45,12 +35,12 @@ class Notifications extends StatelessWidget {
             height: 10.0,
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 260,
+              Image.asset(
+                "Assets/icons/charm_tick-double.png",
+                alignment: Alignment.topCenter,
               ),
-              Image.asset("Assets/icons/charm_tick-double.png"),
               SizedBox(width: 4.0),
               Text("Mark all as Read",
                   style: GoogleFonts.montserrat(
@@ -82,7 +72,7 @@ class Notifications extends StatelessWidget {
             padding: EdgeInsets.only(left: 56.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //SizedBox(width: 56,),
                   Text(

@@ -1,5 +1,5 @@
 import 'package:bluetick/components/models/groupchatMessage_models.dart';
-import 'package:bluetick/screens/home/sub_home/co_worker_profile.dart';
+import 'package:bluetick/screens/home/co_wokers/co_worker_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
