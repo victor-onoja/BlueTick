@@ -1,5 +1,6 @@
 import 'package:bluetick/screens/chatScreen/adminBroadcastScreen.dart';
 import 'package:bluetick/screens/chatScreen/chatScreen.dart';
+import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart';
@@ -116,6 +117,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const Notifications());
       case AppRouter.todoScreen:
         return MaterialPageRoute(builder: (context) => const TodoScreen());
+      case AppRouter.groupCall:
+        return MaterialPageRoute(builder: (context) => const GroupCallScreen());
 
       ///Invitation screens
       case AppRouter.invitationScreen:
@@ -217,7 +220,7 @@ class AppRouter {
     AppRouter.coWorkerCreateGroup: (context) => const HelpCenter(),
     AppRouter.coWorkersProfile: (context) => const HomeScreen(),
     AppRouter.coWorkers: (context) => const HomeDrawer(),
-    AppRouter.coWorkersCallScreen: (context) => const HomeTab(),
+    AppRouter.coWorkersCallScreen: (context) => const CoWorkersCallScreen(),
     AppRouter.coWorkersDrawer: (context) => const Messages(),
     AppRouter.coWorkersHome: (context) => const Notifications(),
     AppRouter.staffHomePage: (context) => const TodoScreen(),

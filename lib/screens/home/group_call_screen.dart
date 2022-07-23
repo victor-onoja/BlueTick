@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/screens/home/todo_screen.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter/services.dart';
@@ -52,8 +53,13 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
           ),
           actions: [
             GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TodoScreen())),
+              onTap: () => Navigator.pushNamed(
+                context,
+                AppRouter.addAGroup,
+                //   MaterialPageRoute(
+                //   builder: (context) => TodoScreen(),
+                //),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Image.asset(
@@ -101,9 +107,15 @@ class _GroupCallScreenState extends State<GroupCallScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ProfilePic(
-                        imagePath: 'Assets/images/profilePic.png',
-                        profileName: 'John Mac'),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, AppRouter.staffProfileAdmin);
+                      },
+                      child: ProfilePic(
+                          imagePath: 'Assets/images/profilePic.png',
+                          profileName: 'John Mac'),
+                    ),
                     ProfilePic(
                         imagePath: 'Assets/images/profilePic1.png',
                         profileName: 'Bethie drey'),

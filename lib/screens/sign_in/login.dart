@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/sign_up/admin_sign_up.dart';
 import 'package:bluetick/components/app_theme.dart';
@@ -48,13 +49,19 @@ class LoginScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            'Forgot Password',
-                            style: GoogleFonts.montserrat(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: AppTheme.mainBlue,
+                          GestureDetector(
+                            child: Text(
+                              'Forgot Password',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: AppTheme.mainBlue,
+                              ),
                             ),
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRouter.forgotPassword);
+                            },
                           ),
                         ],
                       ),

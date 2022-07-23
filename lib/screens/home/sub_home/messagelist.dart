@@ -10,6 +10,7 @@ import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
 
 import '../../chatScreen/chatScreen.dart';
+import '../../groupchat/groupchatScreen.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class MessageListState extends State<MessageList> {
                         context,
                         //  AppRouter.coWorkersAddToCall,
                         MaterialPageRoute(
-                          builder: (_) => const Chatscreen(),
+                          builder: (_) => const GroupChatScreen(),
                         ),
                         //    AppRouter.chatScreen,
                       );
