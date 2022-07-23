@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
 import 'package:bluetick/screens/home/todo_screen.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
@@ -26,86 +27,96 @@ class CoWorkersDrawer extends StatelessWidget {
               colors: [Color(0xff244BA9), Color(0xff162850)],
             ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0, top: 44),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Image.asset('Assets/closeButton.png'),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15.0, top: 44),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Image.asset('Assets/closeButton.png'),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  textContainer(
+                      text: 'Home',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CoWorkerHomeTab()));
+                      }),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(
+                      text: 'Profile',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PersonalProfile()));
+                      }),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(
+                      text: 'Create Groups',
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CoWorkerCreateGroup()));
+                      }),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(
+                      text: 'Help Center',
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRouter.helpCenter);
+                      }),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(text: 'About Bluetick', onPressed: () {}),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(text: 'FAQs', onPressed: () {}),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
+                  ),
+                  textContainer(
+                      text: 'Logout',
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const LoginScreen()));
+                      }),
+                  const Divider(
+                    color: AppTheme.blue2,
+                    thickness: 1,
                   ),
                 ],
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              textContainer(
-                  text: 'Home',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CoWorkerHomeTab()));
-                  }),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(
-                  text: 'Profile',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PersonalProfile()));
-                  }),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(
-                  text: 'Create Groups',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CoWorkerCreateGroup()));
-                  }),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(text: 'Help Center', onPressed: () {}),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(text: 'About Bluetick', onPressed: () {}),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(text: 'FAQs', onPressed: () {}),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
-              ),
-              textContainer(
-                  text: 'Logout',
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (_) => const LoginScreen()));
-                  }),
-              const Divider(
-                color: AppTheme.blue2,
-                thickness: 1,
               ),
             ],
           ),

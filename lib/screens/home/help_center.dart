@@ -5,6 +5,7 @@ import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../../components/config/config_sheet.dart';
 import '../../../components/ui/ui_utils.dart';
+import '../../components/constants/app_router/app_router.dart';
 import 'invitation_screens/invite_button.dart';
 
 class HelpCenter extends StatefulWidget {
@@ -20,8 +21,9 @@ class _HelpCenterState extends State<HelpCenter> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Navigator.of(context).pop,
-            icon: const Icon(Icons.arrow_back)),
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back),
+        ),
         title: Text(
           'Help Center',
           style: GoogleFonts.montserrat(
@@ -34,31 +36,39 @@ class _HelpCenterState extends State<HelpCenter> {
         backgroundColor: mainBlue,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.asset('Assets/Call center.png'),
-            InviteButton(
-              onTap: () {},
-              text: 'Contact Us', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            InviteButton(
-              onTap: () {},
-              text: 'About App', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            InviteButton(
-              onTap: () {},
-              text: 'Privacy Policy', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset('Assets/Call center.png'),
+              InviteButton(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRouter.contactUsScreen,
+                    //  MaterialPageRoute(builder: (_) => const HelpCenter()),
+                  );
+                },
+                text: 'Contact Us', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              InviteButton(
+                onTap: () {},
+                text: 'About App', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              InviteButton(
+                onTap: () {},
+                text: 'Privacy Policy', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );
