@@ -11,14 +11,14 @@ import '../home/group_call_screen.dart';
 import '../home/home_tabs.dart';
 import 'groupchatTwo.dart';
 
-class groupChatscreen extends StatefulWidget {
-  const groupChatscreen({Key? key}) : super(key: key);
+class GroupChatScreen extends StatefulWidget {
+  const GroupChatScreen({Key? key}) : super(key: key);
 
   @override
-  State<groupChatscreen> createState() => _groupChatscreenState();
+  State<GroupChatScreen> createState() => _GroupChatScreenState();
 }
 
-class _groupChatscreenState extends State<groupChatscreen> {
+class _GroupChatScreenState extends State<GroupChatScreen> {
   @override
   Widget build(BuildContext context) {
     const gcdp = 'Assets/groupchatdp.png';

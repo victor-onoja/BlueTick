@@ -36,37 +36,39 @@ class _HelpCenterState extends State<HelpCenter> {
         backgroundColor: mainBlue,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.asset('Assets/Call center.png'),
-            InviteButton(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  AppRouter.contactUsScreen,
-                  //  MaterialPageRoute(builder: (_) => const HelpCenter()),
-                );
-              },
-              text: 'Contact Us', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            InviteButton(
-              onTap: () {},
-              text: 'About App', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            InviteButton(
-              onTap: () {},
-              text: 'Privacy Policy', //  ->',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset('Assets/Call center.png'),
+              InviteButton(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    AppRouter.contactUsScreen,
+                    //  MaterialPageRoute(builder: (_) => const HelpCenter()),
+                  );
+                },
+                text: 'Contact Us', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              InviteButton(
+                onTap: () {},
+                text: 'About App', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              InviteButton(
+                onTap: () {},
+                text: 'Privacy Policy', //  ->',
+                textColor: Colors.white,
+                buttonColor: mainBlue,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );

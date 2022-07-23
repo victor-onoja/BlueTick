@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/models/broadcastMessage_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,10 +33,19 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
               systemOverlayStyle: const SystemUiOverlayStyle(
                 statusBarColor: Colors.transparent,
               ),
-              leading:
-                  IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back)),
               automaticallyImplyLeading: false,
-              actions: [IconButton(onPressed: () {}, icon: Icon(Icons.call))],
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRouter.groupCall);
+                    },
+                    icon: Icon(Icons.call))
+              ],
               title: Row(
                 children: [
                   Image(image: AssetImage('Assets/brdcsticn.png')),

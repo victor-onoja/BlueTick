@@ -48,11 +48,12 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: () => Navigator.push(
+            onTap: () => Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (_) => const TodoScreen(),
-              ),
+              AppRouter.personalProfile,
+              // MaterialPageRoute(
+              //   builder: (_) => const TodoScreen(),
+              // ),
             ),
             child: Container(
               height: 45, //31.95,
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pushNamed(
                   context,
                   //todo fix this page
-                  AppRouter.chatScreen,
+                  AppRouter.staffProfileAdmin,
                   // AppRouter.personalProfile,
                   //     MaterialPageRoute(builder: (_) => StaffProfileAdmin()),
                 );
