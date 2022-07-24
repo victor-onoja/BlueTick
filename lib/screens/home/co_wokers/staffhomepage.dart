@@ -83,7 +83,6 @@ class StaffHomePageState extends State<StaffHomePage> {
         // bottomNavigationBar: homeBottomNavigationBar(),
         drawer: CoWorkersDrawer(),
         body: SingleChildScrollView(
-
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
@@ -91,6 +90,7 @@ class StaffHomePageState extends State<StaffHomePage> {
               Container(
                 margin: const EdgeInsets.only(top: 50, bottom: 20),
                 height: 275.92,
+                alignment: Alignment.center,
                 width: 341,
                 padding: const EdgeInsets.symmetric(
                   vertical: 45,
@@ -98,9 +98,6 @@ class StaffHomePageState extends State<StaffHomePage> {
                 decoration: BoxDecoration(
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-
-                      
-                      
                           inset: true,
                           color: darkBlue,
                           blurRadius: 8,

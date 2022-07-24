@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/config/config_sheet.dart';
@@ -34,7 +35,11 @@ class CreateBroadcastState extends State<CreateBroadcast> {
             style: TextStyle(fontSize: 24),
           ),
           actions: [
-            IconButton(onPressed: () => null, icon: const Icon(Icons.check))
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRouter.adminBroadcastScreen);
+                },
+                icon: const Icon(Icons.check))
           ],
         ),
         body: SingleChildScrollView(

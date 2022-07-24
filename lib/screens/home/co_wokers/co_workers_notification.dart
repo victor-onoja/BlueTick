@@ -4,13 +4,13 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bluetick/screens/home/home.dart';
 
-class Notifications extends StatelessWidget {
-  const Notifications({Key? key}) : super(key: key);
+class CoWorkerNotification extends StatelessWidget {
+  const CoWorkerNotification({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.lightGrey,
+      backgroundColor: AppTheme.blue2,
       appBar: AppBar(
         toolbarHeight: 44,
         elevation: 0,
@@ -34,22 +34,22 @@ class Notifications extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   children: [
-          //     Image.asset(
-          //       "Assets/icons/charm_tick-double.png",
-          //       alignment: Alignment.topCenter,
-          //     ),
-          //     SizedBox(width: 4.0),
-          //     Text("Mark all as Read",
-          //         style: GoogleFonts.montserrat(
-          //             textStyle: TextStyle(
-          //                 fontSize: 16.0,
-          //                 fontWeight: FontWeight.w500,
-          //                 color: AppTheme.mainBlue)))
-          //   ],
-          // ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Image.asset(
+                "Assets/icons/charm_tick-double.png",
+                alignment: Alignment.topCenter,
+              ),
+              SizedBox(width: 4.0),
+              Text("Mark all as Read",
+                  style: GoogleFonts.montserrat(
+                      textStyle: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                          color: AppTheme.mainBlue)))
+            ],
+          ),
           SizedBox(height: 10.0),
           TopPanel(
             name: 'Hannah Sent you a File',
