@@ -1,5 +1,6 @@
 import 'package:bluetick/screens/chatScreen/adminBroadcastScreen.dart';
 import 'package:bluetick/screens/chatScreen/chatScreen.dart';
+import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
@@ -102,7 +103,7 @@ class AppRouter {
       case AppRouter.contactUsScreen:
         return MaterialPageRoute(builder: (context) => const ContactUs());
       case AppRouter.groupChatScreen:
-        return MaterialPageRoute(builder: (context) => const GroupCallScreen());
+        return MaterialPageRoute(builder: (context) => const GroupChatScreen());
       case AppRouter.helpCenter:
         return MaterialPageRoute(builder: (context) => const HelpCenter());
       case AppRouter.home:
@@ -200,7 +201,7 @@ class AppRouter {
     AppRouter.broadCast: (context) => const BroadcastScreen(),
 
     AppRouter.contactUsScreen: (context) => const ContactUs(),
-    AppRouter.groupChatScreen: (context) => const GroupCallScreen(),
+    AppRouter.groupChatScreen: (context) => const GroupChatScreen(),
     AppRouter.helpCenter: (context) => const HelpCenter(),
     AppRouter.home: (context) => const HomeScreen(),
     AppRouter.homeDrawer: (context) => const HomeDrawer(),

@@ -115,8 +115,9 @@ class _ContactUsState extends State<ContactUs> {
                     color: AppTheme.white,
                     borderRadius: BorderRadius.circular(3.5)),
                 child: TextField(
-                  //expands: true,
-                  maxLines: 8,
+                  textAlignVertical: TextAlignVertical.top,
+                  expands: true,
+                  maxLines: null,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'More Details...',
