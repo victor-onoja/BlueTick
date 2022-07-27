@@ -2,31 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/ui/ui_utils.dart';
-import 'package:bluetick/components/models/profile_model.dart';
 
+import '../../../components/models/profile_model.dart';
 
 class PersonalProfile extends StatelessWidget {
-  const PersonalProfile({Key? key}): super(key: key);
+  const PersonalProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    //print('width is $screenWidth');
     String userName = 'Vera McBerth';
     String about = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: darkBlue,
-        bottomNavigationBar: homeBottomNavigationBar(),
-        body: SafeArea(
+    return Scaffold(
+      backgroundColor: darkBlue,
+      //  bottomNavigationBar: homeBottomNavigationBar(),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(children: [
             Stack(children: [
               Positioned(
                   child: Container(
-                    margin: const EdgeInsets.only(bottom: 30),
-                    decoration: BoxDecoration(gradient: linearWhiteGradient),
-                    width: 428,
-                    height: 244,
-                  )),
-
+                margin: const EdgeInsets.only(bottom: 30),
+                decoration: BoxDecoration(gradient: linearWhiteGradient),
+                width: 428,
+                height: 244,
+              )),
+              Positioned(
+                  child: IconButton(
+                      color: Colors.black,
+                      onPressed: () => Navigator.pop(context),
+                      // => Navigator.push(context,
+                      //     MaterialPageRoute(builder: (_) => const HomeTab())),
+                      icon: const Icon(Icons.arrow_back))),
               Positioned(
                 right: 65,
                 bottom: 102,
@@ -35,7 +43,7 @@ class PersonalProfile extends StatelessWidget {
                     iconSize: 18.75,
                     onPressed: () => null,
                     icon: const ImageIcon(
-                        AssetImage('assets/icons/ant-design.png'))),
+                        AssetImage('Assets/icons/ant-design.png'))),
               ),
               Positioned(
                   left: 2,
@@ -46,7 +54,10 @@ class PersonalProfile extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 42,
-                          child: Image.asset('assets/images/Vera.png',filterQuality: FilterQuality.medium,),
+                          child: Image.asset(
+                            'Assets/images/Vera.png',
+                            filterQuality: FilterQuality.medium,
+                          ),
                         ),
                         Container(
                             padding: const EdgeInsets.only(
@@ -63,17 +74,15 @@ class PersonalProfile extends StatelessWidget {
                             child: Text(
                               about,
                               textAlign: TextAlign.center,
-
                               style: GoogleFonts.montserrat(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             ))
                       ])),
               Positioned(
-                  right: 145,
+                  right: screenWidth / 2.7692308,
                   bottom: 147,
                   child: IconButton(
-                    icon: const ImageIcon(
-                        AssetImage('assets/icons/carbon_add-alt.png')),
+                    icon: const ImageIcon(AssetImage('Assets/icons/add.png')),
                     color: mainBlue,
                     iconSize: 21,
                     onPressed: () => null,
@@ -106,12 +115,13 @@ class PersonalProfile extends StatelessWidget {
                       child: ListTile(
                         textColor: logOutColor ? offWhite : mainBlue,
                         leading: ImageIcon(
-                            AssetImage(settingsItem[title]!),
-                            color: logOutColor ? offWhite : darkBlue,
+                          AssetImage(settingsItem[title]!),
+                          color: logOutColor ? offWhite : darkBlue,
                         ),
                         title: Text(
                           title,
-                          style: GoogleFonts.montserrat(fontWeight: FontWeight.w500, fontSize: 16),
+                          style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w500, fontSize: 16),
                         ),
                       ));
                 },

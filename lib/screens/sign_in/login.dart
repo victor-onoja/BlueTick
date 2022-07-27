@@ -1,9 +1,13 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:bluetick/screens/sign_up/admin_sign_up.dart';
 import 'package:bluetick/components/app_theme.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../components/widgets/widgets.dart';
+import '../home/home.dart';
+import '../sign_up/invitation_link.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -25,8 +29,9 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(30),
                   child: Column(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 200),
+                      Image.asset('Assets/BTlogo.png'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 100),
                         child: GeneralTextField(
                           textType: TextInputType.emailAddress,
                           hintText: 'Email Address',
@@ -38,14 +43,36 @@ class LoginScreen extends StatelessWidget {
                               hintText: 'Password',
                               textType: TextInputType.visiblePassword,
                               showPassword: true)),
+                      SizedBox(
+                        height: 11,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            child: Text(
+                              'Forgot Password',
+                              style: GoogleFonts.montserrat(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: AppTheme.mainBlue,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AppRouter.forgotPassword);
+                            },
+                          ),
+                        ],
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 100),
+                        padding: const EdgeInsets.only(top: 78),
                         child: SignUpButton(
                           onTapButton: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const AdminSignUp(),
+                                builder: (_) => const HomeTab(),
                               ),
                             );
                           },
@@ -60,17 +87,21 @@ class LoginScreen extends StatelessWidget {
                             alignment: WrapAlignment.center,
                             children: [
                               Text(
-                                'You have a link?',
+                                'You have a link? ',
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: AppTheme.mainBlue,
+                                  color: AppTheme.offBlack,
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () => null,
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            InvitationLink())),
                                 child: Text(
-                                  '\tJoin a workspace',
+                                  'Join a workspace',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
@@ -83,7 +114,12 @@ class LoginScreen extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: GestureDetector(
-                            onTap: () => null,
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const AdminSignUp(),
+                              ),
+                            ),
                             child: Text(
                               'Create a new workspace',
                               style: GoogleFonts.montserrat(

@@ -3,8 +3,10 @@ import 'package:bluetick/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../components/widgets/widgets.dart';
 import '../home/home_tabs.dart';
+import 'staff_sign_up.dart';
 
 class InvitationLink extends StatefulWidget {
   const InvitationLink({Key? key}) : super(key: key);
@@ -44,17 +46,51 @@ class _InvitationLinkState extends State<InvitationLink> {
             const GeneralTextField(
                 hintText: 'Email Address',
                 textType: TextInputType.emailAddress),
-            const SizedBox(
-              height: 150,
+            SizedBox(
+              height: 62,
             ),
+            Text(
+              'By clicking “Continue”, I agree to the',
+              style: GoogleFonts.montserrat(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: AppTheme.offWhite,
+              ),
+            ),
+            RichText(
+                text: TextSpan(
+                    text: 'Terms of Service',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppTheme.blue2,
+                    ),
+                    children: <TextSpan>[
+                  TextSpan(
+                    text: ' and',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppTheme.offWhite,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' Privacy Policy.',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppTheme.blue2,
+                    ),
+                  )
+                ])),
             SignUpButton(
               textColor: AppTheme.mainBlue,
-              text: 'Confirm',
+              text: 'Continue',
               buttonColor: AppTheme.blue2,
               onTapButton: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                  return HomeTab();
+                  return StaffSignUp();
                 }));
               },
             ),
