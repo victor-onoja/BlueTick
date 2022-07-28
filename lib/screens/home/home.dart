@@ -235,77 +235,115 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '12/06/2022',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
+          Container(
+            height: 22,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 3, color: AppTheme.white),
+              right: BorderSide(width: 3, color: AppTheme.white),
+            )),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    '12/06/2022',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'Tuesday',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
+                Text(
+                  'Tuesday',
+                  style: GoogleFonts.montserrat(
+                      color: AppTheme.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                '09:15am',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    '09:15am',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              ],
+            ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Clock in:',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Staff Online',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    height: 45,
+                    width: 64,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: AppTheme.offWhite),
+                    child: Center(
+                      child: Text('28',
+                          style: GoogleFonts.montserrat(
+                              color: AppTheme.mainBlue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24)),
+                    ),
+                  )
+                ],
               ),
-              Text(
-                '05/21',
-                style: GoogleFonts.montserrat(
-                  fontSize: ResponsiveValue(context,
-                      defaultValue: 40.0,
-                      valueWhen: const [
-                        Condition.smallerThan(
-                          name: MOBILE,
-                          value: 50.0,
-                        ),
-                        Condition.largerThan(name: TABLET, value: 60.0),
-                      ]).value,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
+              SizedBox(
+                width: 24,
               ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Total Staff',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    height: 45,
+                    width: 64,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: AppTheme.offWhite),
+                    child: Center(
+                      child: Text('52',
+                          style: GoogleFonts.montserrat(
+                              color: AppTheme.mainBlue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24)),
+                    ),
+                  )
+                ],
+              )
             ],
-          ),
+          )
         ],
       ),
     );

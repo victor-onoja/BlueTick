@@ -53,11 +53,13 @@ class _ChatscreenState extends State<Chatscreen> {
                       ),
                     ),
                     SizedBox(
-                      width: 40, //65,
+                      width: 20, //65,
                     ),
                     Text(
                       'John Mac',
-                      style: GoogleFonts.montserrat(color: AppTheme.offBlack),
+                      style: GoogleFonts.montserrat(
+                          color: AppTheme.offBlack,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -120,17 +122,85 @@ class _ChatscreenState extends State<Chatscreen> {
                                     borderRadius: BorderRadius.circular(5)),
                                 child: Padding(
                                     padding: EdgeInsets.all(8),
-                                    child: Row(
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.play_arrow_sharp)),
-                                        Spacer(),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.delete))
-                                      ],
-                                    )))
+                                    child: chatmsg.isSentByMe
+                                        ? Row(
+                                            children: [
+                                              ImageIcon(AssetImage(
+                                                  'Assets/icons/play.png')),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10),
+                                                  child: Stack(
+                                                      clipBehavior: Clip.none,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      children: [
+                                                        Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 2,
+                                                          color: AppTheme
+                                                              .blackerBlack,
+                                                        ),
+                                                        Positioned(
+                                                          left: 0,
+                                                          child: Container(
+                                                            height: 9,
+                                                            width: 9,
+                                                            decoration: BoxDecoration(
+                                                                color: AppTheme
+                                                                    .blackerBlack,
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                          ),
+                                                        )
+                                                      ]),
+                                                ),
+                                              ),
+                                              ImageIcon(AssetImage(
+                                                  'Assets/icons/del.png')),
+                                            ],
+                                          )
+                                        : Row(
+                                            children: [
+                                              ImageIcon(AssetImage(
+                                                  'Assets/icons/play.png')),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10),
+                                                  child: Stack(
+                                                      clipBehavior: Clip.none,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      children: [
+                                                        Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 2,
+                                                          color: AppTheme
+                                                              .blackerBlack,
+                                                        ),
+                                                        Positioned(
+                                                          left: 0,
+                                                          child: Container(
+                                                            height: 9,
+                                                            width: 9,
+                                                            decoration: BoxDecoration(
+                                                                color: AppTheme
+                                                                    .blackerBlack,
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                          ),
+                                                        )
+                                                      ]),
+                                                ),
+                                              ),
+                                            ],
+                                          )))
                             : Container(
                                 decoration: BoxDecoration(
                                     color: chatmsg.isSentByMe
@@ -154,58 +224,69 @@ class _ChatscreenState extends State<Chatscreen> {
                   )),
                   Container(
                     width: double.infinity,
-                    height: 32,
+                    height: 44,
                     color: AppTheme.offWhite,
-                    child: Row(
-                      children: <Widget>[
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.attach_file,
-                              color: AppTheme.offBlack,
-                            )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.emoji_emotions_outlined,
-                              color: AppTheme.offBlack,
-                            )),
-                        Expanded(
-                            child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: AppTheme.mainBlue,
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              child: TextField(
-                                textCapitalization:
-                                    TextCapitalization.sentences,
-                                style:
-                                    const TextStyle(color: AppTheme.offWhite),
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                      EdgeInsets.only(left: 8, bottom: 10.5),
-                                  hintText: 'send message',
-                                  hintStyle: GoogleFonts.montserrat(
-                                    color: AppTheme.offWhite,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Row(
+                        children: <Widget>[
+                          ImageIcon(
+                            AssetImage('Assets/icons/file.png'),
+                            color: AppTheme.blackerBlack,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          ImageIcon(
+                            AssetImage('Assets/icons/face.png'),
+                            color: AppTheme.blackerBlack,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Expanded(
+                              child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: AppTheme.darkBlue,
+                                    borderRadius: BorderRadius.circular(5.0)),
+                                child: TextField(
+                                  expands: true,
+                                  maxLines: null,
+                                  // textAlignVertical: TextAlignVertical.top,
+                                  textCapitalization:
+                                      TextCapitalization.sentences,
+                                  style:
+                                      const TextStyle(color: AppTheme.offWhite),
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    contentPadding: EdgeInsets.only(
+                                      left: 8,
+                                    ),
+                                    hintText: 'send message',
+                                    hintStyle: GoogleFonts.montserrat(
+                                      color: AppTheme.offWhite,
+                                    ),
                                   ),
-                                ),
-                              )),
-                        )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.mic_none,
-                              color: AppTheme.offBlack,
-                            )),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.send_outlined,
-                              color: AppTheme.offBlack,
-                            ))
-                      ],
+                                )),
+                          )),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          ImageIcon(
+                            AssetImage('Assets/icons/send.png'),
+                            color: AppTheme.blackerBlack,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          ImageIcon(
+                            AssetImage('Assets/icons/mic.png'),
+                            color: AppTheme.blackerBlack,
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],
