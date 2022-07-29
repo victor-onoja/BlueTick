@@ -52,7 +52,9 @@ class _HelpCenterState extends State<HelpCenter> {
                 buttonColor: mainBlue,
               ),
               InviteButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouter.about);
+                },
                 text: 'About App', //  ->',
                 textColor: Colors.white,
                 buttonColor: mainBlue,
