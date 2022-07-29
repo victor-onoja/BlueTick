@@ -43,7 +43,7 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
                   autoPlay: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.scale,
                   enlargeCenterPage: true,
-                  autoPlayAnimationDuration: const Duration(seconds: 1),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 1200),
                   onPageChanged: (index, reason) {
                     setState(() {
                       initValue = index;
@@ -54,7 +54,7 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
               child: AnimatedSmoothIndicator(
                 activeIndex: initValue,
                 count: OnBoardingImages.length,
-                duration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 300),
                 onDotClicked: (index) {
                   setState(() {
                     initValue = index;

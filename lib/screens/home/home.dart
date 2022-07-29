@@ -432,7 +432,7 @@ class HomeScreen extends StatelessWidget {
       margin: const EdgeInsets.only(top: 4),
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
       height: 51.97,
-      color: AppTheme.mainBlue,
+      color: AppTheme.blue2,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
