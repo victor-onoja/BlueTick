@@ -49,23 +49,23 @@ class _InvitationLinkState extends State<InvitationLink> {
             SizedBox(
               height: 62,
             ),
-            Text(
-              'By clicking “Continue”, I agree to the',
-              style: GoogleFonts.montserrat(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppTheme.offWhite,
-              ),
-            ),
             RichText(
                 text: TextSpan(
-                    text: 'Terms of Service',
+                    text: 'By clicking “Continue”, I agree to the',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: AppTheme.offWhite,
+                    ),
+                    children: <TextSpan>[
+                  TextSpan(
+                    text: ' Terms of Service',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: AppTheme.blue2,
                     ),
-                    children: <TextSpan>[
+                  ),
                   TextSpan(
                     text: ' and',
                     style: GoogleFonts.montserrat(

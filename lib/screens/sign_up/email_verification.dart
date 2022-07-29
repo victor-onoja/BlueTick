@@ -57,7 +57,7 @@ class EmailVerification extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 38,
+                height: 18,
               ),
               Center(
                 child: SignUpButton(
@@ -75,7 +75,7 @@ class EmailVerification extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 115,
+                height: 30, //115,
               ),
               Center(
                 child: Text(
