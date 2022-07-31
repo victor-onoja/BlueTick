@@ -50,7 +50,7 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
                 children: [
                   Image(image: AssetImage('Assets/brdcsticn.png')),
                   SizedBox(
-                    width: 40,
+                    width: 20,
                   ),
                   Text('Send Broadcast',
                       style: GoogleFonts.montserrat(
@@ -70,11 +70,13 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 25.5, vertical: 2),
-                        child: Text(
-                          'Zicco, Yungzel, Omoye, Lade, Muiz, Tomi, Olla, Subomi, ...',
-                          style: GoogleFonts.montserrat(
-                              color: AppTheme.offBlack,
-                              fontStyle: FontStyle.italic),
+                        child: Center(
+                          child: Text(
+                            'Zicco, Yungzel, Omoye, Lade, Muiz, Tomi, Olla, Subomi, ...',
+                            style: GoogleFonts.montserrat(
+                                color: AppTheme.offBlack,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
                       ),
                     )),
@@ -95,13 +97,37 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
                                   padding: EdgeInsets.all(8),
                                   child: Row(
                                     children: [
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.play_arrow_sharp)),
-                                      Spacer(),
-                                      IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.delete))
+                                      ImageIcon(
+                                          AssetImage('Assets/icons/play.png')),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Stack(
+                                              clipBehavior: Clip.none,
+                                              alignment: Alignment.center,
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: 2,
+                                                  color: AppTheme.blackerBlack,
+                                                ),
+                                                Positioned(
+                                                  left: 0,
+                                                  child: Container(
+                                                    height: 9,
+                                                    width: 9,
+                                                    decoration: BoxDecoration(
+                                                        color: AppTheme
+                                                            .blackerBlack,
+                                                        shape: BoxShape.circle),
+                                                  ),
+                                                )
+                                              ]),
+                                        ),
+                                      ),
+                                      ImageIcon(
+                                          AssetImage('Assets/icons/del.png')),
                                     ],
                                   ),
                                 ),
@@ -128,56 +154,69 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 32,
+                  height: 44,
                   color: AppTheme.offWhite,
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.attach_file,
-                            color: AppTheme.offBlack,
-                          )),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.emoji_emotions_outlined,
-                            color: AppTheme.offBlack,
-                          )),
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: AppTheme.mainBlue,
-                                borderRadius: BorderRadius.circular(5.0)),
-                            child: TextField(
-                              textCapitalization: TextCapitalization.sentences,
-                              style: const TextStyle(color: AppTheme.offWhite),
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.only(left: 8, bottom: 10.5),
-                                hintText: 'send message',
-                                hintStyle: GoogleFonts.montserrat(
-                                  color: AppTheme.offWhite,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: <Widget>[
+                        ImageIcon(
+                          AssetImage('Assets/icons/file.png'),
+                          color: AppTheme.blackerBlack,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        ImageIcon(
+                          AssetImage('Assets/icons/face.png'),
+                          color: AppTheme.blackerBlack,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: AppTheme.darkBlue,
+                                  borderRadius: BorderRadius.circular(5.0)),
+                              child: TextField(
+                                expands: true,
+                                maxLines: null,
+                                // textAlignVertical: TextAlignVertical.top,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
+                                style:
+                                    const TextStyle(color: AppTheme.offWhite),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(
+                                    left: 8,
+                                  ),
+                                  hintText: 'send message',
+                                  hintStyle: GoogleFonts.montserrat(
+                                    color: AppTheme.offWhite,
+                                  ),
                                 ),
-                              ),
-                            )),
-                      )),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.mic_none,
-                            color: AppTheme.offBlack,
-                          )),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.send_outlined,
-                            color: AppTheme.offBlack,
-                          ))
-                    ],
+                              )),
+                        )),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        ImageIcon(
+                          AssetImage('Assets/icons/send.png'),
+                          color: AppTheme.blackerBlack,
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        ImageIcon(
+                          AssetImage('Assets/icons/mic.png'),
+                          color: AppTheme.blackerBlack,
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
