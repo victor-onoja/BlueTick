@@ -1,6 +1,7 @@
 import 'package:bluetick/screens/chatScreen/adminBroadcastScreen.dart';
 import 'package:bluetick/screens/chatScreen/chatScreen.dart';
 import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
+import 'package:bluetick/screens/home/about.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
@@ -57,6 +58,7 @@ class AppRouter {
   static const String messages = 'messages';
   static const String notification = 'notification';
   static const String todoScreen = 'todoScreen';
+  static const String about = 'about';
 
   ///sign in
   static const String login = 'login';
@@ -120,6 +122,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const TodoScreen());
       case AppRouter.groupCall:
         return MaterialPageRoute(builder: (context) => const GroupCallScreen());
+      case AppRouter.about:
+        return MaterialPageRoute(builder: (context) => const About());
 
       ///Invitation screens
       case AppRouter.invitationScreen:
@@ -209,6 +213,7 @@ class AppRouter {
     AppRouter.messages: (context) => const Messages(),
     AppRouter.notification: (context) => const Notifications(),
     AppRouter.todoScreen: (context) => const TodoScreen(),
+    AppRouter.about: (context) => const About(),
 
     ///Invitation screens
     AppRouter.invitationScreen: (context) => const InvitationScreen(),

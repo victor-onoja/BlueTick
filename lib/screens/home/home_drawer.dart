@@ -123,11 +123,7 @@ class HomeDrawer extends StatelessWidget {
                 textContainer(
                     text: 'About Bluetick',
                     onPressed: () {
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   AppRouter.todoScreen,
-                      //   //  MaterialPageRoute(builder: (_) => const HelpCenter()),
-                      // );
+                      Navigator.pushNamed(context, AppRouter.about);
                     }),
                 const Divider(
                   color: AppTheme.blue2,

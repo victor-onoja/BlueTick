@@ -182,6 +182,7 @@ class _AdminBroadcastScreenState extends State<AdminBroadcastScreen> {
                                   color: AppTheme.darkBlue,
                                   borderRadius: BorderRadius.circular(5.0)),
                               child: TextField(
+                                // cursorHeight: 14,
                                 expands: true,
                                 maxLines: null,
                                 // textAlignVertical: TextAlignVertical.top,
