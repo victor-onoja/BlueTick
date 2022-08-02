@@ -9,6 +9,7 @@ import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart'
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';
 import 'package:bluetick/screens/home/sub_home/addagroup.dart';
 import 'package:bluetick/screens/home/sub_home/createbroadcast.dart';
+import 'package:bluetick/screens/settings/ntf-settings.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:bluetick/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,7 @@ class AppRouter {
   static const String notification = 'notification';
   static const String todoScreen = 'todoScreen';
   static const String about = 'about';
+  static const String notificationSettings = 'notificationSettings';
 
   ///sign in
   static const String login = 'login';
@@ -124,6 +126,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const GroupCallScreen());
       case AppRouter.about:
         return MaterialPageRoute(builder: (context) => const About());
+      case AppRouter.notificationSettings:
+        return MaterialPageRoute(
+            builder: (context) => const NotificationSettingsStaff());
 
       ///Invitation screens
       case AppRouter.invitationScreen:
@@ -214,6 +219,8 @@ class AppRouter {
     AppRouter.notification: (context) => const Notifications(),
     AppRouter.todoScreen: (context) => const TodoScreen(),
     AppRouter.about: (context) => const About(),
+    AppRouter.notificationSettings: (context) =>
+        const NotificationSettingsStaff(),
 
     ///Invitation screens
     AppRouter.invitationScreen: (context) => const InvitationScreen(),
