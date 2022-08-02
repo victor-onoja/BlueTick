@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
       ),
-      initialRoute: AppRouter.adminBroadcastScreen,
+      initialRoute: AppRouter.personalProfile,
       routes: AppRouter.routes,
       onGenerateRoute: AppRouter.generateRoute,
 

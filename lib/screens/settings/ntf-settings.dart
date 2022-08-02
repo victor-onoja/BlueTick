@@ -7,7 +7,6 @@ import '../../components/ui/ui_utils.dart';
 import '../../components/models/ntf-settings_models.dart';
 import '../../components/widgets/radio_options.dart';
 
-
 class NotificationSettingsStaff extends StatefulWidget {
   const NotificationSettingsStaff({Key? key}) : super(key: key);
 
@@ -55,7 +54,9 @@ class NotificationSettingsStaffState extends State {
           backgroundColor: mainBlue,
           foregroundColor: offWhite,
           leading: IconButton(
-              onPressed: () => Navigator.of(context).pop,
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: const Icon(Icons.arrow_back)),
           title: Text(
             'Notifications Settings',
