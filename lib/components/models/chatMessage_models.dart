@@ -42,7 +42,7 @@ List<CHATMessage> chatmsg = [
       messageTypeAudio: false),
   CHATMessage(
       text: '',
-      isSentByMe: true,
+      isSentByMe: false,
       date: DateTime.now().subtract(Duration(minutes: 1)),
       media: null,
       messageTypeAudio: true),

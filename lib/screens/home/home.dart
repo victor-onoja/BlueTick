@@ -5,13 +5,31 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../components/app_theme.dart';
 import '../../components/config/config_sheet.dart';
 import 'home_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String? date;
+  String? dateTime;
+
+  @override
+  void initState() {
+    date = DateFormat.yMd().format(DateTime.now());
+    dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +40,6 @@ class HomeScreen extends StatelessWidget {
           AppBar(
         centerTitle: true,
         elevation: 0,
-        // leading: IconButton(
-        //   icon: const ImageIcon(AssetImage('Assets/images/Group 7.png')),
-        //   onPressed: () => null,
-        //   //     Navigator.push(
-        //   //   context,
-        //   //   MaterialPageRoute(
-        //   //     builder: (_) => Drawer(child: const HomeDrawer()),
-        //   //   ),
-        //   // ),
-        // ),
         backgroundColor: AppTheme.mainBlue,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
@@ -51,9 +59,6 @@ class HomeScreen extends StatelessWidget {
             onTap: () => Navigator.pushNamed(
               context,
               AppRouter.personalProfile,
-              // MaterialPageRoute(
-              //   builder: (_) => const TodoScreen(),
-              // ),
             ),
             child: Container(
               height: 45, //31.95,
@@ -235,77 +240,115 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '12/06/2022',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
+          Container(
+            height: 22,
+            decoration: BoxDecoration(
+                border: Border(
+              left: BorderSide(width: 3, color: AppTheme.white),
+              right: BorderSide(width: 3, color: AppTheme.white),
+            )),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    date ?? '12/06/2022',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'Tuesday',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
+                // Text(
+                //   dateTime ?? 'Tuesday',
+                //   style: GoogleFonts.montserrat(
+                //       color: AppTheme.white,
+                //       fontWeight: FontWeight.w600,
+                //       fontSize: 16),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    dateTime ?? '09:15am',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                '09:15am',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              ],
+            ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Clock in:',
-                style: GoogleFonts.montserrat(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Staff Online',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    height: 45,
+                    width: 64,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: AppTheme.offWhite),
+                    child: Center(
+                      child: Text('28',
+                          style: GoogleFonts.montserrat(
+                              color: AppTheme.mainBlue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24)),
+                    ),
+                  )
+                ],
               ),
-              Text(
-                '05/21',
-                style: GoogleFonts.montserrat(
-                  fontSize: ResponsiveValue(context,
-                      defaultValue: 40.0,
-                      valueWhen: const [
-                        Condition.smallerThan(
-                          name: MOBILE,
-                          value: 50.0,
-                        ),
-                        Condition.largerThan(name: TABLET, value: 60.0),
-                      ]).value,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
+              SizedBox(
+                width: 24,
               ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Total Staff',
+                    style: GoogleFonts.montserrat(
+                        color: AppTheme.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    height: 45,
+                    width: 64,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: AppTheme.offWhite),
+                    child: Center(
+                      child: Text('52',
+                          style: GoogleFonts.montserrat(
+                              color: AppTheme.mainBlue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24)),
+                    ),
+                  )
+                ],
+              )
             ],
-          ),
+          )
         ],
       ),
     );
