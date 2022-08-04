@@ -12,8 +12,8 @@ class About extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
             Color(0xFFF3F6FF),
             Color(0xFF96A7D0),
@@ -76,12 +76,15 @@ class About extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           fontSize: 16),
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 SizedBox(
-                  height: 205,
+                  height: 150,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
                         "Assets/images/openmoji_regional-indicator-c.png"),
@@ -96,7 +99,7 @@ class About extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             fontSize: 16),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(

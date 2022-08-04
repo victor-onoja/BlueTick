@@ -64,7 +64,7 @@ class NotificationSettingsStaffState extends State {
                 fontWeight: FontWeight.w500, fontSize: 24),
           ),
           centerTitle: true),
-      bottomNavigationBar: homeBottomNavigationBar(),
+      // bottomNavigationBar: homeBottomNavigationBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

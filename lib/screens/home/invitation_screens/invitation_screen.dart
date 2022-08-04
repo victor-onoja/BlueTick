@@ -1,5 +1,6 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,24 +60,22 @@ class _InvitationScreenState extends State<InvitationScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => InvitationB1()));
+                Navigator.pushNamed(context, AppRouter.invitationB1);
+                //  Navigator.push(context,
+                //    MaterialPageRoute(builder: (_) => InvitationB1()));
               },
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => InvitationB1()));
-                },
-                child: InvitationCard(
-                    imagePath: 'Assets/icons/admin_invite_photo.png',
-                    cardLabel: 'Manage employees\n and workspace',
-                    cardStatus: 'Admin'),
-              ),
+              child: InvitationCard(
+                  imagePath: 'Assets/icons/admin_invite_photo.png',
+                  cardLabel: 'Manage employees\n and workspace',
+                  cardStatus: 'Admin'),
             ),
-            InvitationCard(
-                cardStatus: 'Staff',
-                cardLabel: 'View staff members\n in your team',
-                imagePath: 'Assets/icons/staff_invite_photo.png'),
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, AppRouter.invitationB1),
+              child: InvitationCard(
+                  cardStatus: 'Staff',
+                  cardLabel: 'View staff members\n in your team',
+                  imagePath: 'Assets/icons/staff_invite_photo.png'),
+            ),
           ],
         ),
       ),
