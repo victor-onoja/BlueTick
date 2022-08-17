@@ -88,23 +88,23 @@ class StaffHomePageState extends State<StaffHomePage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
               Container(
-                margin: const EdgeInsets.only(top: 50, bottom: 20),
+                margin: const EdgeInsets.only(top: 50, bottom: 10),
                 height: 275.92,
                 alignment: Alignment.center,
                 width: 341,
                 padding: const EdgeInsets.symmetric(
-                  vertical: 45,
+                  vertical: 30,
                 ),
                 decoration: BoxDecoration(
                     boxShadow: <BoxShadow>[
                       BoxShadow(
                           inset: true,
-                          color: darkBlue,
+                          color: darkBlue.withOpacity(0.6),
                           blurRadius: 8,
                           offset: const Offset(8, 8)),
                       BoxShadow(
                           inset: true,
-                          color: darkBlue,
+                          color: darkBlue.withOpacity(0.6),
                           blurRadius: 8,
                           offset: const Offset(-8, -8))
                     ],
@@ -115,8 +115,8 @@ class StaffHomePageState extends State<StaffHomePage> {
                     gradient: RadialGradient(
                         colors: [offWhite, blue2], stops: const [0.0, 84.21])),
                 child: Center(
-                  child: Wrap(
-                    direction: Axis.vertical,
+                  child: Column(
+                    // direction: Axis.vertical,
                     children: [
                       Padding(
                           padding: const EdgeInsets.only(bottom: 20),
@@ -141,9 +141,10 @@ class StaffHomePageState extends State<StaffHomePage> {
                                     fontWeight: FontWeight.w600)),
                           )),
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 30),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 6),
+                            vertical: 4, horizontal: 8),
                         height: 47,
                         width: 136,
                         decoration: BoxDecoration(
@@ -177,7 +178,7 @@ class StaffHomePageState extends State<StaffHomePage> {
                                     color: darkBlue,
                                     fontSize: 25,
                                     fontWeight: FontWeight.w600))),
-                      )
+                      ),
                     ],
                   ),
                 ),

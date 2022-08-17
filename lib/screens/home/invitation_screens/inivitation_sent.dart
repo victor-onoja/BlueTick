@@ -1,3 +1,4 @@
+import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +51,9 @@ class _InvitationSentState extends State<InvitationSent> {
             ),
             Image.asset('Assets/images/Invite_sent.png'),
             InviteButton(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.invitationB1);
+              },
               text: 'Send More',
               textColor: Colors.white,
               buttonColor: mainBlue,
