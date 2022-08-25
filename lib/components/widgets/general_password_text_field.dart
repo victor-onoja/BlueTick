@@ -25,8 +25,8 @@ class _GeneralPasswordTextFieldState extends State<GeneralPasswordTextField> {
       keyboardType: widget.textType,
       obscureText: widget.showPassword,
       decoration: InputDecoration(
-        hintText: widget.hintText,
-        hintStyle: GoogleFonts.montserrat(
+        labelText: widget.hintText,
+        labelStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,

@@ -16,8 +16,8 @@ class GeneralTextField extends StatelessWidget {
     return TextField(
       keyboardType: textType,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: GoogleFonts.montserrat(
+        labelText: hintText,
+        labelStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,
