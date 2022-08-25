@@ -1,5 +1,7 @@
 import 'package:bluetick/screens/chatScreen/adminBroadcastScreen.dart';
 import 'package:bluetick/screens/chatScreen/chatScreen.dart';
+import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
+import 'package:bluetick/screens/home/about.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
@@ -7,6 +9,7 @@ import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart'
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';
 import 'package:bluetick/screens/home/sub_home/addagroup.dart';
 import 'package:bluetick/screens/home/sub_home/createbroadcast.dart';
+import 'package:bluetick/screens/settings/ntf-settings.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:bluetick/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +59,8 @@ class AppRouter {
   static const String messages = 'messages';
   static const String notification = 'notification';
   static const String todoScreen = 'todoScreen';
+  static const String about = 'about';
+  static const String notificationSettings = 'notificationSettings';
 
   ///sign in
   static const String login = 'login';
@@ -102,7 +107,7 @@ class AppRouter {
       case AppRouter.contactUsScreen:
         return MaterialPageRoute(builder: (context) => const ContactUs());
       case AppRouter.groupChatScreen:
-        return MaterialPageRoute(builder: (context) => const GroupCallScreen());
+        return MaterialPageRoute(builder: (context) => const GroupChatScreen());
       case AppRouter.helpCenter:
         return MaterialPageRoute(builder: (context) => const HelpCenter());
       case AppRouter.home:
@@ -119,6 +124,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const TodoScreen());
       case AppRouter.groupCall:
         return MaterialPageRoute(builder: (context) => const GroupCallScreen());
+      case AppRouter.about:
+        return MaterialPageRoute(builder: (context) => const About());
+      case AppRouter.notificationSettings:
+        return MaterialPageRoute(
+            builder: (context) => const NotificationSettingsStaff());
 
       ///Invitation screens
       case AppRouter.invitationScreen:
@@ -200,7 +210,7 @@ class AppRouter {
     AppRouter.broadCast: (context) => const BroadcastScreen(),
 
     AppRouter.contactUsScreen: (context) => const ContactUs(),
-    AppRouter.groupChatScreen: (context) => const GroupCallScreen(),
+    AppRouter.groupChatScreen: (context) => const GroupChatScreen(),
     AppRouter.helpCenter: (context) => const HelpCenter(),
     AppRouter.home: (context) => const HomeScreen(),
     AppRouter.homeDrawer: (context) => const HomeDrawer(),
@@ -208,6 +218,9 @@ class AppRouter {
     AppRouter.messages: (context) => const Messages(),
     AppRouter.notification: (context) => const Notifications(),
     AppRouter.todoScreen: (context) => const TodoScreen(),
+    AppRouter.about: (context) => const About(),
+    AppRouter.notificationSettings: (context) =>
+        const NotificationSettingsStaff(),
 
     ///Invitation screens
     AppRouter.invitationScreen: (context) => const InvitationScreen(),

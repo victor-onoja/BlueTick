@@ -94,7 +94,11 @@ class CoWorkersDrawer extends StatelessWidget {
                     color: AppTheme.blue2,
                     thickness: 1,
                   ),
-                  textContainer(text: 'About Bluetick', onPressed: () {}),
+                  textContainer(
+                      text: 'About Bluetick',
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRouter.about);
+                      }),
                   const Divider(
                     color: AppTheme.blue2,
                     thickness: 1,

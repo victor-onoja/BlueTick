@@ -39,7 +39,7 @@ class _BroadcastScreenState extends State<BroadcastScreen> {
               ),
             ),
             SizedBox(
-              width: 40, //65,
+              width: 20, //65,
             ),
             Text(
               'Send Broadcast',
@@ -80,57 +80,67 @@ class _BroadcastScreenState extends State<BroadcastScreen> {
               })),
               Container(
                 width: double.infinity,
-                height: 32.0,
+                height: 44.0,
                 color: AppTheme.offWhite,
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.attach_file,
-                          color: AppTheme.offBlack,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.emoji_emotions_outlined,
-                          color: AppTheme.offBlack,
-                        )),
-                    Expanded(
-                        child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppTheme.mainBlue,
-                            borderRadius: BorderRadius.circular(5.0)),
-                        // height: 28,
-                        child: TextField(
-                          textCapitalization: TextCapitalization.sentences,
-                          style: const TextStyle(color: AppTheme.offWhite),
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding:
-                                  EdgeInsets.only(right: 7, top: 4, bottom: 4),
-                              hintText: 'send message',
-                              hintStyle: GoogleFonts.montserrat(
-                                color: AppTheme.offWhite,
-                              )),
-                        ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    children: <Widget>[
+                      ImageIcon(
+                        AssetImage('Assets/icons/file.png'),
+                        color: AppTheme.blackerBlack,
                       ),
-                    )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.mic_none,
-                          color: AppTheme.offBlack,
-                        )),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.send_outlined,
-                          color: AppTheme.offBlack,
-                        )),
-                  ],
+                      SizedBox(
+                        width: 6,
+                      ),
+                      ImageIcon(
+                        AssetImage('Assets/icons/face.png'),
+                        color: AppTheme.blackerBlack,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Expanded(
+                          child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: AppTheme.darkBlue,
+                                borderRadius: BorderRadius.circular(5.0)),
+                            child: TextField(
+                              expands: true,
+                              maxLines: null,
+                              // textAlignVertical: TextAlignVertical.top,
+                              textCapitalization: TextCapitalization.sentences,
+                              style: const TextStyle(color: AppTheme.offWhite),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(
+                                  left: 8,
+                                ),
+                                hintText: 'send message',
+                                hintStyle: GoogleFonts.montserrat(
+                                  color: AppTheme.offWhite,
+                                ),
+                              ),
+                            )),
+                      )),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      ImageIcon(
+                        AssetImage('Assets/icons/send.png'),
+                        color: AppTheme.blackerBlack,
+                      ),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      ImageIcon(
+                        AssetImage('Assets/icons/mic.png'),
+                        color: AppTheme.blackerBlack,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

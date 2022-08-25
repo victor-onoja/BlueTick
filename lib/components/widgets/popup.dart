@@ -18,24 +18,26 @@ class popUp extends StatelessWidget {
           width: 341,
           // padding: const EdgeInsets.symmetric(vertical: 45, horizontal: 79),
           decoration: BoxDecoration(
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    inset: true,
-                    color: darkBlue,
-                    blurRadius: 8,
-                    offset: const Offset(8, 8)),
-                BoxShadow(
-                    inset: true,
-                    color: darkBlue,
-                    blurRadius: 8,
-                    offset: const Offset(-8, -8))
-              ],
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(16)),
-              border: Border.all(
-                  color: darkBlue, width: 3, style: BorderStyle.solid),
-              gradient: RadialGradient(
-                  colors: [offWhite, blue2], stops: const [0.0, 84.21])),
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                  inset: true,
+                  color: darkBlue.withOpacity(0.6),
+                  blurRadius: 8,
+                  offset: const Offset(8, 8)),
+              BoxShadow(
+                  inset: true,
+                  color: darkBlue.withOpacity(0.6),
+                  blurRadius: 8,
+                  offset: const Offset(-8, -8))
+            ],
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            border:
+                Border.all(color: darkBlue, width: 3, style: BorderStyle.solid),
+            gradient: RadialGradient(
+                colors: [offWhite, blue2], stops: const [0.0, 84.21]),
+            shape: BoxShape.rectangle,
+          ),
           child: Stack(
             children: [
               Align(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../../components/config/config_sheet.dart';
 import '../../../components/ui/ui_utils.dart';
@@ -53,7 +52,9 @@ class _HelpCenterState extends State<HelpCenter> {
                 buttonColor: mainBlue,
               ),
               InviteButton(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouter.about);
+                },
                 text: 'About App', //  ->',
                 textColor: Colors.white,
                 buttonColor: mainBlue,
