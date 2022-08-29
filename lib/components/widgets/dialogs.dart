@@ -11,8 +11,8 @@ void showSnackBar(BuildContext context, String message) {
     elevation: 10,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-        topRight: Radius.circular(5),
-        topLeft: Radius.circular(5),
+        topRight: Radius.circular(10),
+        topLeft: Radius.circular(10),
       ),
     ),
     backgroundColor: mainBlue,
@@ -25,4 +25,5 @@ void showSnackBar(BuildContext context, String message) {
       ),
     ),
   );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }

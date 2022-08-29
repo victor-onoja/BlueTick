@@ -48,6 +48,8 @@ dependencies:
   grouped_list: ^5.1.2
   http: ^0.13.5
   flutter_riverpod: ^1.0.3
+  flutter_hooks: ^0.18.3
+  hooks_riverpod: ^1.0.3
 
 
 

@@ -5,10 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 class GeneralPasswordTextField extends StatefulWidget {
   final String hintText;
   final TextInputType textType;
+  final TextEditingController controller;
   bool showPassword = false;
   GeneralPasswordTextField({
     Key? key,
     required this.hintText,
+    required this.controller,
     required this.textType,
     required this.showPassword,
   }) : super(key: key);
@@ -22,6 +24,7 @@ class _GeneralPasswordTextFieldState extends State<GeneralPasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       keyboardType: widget.textType,
       obscureText: widget.showPassword,
       decoration: InputDecoration(

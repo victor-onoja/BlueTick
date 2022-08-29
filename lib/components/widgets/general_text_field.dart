@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GeneralTextField extends StatelessWidget {
+  //final TextEditingController controller;
   final String hintText;
   final TextInputType textType;
   const GeneralTextField({
     Key? key,
     required this.hintText,
     required this.textType,
+    //required this.controller,
   }) : super(key: key);
 
   @override
