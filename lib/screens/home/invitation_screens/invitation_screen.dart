@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'invitationb1.dart';
-
 class InvitationScreen extends StatefulWidget {
   const InvitationScreen({Key? key}) : super(key: key);
 

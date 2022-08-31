@@ -1,6 +1,9 @@
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/api_models/error_model.dart';
+import 'package:bluetick/components/services/api_models/login.dart';
+import 'package:bluetick/components/services/login_repo.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
-import 'package:bluetick/screens/home/home_tabs.dart';
+
 import 'package:bluetick/screens/sign_up/admin_sign_up.dart';
 import 'package:bluetick/components/app_theme.dart';
 import "package:flutter/material.dart";
@@ -9,26 +12,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/services/api_models/signup_api_model.dart';
 import '../../components/services/providers.dart';
-import '../../components/services/signin_services.dart';
+
 import '../../components/widgets/widgets.dart';
-import '../home/home.dart';
+
 import '../sign_up/invitation_link.dart';
 
-final SignInProviderData = FutureProvider<List<Welcome>>((ref) async {
-  return ref
-      .watch(signInProvider)
-      .signIn(email: emailController.text, password: passwordController.text);
+final SignInProviderData = FutureProvider<List>((ref) async {
+  return ref.watch(signInProvider).signIn(email: 'rh', password: 'hd');
 });
 
-final emailController = useTextEditingController();
-final passwordController = useTextEditingController();
+// final emailController = useTextEditingController();
+//final passwordControllerOne = useTextEditingController();
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final singInResponse = ref.watch(SignInProviderData);
+    ///  final signInResponse = ref.watch(SignInProviderData);
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -119,27 +122,37 @@ class LoginScreen extends HookConsumerWidget {
                         padding: const EdgeInsets.only(top: 78),
                         child: SignUpButton(
                           onTapButton: () async {
+                            _LogInUser(context);
                             if (emailController.text.isEmpty ||
                                 passwordController.text.isEmpty) {
                               showSnackBar(
                                   context, 'Input fields can not be empty');
                             } else {
-                              singInResponse.when(
-                                data: (data) async {
-                                  final test = SignInServices();
-                                  await test.signIn(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text);
-
-                                  return Text(data[0].message);
-                                },
-                                error: (error, stackTrace) => Text(
-                                  '${error.toString()} and its coming from ${stackTrace}',
-                                ),
-                                loading: () => Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              );
+                              final signInResponse =
+                                  ref.watch(SignInProviderData);
+                              signInResponse.when(
+                                  data: (data) =>
+                                      showSnackBar(context, data[0].message),
+                                  error: (error, s) =>
+                                      showSnackBar(context, error.toString()),
+                                  loading: () => CircularProgressIndicator());
+                              // signInResponse.when(
+                              //   data: (data) async {
+                              //     final test = SignInServices();
+                              //     await test.signIn(
+                              //         email: emailController.text.trim(),
+                              //         password: passwordController.text);
+                              //
+                              //     showSnackBar(context, data[0].message);
+                              //     // return Text(data[0].message);
+                              //   },
+                              //   error: (error, stackTrace) => Text(
+                              //     '${error.toString()} and its coming from ${stackTrace}',
+                              //   ),
+                              //   loading: () => Center(
+                              //     child: CircularProgressIndicator(),
+                              //   ),
+                              // );
 
                               // Navigator.push(
                               //   context,
@@ -148,7 +161,7 @@ class LoginScreen extends HookConsumerWidget {
                               //   ),
                               // );
                               // emailController.clear();
-                              passwordController.clear();
+                              /// passwordController.clear();
                             }
                           },
                           buttonColor: AppTheme.mainBlue,
@@ -213,5 +226,37 @@ class LoginScreen extends HookConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+void _LogInUser(context) async {
+  Login login = const Login(email: "chaierr@gmail.com", password: "123435");
+
+  var result = await LoginRepo().loginRequest(login);
+
+  if (result.isLeft) {
+    Error errorMessage = result.left;
+    var message = errorMessage.message!['message'][5];
+    //Map data = errorMessage.message;
+    showSnackBar(context, errorMessage.message![0].toString());
+    print('''
+    This is the error message
+    ${errorMessage.message}
+    and the status code is 
+    ${errorMessage.code}
+    Test trial
+   $message
+       Thank you
+    ''');
+  } else {
+    Welcome login = result.right;
+
+    print('''
+    success
+    message is
+    ${login.message},
+    token is 
+    ${login.token},
+    ''');
   }
 }

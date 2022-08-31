@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../components/app_theme.dart';
-import 'package:bluetick/screens/home/home.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);

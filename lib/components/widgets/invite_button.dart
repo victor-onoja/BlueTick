@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../components/config/config_sheet.dart';
-
 class InviteButton extends StatelessWidget {
   final String text;
   final Color textColor;

@@ -2,7 +2,6 @@ import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/models/broadcastMessage_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grouped_list/grouped_list.dart';
 

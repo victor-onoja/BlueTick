@@ -1,6 +1,7 @@
-import '../config/config_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../config/config_sheet.dart';
 
 class BTRadioOption<T> extends StatelessWidget {
   final T value;
@@ -11,10 +12,10 @@ class BTRadioOption<T> extends StatelessWidget {
 
   const BTRadioOption(
       {required this.value,
-        required this.groupValue,
-        required this.label,
-        required this.text,
-        required this.onChanged});
+      required this.groupValue,
+      required this.label,
+      required this.text,
+      required this.onChanged});
 
   Widget _buildLabel() {
     final bool isSelected = value == groupValue;
@@ -42,7 +43,9 @@ class BTRadioOption<T> extends StatelessWidget {
     return ListTile(
       dense: true,
       horizontalTitleGap: 5,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 10,),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 10,
+      ),
       visualDensity: VisualDensity.compact,
       onTap: () => onChanged(value),
       leading: _buildLabel(),
