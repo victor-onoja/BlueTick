@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
 import 'package:bluetick/components/services/api_models/login.dart';
@@ -236,17 +238,14 @@ void _LogInUser(context) async {
 
   if (result.isLeft) {
     Error errorMessage = result.left;
-    var message = errorMessage.message!['message'][5];
-    //Map data = errorMessage.message;
-    showSnackBar(context, errorMessage.message![0].toString());
+
+    showSnackBar(context, errorMessage.message!['message']);
     print('''
     This is the error message
-    ${errorMessage.message}
-    and the status code is 
-    ${errorMessage.code}
-    Test trial
-   $message
-       Thank you
+    ${errorMessage.message!}
+   Test trial
+   Thank you
+       ${errorMessage.message!['message']}     
     ''');
   } else {
     Welcome login = result.right;

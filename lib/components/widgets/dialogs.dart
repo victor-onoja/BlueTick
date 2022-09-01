@@ -18,6 +18,7 @@ void showSnackBar(BuildContext context, String message) {
     backgroundColor: mainBlue,
     content: Text(
       message,
+      textAlign: TextAlign.center,
       style: GoogleFonts.montserrat(
         fontSize: 16,
         fontWeight: FontWeight.w600,

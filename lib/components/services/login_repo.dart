@@ -22,9 +22,13 @@ class LoginRepo with BaseApi {
 
         return Right(responseGotten);
       } else {
-        return Left(Error(
-            message: {'message': response.body.toString()},
-            code: response.statusCode));
+        return Left(
+          ///Error.fromJson(jsonDecode(response.body))
+
+          Error(
+              message: {'message': '${jsonDecode(response.body)['message']}'},
+              code: response.statusCode),
+        );
       }
     } on SocketException {
       return Left(Error(
