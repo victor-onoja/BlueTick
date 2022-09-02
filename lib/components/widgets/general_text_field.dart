@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GeneralTextField extends StatelessWidget {
+  //final TextEditingController controller;
   final String hintText;
   final TextInputType textType;
   const GeneralTextField({
     Key? key,
     required this.hintText,
     required this.textType,
+    //required this.controller,
   }) : super(key: key);
 
   @override
@@ -16,8 +18,8 @@ class GeneralTextField extends StatelessWidget {
     return TextField(
       keyboardType: textType,
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: GoogleFonts.montserrat(
+        labelText: hintText,
+        labelStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,

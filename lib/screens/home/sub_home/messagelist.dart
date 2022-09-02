@@ -1,15 +1,11 @@
 import 'package:bluetick/components/app_theme.dart';
-import 'package:bluetick/components/constants/app_router/app_router.dart';
-import 'package:bluetick/screens/groupchat/groupchatTwo.dart';
-import 'package:bluetick/screens/home/home.dart';
 import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../../../components/config/config_sheet.dart';
 import '../../../components/models/broadcast_models.dart';
-
-import '../../chatScreen/chatScreen.dart';
 import '../../groupchat/groupchatScreen.dart';
 
 class MessageList extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:bluetick/components/config/config_sheet.dart';
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class popUp extends StatelessWidget {
   const popUp({Key? key}) : super(key: key);

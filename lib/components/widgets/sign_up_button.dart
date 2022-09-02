@@ -1,4 +1,3 @@
-import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

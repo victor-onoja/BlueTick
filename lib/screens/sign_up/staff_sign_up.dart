@@ -17,6 +17,7 @@ class StaffSignUp extends StatefulWidget {
 class _StaffSignUpState extends State<StaffSignUp> {
   @override
   Widget build(BuildContext context) {
+    final testController = TextEditingController();
     return Scaffold(
       backgroundColor: AppTheme.darkBlue,
       appBar: AppBar(
@@ -81,6 +82,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                 height: 25,
               ),
               GeneralPasswordTextField(
+                controller: testController,
                 hintText: 'Create Password',
                 textType: TextInputType.visiblePassword,
                 showPassword: true,
@@ -89,6 +91,7 @@ class _StaffSignUpState extends State<StaffSignUp> {
                 height: 25,
               ),
               GeneralPasswordTextField(
+                controller: testController,
                 hintText: 'Confirm Password',
                 textType: TextInputType.visiblePassword,
                 showPassword: true,

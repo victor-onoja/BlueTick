@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/config/config_sheet.dart';
-import '../../components/ui/ui_utils.dart';
 import '../../components/models/ntf-settings_models.dart';
 import '../../components/widgets/radio_options.dart';
 

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
+import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
 
 InputBorder formOutlineBorder({Color? color}) {

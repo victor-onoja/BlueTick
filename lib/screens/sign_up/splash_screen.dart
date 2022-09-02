@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:bluetick/screens/sign_up/onBoarding.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/app_theme.dart';

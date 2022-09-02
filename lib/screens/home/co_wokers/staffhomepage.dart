@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+
 import 'package:bluetick/components/config/config_sheet.dart';
-import 'package:bluetick/components/ui/ui_utils.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../todo_screen.dart';

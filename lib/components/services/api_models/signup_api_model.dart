@@ -14,7 +14,7 @@ class Welcome {
     required this.token,
   });
 
-  String message;
+  Map<String, dynamic> message;
   String token;
 
   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(

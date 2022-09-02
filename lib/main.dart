@@ -1,14 +1,10 @@
 import 'package:bluetick/components/constants/app_router/app_router.dart';
-import 'package:bluetick/screens/home/notifications.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'screens/chatScreen/adminBroadcastScreen.dart';
-import 'screens/home/contact_us_screen.dart';
-
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +23,7 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.autoScale(1000, name: 'LARGESCREEN'),
             ResponsiveBreakpoint.resize(1200, name: 'EXTRALARGESCREEN'),
           ]),
-      title: 'Flutter Demo',
+      title: 'BlueTick',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

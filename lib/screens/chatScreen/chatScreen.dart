@@ -1,7 +1,6 @@
 import 'package:bluetick/components/models/chatMessage_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grouped_list/grouped_list.dart';
 
