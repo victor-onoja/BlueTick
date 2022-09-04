@@ -7,13 +7,6 @@ import 'package:http/http.dart' as http;
 import 'constant.dart';
 
 class SignInServices {
-  //
-  // Future signIn() async {
-  //   final res = await ApiServices().postRequest(
-  //     '/login',
-  //   );
-  // }
-
   Future<List<Welcome>> signIn(
       {required String email, required String password}) async {
     print('This is the sign in method');

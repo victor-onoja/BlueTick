@@ -7,11 +7,13 @@ class GeneralPasswordTextField extends StatefulWidget {
   final TextInputType textType;
   final TextEditingController controller;
   bool showPassword = false;
+  String? Function(String?)? validator;
   GeneralPasswordTextField({
     Key? key,
     required this.hintText,
     required this.controller,
     required this.textType,
+    this.validator,
     required this.showPassword,
   }) : super(key: key);
 
@@ -23,13 +25,14 @@ class GeneralPasswordTextField extends StatefulWidget {
 class _GeneralPasswordTextFieldState extends State<GeneralPasswordTextField> {
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: widget.validator,
       controller: widget.controller,
       keyboardType: widget.textType,
       obscureText: widget.showPassword,
       decoration: InputDecoration(
-        labelText: widget.hintText,
-        labelStyle: GoogleFonts.montserrat(
+        hintText: widget.hintText,
+        hintStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,
@@ -68,6 +71,13 @@ class _GeneralPasswordTextFieldState extends State<GeneralPasswordTextField> {
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
             color: AppTheme.mainBlue,
+            width: 2,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Colors.red,
             width: 2,
           ),
         ),

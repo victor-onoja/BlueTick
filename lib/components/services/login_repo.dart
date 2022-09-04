@@ -8,7 +8,7 @@ import 'package:either_dart/either.dart';
 import 'package:http/http.dart' as http;
 
 class LoginRepo with BaseApi {
-  Future<Either<Error, Welcome>> loginRequest(Login login) async {
+  Future<Either<ErrorModel, Welcome>> loginRequest(Login login) async {
     try {
       var response = await http.post(
         Uri.parse('$baseUrl/login'),
@@ -25,17 +25,17 @@ class LoginRepo with BaseApi {
         return Left(
           ///Error.fromJson(jsonDecode(response.body))
 
-          Error(
+          ErrorModel(
               message: {'message': '${jsonDecode(response.body)['message']}'},
               code: response.statusCode),
         );
       }
     } on SocketException {
-      return Left(Error(
+      return Left(ErrorModel(
           message: {'message': 'Sorry, you don\'t have an internet connection'},
           code: 400));
     } catch (e) {
-      return Left(Error(message: {'message': e.toString()}, code: 400));
+      return Left(ErrorModel(message: {'message': e.toString()}, code: 400));
     }
   }
 }

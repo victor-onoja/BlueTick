@@ -1,9 +1,9 @@
-class Error {
+class ErrorModel {
   Map<String, dynamic>? message;
   int? code;
-  Error({this.message, this.code});
+  ErrorModel({this.message, this.code});
 
-  factory Error.fromJson(Map<String, dynamic> json) => Error(
+  factory ErrorModel.fromJson(Map<String, dynamic> json) => ErrorModel(
         message: json['message'],
       );
 }

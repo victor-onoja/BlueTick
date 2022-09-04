@@ -6,25 +6,27 @@ class GeneralTextField extends StatelessWidget {
   //final TextEditingController controller;
   final String hintText;
   final TextInputType textType;
+  final String? Function(String?)? validator;
   const GeneralTextField({
     Key? key,
     required this.hintText,
     required this.textType,
+    this.validator,
     //required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
       keyboardType: textType,
       decoration: InputDecoration(
-        labelText: hintText,
-        labelStyle: GoogleFonts.montserrat(
+        hintText: hintText,
+        hintStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,
         ),
-        //const TextStyle(color: AppTheme.blue2),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
         fillColor: AppTheme.offWhite,
@@ -40,6 +42,13 @@ class GeneralTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
             color: AppTheme.mainBlue,
+            width: 2,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: Colors.red,
             width: 2,
           ),
         ),

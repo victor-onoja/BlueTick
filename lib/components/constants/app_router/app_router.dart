@@ -99,7 +99,7 @@ class AppRouter {
 
       ///login
       case AppRouter.login:
-        return MaterialPageRoute(builder: (context) => const LoginScreen());
+        return MaterialPageRoute(builder: (context) => LoginScreen());
 
       ///main home
       case AppRouter.broadCast:
@@ -204,7 +204,7 @@ class AppRouter {
     AppRouter.emailVerification: (context) => const EmailVerification(),
 
     ///login
-    AppRouter.login: (context) => const LoginScreen(),
+    AppRouter.login: (context) => LoginScreen(),
 
     ///main home
     AppRouter.broadCast: (context) => const BroadcastScreen(),
