@@ -1,4 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
+import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -76,8 +77,8 @@ class _GeneralPasswordTextFieldState extends State<GeneralPasswordTextField> {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
-            color: Colors.red,
+          borderSide: BorderSide(
+            color: warningRed,
             width: 2,
           ),
         ),

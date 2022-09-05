@@ -9,12 +9,16 @@ class LoadingIndicator extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
+
       child: Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation(mainBlue.withOpacity(0.5)),
+          strokeWidth: 2,
+          color: Colors.black,
+          valueColor: AlwaysStoppedAnimation(mainBlue.withOpacity(0.8)),
           backgroundColor: Colors.transparent,
         ),
       ),
+      //),
     );
   }
 }

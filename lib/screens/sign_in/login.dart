@@ -6,14 +6,16 @@ import 'package:bluetick/components/services/login_repo.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
 import 'package:bluetick/screens/sign_up/admin_sign_up.dart';
 import 'package:bluetick/components/app_theme.dart';
-import 'package:either_dart/either.dart';
+
 import "package:flutter/material.dart";
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../components/config/config_sheet.dart';
 import '../../components/services/api_models/signup_api_model.dart';
 import '../../components/services/providers.dart';
 
+import '../../components/widgets/loading_indicator.dart';
 import '../../components/widgets/widgets.dart';
 
 import '../sign_up/invitation_link.dart';
@@ -26,6 +28,10 @@ class LoginScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+
+    ///Declaring provider that was used
+    final notifier = ref.read(logInProvider.notifier);
+    final state = ref.watch(logInProvider);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -40,7 +46,11 @@ class LoginScreen extends HookConsumerWidget {
                 key: _formKey,
                 child: Padding(
                   padding: const EdgeInsets.all(30),
-                  child: Column(
+                  child:
+                      // state.isLoading
+                      //     ? LoadingIndicator()
+                      //     :
+                      Column(
                     children: [
                       Hero(
                           tag: 'login',
@@ -83,52 +93,90 @@ class LoginScreen extends HookConsumerWidget {
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 78),
-                        child: SignUpButton(
-                          onTapButton: () async {
-                            ///Getting user inputs
-                            ref.read(emailProvider.notifier).state =
-                                emailController.text;
-                            ref.read(passwordProvider.notifier).state =
-                                passwordController.text;
+                      GestureDetector(
+                        onTap: () {
+                          ref.watch(isLoadingProvider.notifier).state = true;
+                          print(ref.read(isLoadingProvider.notifier).state);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 78),
+                          child: ref.watch(isLoadingProvider.notifier).state
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: mainBlue,
+                                    valueColor: AlwaysStoppedAnimation(
+                                        mainBlue.withOpacity(0.8)),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                )
+                              : SignUpButton(
+                                  onTapButton: () async {
+                                    ///check for isLoading
+                                    print(ref
+                                        .read(isLoadingProvider.notifier)
+                                        .state
+                                        .toString());
 
-                            /// In-App-Validation
-                            if (_formKey.currentState!.validate()) {
-                              Login login = Login(
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text);
+                                    ///Getting user inputs
+                                    ref.read(emailProvider.notifier).state =
+                                        emailController.text;
+                                    ref.read(passwordProvider.notifier).state =
+                                        passwordController.text;
 
-                              var result =
-                                  await LoginRepo().loginRequest(login);
+                                    /// In-App-Validation
+                                    if (_formKey.currentState!.validate()) {
+                                      ///progress bar
+                                      ref
+                                          .watch(isLoadingProvider.notifier)
+                                          .state = true;
 
-                              if (result.isLeft) {
-                                ErrorModel errorMessage = result.left;
+                                      Login login = Login(
+                                          email: emailController.text,
+                                          password: passwordController.text);
 
-                                showSnackBar(
-                                    context, errorMessage.message!['message']);
-                                print(
-                                    'Error from login request ${errorMessage.message!['message']}');
-                              } else {
-                                Welcome login = result.right;
-                                showSnackBar(context, login.message['message']);
+                                      var result =
+                                          await notifier.loginRequest(login);
 
-                                ///Then navigate to home page
-                              }
-                            }
+                                      if (result.isLeft) {
+                                        ref
+                                            .read(isLoadingProvider.notifier)
+                                            .state = false;
+                                        ErrorModel errorMessage = result.left;
 
-                            ///show inputs
-                            print('''
-                            This is value that is received from the user 
-                           email: ${ref.read(emailProvider.notifier).state}
-                            password: ${ref.read(passwordProvider.notifier).state}
-                             ''');
+                                        showSnackBar(context,
+                                            errorMessage.message!['message']);
+                                        print(
+                                            'Error from login request ${errorMessage.message!['message']}');
+                                      } else {
+                                        ref
+                                            .read(isLoadingProvider.notifier)
+                                            .state = false;
+                                        Welcome login = result.right;
+                                        showSnackBar(
+                                            context, login.message['message']);
 
-                            /// passwordController.clear();
-                          },
-                          buttonColor: AppTheme.mainBlue,
-                          text: 'Sign in',
-                          textColor: AppTheme.white,
+                                        ///Then navigate to home page
+                                      }
+                                    }
+
+                                    ///show inputs
+                                    print('''
+                              This is value that is received from the user 
+                             email: ${ref.read(emailProvider.notifier).state} why empty
+                              password: ${ref.read(passwordProvider.notifier).state}
+                               ''');
+
+                                    ///check for isLoading
+                                    print(ref
+                                        .read(isLoadingProvider.notifier)
+                                        .state
+                                        .toString());
+                                  },
+                                  buttonColor: AppTheme.mainBlue,
+                                  text: 'Sign in',
+                                  textColor: AppTheme.white,
+                                ),
                         ),
                       ),
                       Container(

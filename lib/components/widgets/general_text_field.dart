@@ -2,6 +2,8 @@ import 'package:bluetick/components/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../config/config_sheet.dart';
+
 class GeneralTextField extends StatelessWidget {
   //final TextEditingController controller;
   final String hintText;
@@ -40,7 +42,7 @@ class GeneralTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             color: AppTheme.mainBlue,
             width: 2,
           ),
@@ -48,7 +50,7 @@ class GeneralTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: Colors.red,
+            color: warningRed,
             width: 2,
           ),
         ),
