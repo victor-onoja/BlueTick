@@ -17,6 +17,17 @@ extension ValidationExtension on BuildContext {
     return !emailIsValid ? 'Email must contain "@" and "."' : null;
   }
 
+  String? validateFullName<T>(String? value, BuildContext context) {
+    if (value == null) return 'full name cannot be null';
+
+    if (value.isEmpty) return 'full name cannot be empty';
+
+    if (value.split('  ').length < 2) {
+      return 'please enter your full name';
+    }
+    return null;
+  }
+
   String? validatePassword(String? value) => value == null || value.length < 6
       ? 'Password must have 6 or more characters'
       : null;
