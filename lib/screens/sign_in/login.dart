@@ -128,6 +128,7 @@ class LoginScreen extends HookConsumerWidget {
                                           context, AppRouter.homeTabs);
                                     }
                                   }
+                                  passwordController.clear();
                                 },
                                 buttonColor: AppTheme.mainBlue,
                                 text: 'Sign in',
