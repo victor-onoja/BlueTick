@@ -2,29 +2,35 @@ import 'package:bluetick/components/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../config/config_sheet.dart';
+
 class GeneralTextField extends StatelessWidget {
-  //final TextEditingController controller;
+  final TextEditingController? controller;
   final String hintText;
   final TextInputType textType;
+  final String? Function(String?)? validator;
   const GeneralTextField({
     Key? key,
     required this.hintText,
     required this.textType,
+    this.controller,
+    this.validator,
     //required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: validator,
+      controller: controller,
       keyboardType: textType,
       decoration: InputDecoration(
-        labelText: hintText,
-        labelStyle: GoogleFonts.montserrat(
+        hintText: hintText,
+        hintStyle: GoogleFonts.montserrat(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: AppTheme.blue2,
         ),
-        //const TextStyle(color: AppTheme.blue2),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
         fillColor: AppTheme.offWhite,
@@ -38,8 +44,15 @@ class GeneralTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(
+          borderSide: BorderSide(
             color: AppTheme.mainBlue,
+            width: 2,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: warningRed,
             width: 2,
           ),
         ),

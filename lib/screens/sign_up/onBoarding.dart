@@ -160,7 +160,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: SignUpButton(
                 onTapButton: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => const LoginScreen()));
+                      MaterialPageRoute(builder: (_) => LoginScreen()));
                 },
                 buttonColor: AppTheme.mainBlue,
                 text: 'Continue',

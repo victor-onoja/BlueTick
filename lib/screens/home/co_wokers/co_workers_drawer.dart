@@ -111,10 +111,8 @@ class CoWorkersDrawer extends StatelessWidget {
                   textContainer(
                       text: 'Logout',
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const LoginScreen()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => LoginScreen()));
                       }),
                   const Divider(
                     color: AppTheme.blue2,

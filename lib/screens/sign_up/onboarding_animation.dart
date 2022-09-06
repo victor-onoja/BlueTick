@@ -75,7 +75,7 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
               child: SignUpButton(
                 onTapButton: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => const LoginScreen()));
+                      MaterialPageRoute(builder: (_) => LoginScreen()));
                 },
                 buttonColor: AppTheme.mainBlue,
                 text: 'Continue',

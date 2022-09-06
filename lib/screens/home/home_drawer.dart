@@ -137,7 +137,7 @@ class HomeDrawer extends StatelessWidget {
                   text: 'Logout',
                   onPressed: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (_) => const LoginScreen()));
+                        MaterialPageRoute(builder: (_) => LoginScreen()));
                   },
                 ),
               ],
