@@ -22,7 +22,7 @@ extension ValidationExtension on BuildContext {
 
     if (value.isEmpty) return 'full name cannot be empty';
 
-    if (value.split('  ').length < 2) {
+    if (value.split(' ').length < 2) {
       return 'please enter your full name';
     }
     return null;
