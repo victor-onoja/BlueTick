@@ -9,12 +9,12 @@ extension ValidationExtension on BuildContext {
 
     if (value.isEmpty) return 'Email cannot be empty';
 
-    ///Check this line
+    ///Check this line Regular Expression
     bool emailIsValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(value);
 
-    return !emailIsValid ? 'Enter a valid Email Address' : null;
+    return !emailIsValid ? 'Email must contain "@" and "."' : null;
   }
 
   String? validatePassword(String? value) => value == null || value.length < 6

@@ -3,12 +3,10 @@ import 'dart:io';
 import 'package:bluetick/components/services/api_models/error_model.dart';
 import 'package:bluetick/components/services/api_models/login.dart';
 import 'package:bluetick/components/services/api_models/signup_api_model.dart';
-import 'package:bluetick/components/services/base_api.dart';
 import 'package:bluetick/components/states/login_state.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-
 import 'constant.dart';
 
 class LoginRepo extends StateNotifier<LoginState> {
@@ -22,9 +20,12 @@ class LoginRepo extends StateNotifier<LoginState> {
 
   Future<Either<ErrorModel, Welcome>> loginRequest(Login login) async {
     state = state.update(true);
+
     try {
       var response = await http.post(
         Uri.parse('$BASE_URL/login'),
+
+        ///body:  login.toJson(),
         body: jsonEncode(login.toLogin()),
         headers: {'Content-Type': 'application/json'},
       );

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../config/config_sheet.dart';
 
 class GeneralTextField extends StatelessWidget {
-  //final TextEditingController controller;
+  final TextEditingController? controller;
   final String hintText;
   final TextInputType textType;
   final String? Function(String?)? validator;
@@ -13,6 +13,7 @@ class GeneralTextField extends StatelessWidget {
     Key? key,
     required this.hintText,
     required this.textType,
+    this.controller,
     this.validator,
     //required this.controller,
   }) : super(key: key);
@@ -21,6 +22,7 @@ class GeneralTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
+      controller: controller,
       keyboardType: textType,
       decoration: InputDecoration(
         hintText: hintText,
