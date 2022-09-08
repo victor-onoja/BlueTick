@@ -21,7 +21,7 @@ Map<String, Map> nSettingItems = {
       'Blue'
     ],
     'Use High Priority Notifications':
-    'pop-up previews of message at the top of the screen'
+        'pop-up previews of message at the top of the screen'
   },
   'Calls': {
     'Private Chats': [

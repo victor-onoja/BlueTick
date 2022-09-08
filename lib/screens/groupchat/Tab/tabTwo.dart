@@ -13,10 +13,13 @@ class AttachmentTab extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(top: 30, right: 200, left: 20),
-              child: Text(
-                  'Media',
-                  style: GoogleFonts.montserrat( textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),)
-              ),
+              child: Text('Media',
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  )),
             ),
             Divider(
               thickness: 2,
@@ -46,14 +49,17 @@ class AttachmentTab extends StatelessWidget {
                       height: 114,
                       child: Image.asset('Assets/Rectangle 34.png'),
                     )
-                  ] ),
+                  ]),
             ),
             Padding(
               padding: EdgeInsets.only(top: 30, right: 200, left: 20),
-              child: Text(
-                  'Documents',
-                  style: GoogleFonts.montserrat( textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),)
-              ),
+              child: Text('Documents',
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  )),
             ),
             Divider(
               thickness: 2,
@@ -83,14 +89,17 @@ class AttachmentTab extends StatelessWidget {
                       height: 114,
                       child: Image.asset('Assets/Rectangle 34.png'),
                     )
-                  ] ),
+                  ]),
             ),
             Padding(
               padding: EdgeInsets.only(top: 30, right: 200, left: 20),
-              child: Text(
-                  'Links',
-                  style: GoogleFonts.montserrat( textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),)
-              ),
+              child: Text('Links',
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  )),
             ),
             Divider(
               thickness: 2,
@@ -120,10 +129,9 @@ class AttachmentTab extends StatelessWidget {
                       height: 114,
                       child: Text("Lorem ipsum dolor sit amet, Chuks the boss"),
                     )
-                  ] ),
+                  ]),
             ),
           ],
-
         ),
       ),
     );

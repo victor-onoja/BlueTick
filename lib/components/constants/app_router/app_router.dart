@@ -85,7 +85,7 @@ class AppRouter {
       case AppRouter.staffSignUp:
         return MaterialPageRoute(builder: (context) => const StaffSignUp());
       case AppRouter.adminSignUp:
-        return MaterialPageRoute(builder: (context) => const AdminSignUp());
+        return MaterialPageRoute(builder: (context) => AdminSignUp());
       case AppRouter.onBoardingAnimation:
         return MaterialPageRoute(
             builder: (context) => const OnBoardingScreenAnimation());
@@ -196,7 +196,7 @@ class AppRouter {
 
     AppRouter.splashScreen: (context) => const SplashScreen(),
     AppRouter.staffSignUp: (context) => const StaffSignUp(),
-    AppRouter.adminSignUp: (context) => const AdminSignUp(),
+    AppRouter.adminSignUp: (context) => AdminSignUp(),
     AppRouter.onBoardingAnimation: (context) =>
         const OnBoardingScreenAnimation(),
     AppRouter.invitationLink: (context) => const InvitationLink(),
