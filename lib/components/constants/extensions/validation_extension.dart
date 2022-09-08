@@ -17,7 +17,6 @@ extension ValidationExtension on BuildContext {
     return !emailIsValid ? 'Email must contain "@" and "."' : null;
   }
 
-
   String? validatePassword(String? value) =>
       value == null || value.length < 6 || value.isEmpty
           ? 'Password must have 6 or more characters'
@@ -38,9 +37,4 @@ extension ValidationExtension on BuildContext {
     }
     return null;
   }
-
-  String? validatePassword(String? value) => value == null || value.length < 6
-      ? 'Password must have 6 or more characters'
-      : null;
-
 }
