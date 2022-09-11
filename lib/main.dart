@@ -1,9 +1,12 @@
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/constants/extensions/notification_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationExtension().initNotification();
   runApp(ProviderScope(child: const MyApp()));
 }
 
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
       ),
-      initialRoute: AppRouter.splashScreen,
+      initialRoute: AppRouter.emailVerification,
       routes: AppRouter.routes,
       onGenerateRoute: AppRouter.generateRoute,
 

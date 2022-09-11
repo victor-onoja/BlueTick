@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
+import 'package:bluetick/components/constants/extensions/notification_extension.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:bluetick/components/services/api_models/admin_signupbody.dart';
 import 'package:bluetick/components/services/api_models/admin_signupresponse.dart';
@@ -10,16 +13,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../components/widgets/widgets.dart';
 import 'email_verification.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
-class AdminSignUp extends HookConsumerWidget {
-  AdminSignUp({Key? key}) : super(key: key);
+class AdminSignUp extends ConsumerStatefulWidget {
+  @override
+  _RiverpodAdminSignUpState createState() => _RiverpodAdminSignUpState();
+}
+
+class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
   final _formKey = GlobalKey<FormState>();
 
+  void initState() {
+    super.initState();
+    tz.initializeTimeZones();
+  }
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final aemailController = TextEditingController();
     final apasswordController = TextEditingController();
     final password2Controller = TextEditingController();
@@ -169,13 +182,18 @@ class AdminSignUp extends HookConsumerWidget {
                                 showSnackBar(context, adminsignup.message!);
                               }
                               if (res.isRight) {
+                                AdminSignupresponse adminsignup = res.right;
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) =>
-                                          const EmailVerification() // StaffSignUp(),
+                                      builder: (context) => EmailVerification(
+                                            email: aemailController.text,
+                                          ) // StaffSignUp(),
                                       ),
                                 );
+                                NotificationExtension().showNotification(
+                                    1, 'Your Token', adminsignup.token!, 3);
                               } else {}
                             }
                           },
