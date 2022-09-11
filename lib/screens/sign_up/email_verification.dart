@@ -11,7 +11,8 @@ import '../../components/widgets/widgets.dart';
 final otpController = TextEditingController();
 
 class EmailVerification extends StatelessWidget {
-  const EmailVerification({Key? key}) : super(key: key);
+  final String? email;
+  const EmailVerification({Key? key, this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class EmailVerification extends StatelessWidget {
               Image(image: AssetImage('Assets/images/Authentication.png')),
               Text(
                 'Enter Verification Code',
+                // email!,
                 style: GoogleFonts.montserrat(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
@@ -65,12 +67,13 @@ class EmailVerification extends StatelessWidget {
                   textColor: AppTheme.white,
                   buttonColor: mainBlue,
                   onTapButton: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => HomeTab(),
-                      ),
-                    );
+                    // print(otpController.text);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (_) => HomeTab(),
+                    //   ),
+                    // );
                   },
                 ),
               ),
@@ -79,7 +82,7 @@ class EmailVerification extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  'Expired Code or Didn’t Receive?',
+                  'Expired Code or Didn\'t Receive?',
                   style: GoogleFonts.montserrat(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -136,18 +139,17 @@ class EmailVerification extends StatelessWidget {
       child: Center(
         child: Builder(builder: (context) {
           return TextField(
-            //   controller: otpController,
+            controller: otpController,
             onChanged: (val) {
               if (val.length == 1) {
                 FocusScope.of(context).nextFocus();
               }
             },
             autofocus: true,
-
-            onSubmitted: (val) {
-              print(
-                  'The value of the pin is $val...and controller is ${otpController.text}');
-            },
+            // onSubmitted: (val) {
+            //   print(
+            //       'The value of the pin is $val...and controller is ${otpController.text}');
+            // },
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
             cursorColor: AppTheme.darkBlue,

@@ -42,7 +42,7 @@ dependencies:
   intl: ^0.17.0
   flutter_switch: ^0.3.2
   passwordfield: ^0.1.0
-  # textfield_tags: ^2.0.0
+  textfield_tags: ^2.0.0
   google_maps_flutter: ^2.0.2
   grouped_list: ^5.1.2
   http: ^0.13.5
@@ -51,6 +51,8 @@ dependencies:
   hooks_riverpod: ^1.0.3
   equatable: ^2.0.5
   either_dart: ^0.2.0
+  flutter_local_notifications: ^9.9.1
+  timezone: ^0.8.0
 
 dev_dependencies:
   flutter_test:
