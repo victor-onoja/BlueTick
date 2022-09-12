@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
       ),
-      initialRoute: AppRouter.emailVerification,
+      initialRoute: AppRouter.splashScreen,
       routes: AppRouter.routes,
       onGenerateRoute: AppRouter.generateRoute,
 
