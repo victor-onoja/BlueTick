@@ -171,7 +171,7 @@ class LoginScreen extends HookConsumerWidget {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const AdminSignUp(),
+                                builder: (_) => AdminSignUp(),
                               ),
                             ),
                             child: Text(

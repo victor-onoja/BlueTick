@@ -1,12 +1,12 @@
-import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/constants/extensions/notification_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'components/config/config_sheet.dart';
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationExtension().initNotification();
   runApp(ProviderScope(child: const MyApp()));
 }
 

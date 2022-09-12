@@ -1,4 +1,7 @@
+import 'package:bluetick/components/services/adminSignup_repo.dart';
+import 'package:bluetick/components/services/veryWorkspace_repo.dart';
 import 'package:bluetick/components/states/login_state.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -10,3 +13,10 @@ final logInProvider =
 
 final emailProvider = StateProvider((ref) => '');
 final passwordProvider = StateProvider((ref) => '');
+
+final adminSignupProvider = StateNotifierProvider<adminSignupRepo, LoginState>(
+    (ref) => adminSignupRepo(ref.read));
+
+final verifyWorkspaceProvider =
+    StateNotifierProvider<verifyWorkspace, LoginState>(
+        (ref) => verifyWorkspace(ref.read));
