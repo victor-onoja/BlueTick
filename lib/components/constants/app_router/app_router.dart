@@ -7,10 +7,9 @@ import 'package:bluetick/screens/home/homeE.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';
-import 'package:bluetick/screens/home/sub_home/addagroup.dart';
-import 'package:bluetick/screens/home/sub_home/createbroadcast.dart';
 import 'package:bluetick/screens/settings/ntf-settings.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
+import 'package:bluetick/screens/sign_up/new_password.dart';
 import 'package:bluetick/screens/sign_up/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -74,6 +73,7 @@ class AppRouter {
   static const String onBoardingAnimation = 'onBoardingAnimation';
   static const String splashScreen = 'splashScreen';
   static const String staffSignUp = 'staffSignUp';
+  static const String resetPassword = 'resetPassword';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -92,10 +92,12 @@ class AppRouter {
       case AppRouter.invitationLink:
         return MaterialPageRoute(builder: (context) => const InvitationLink());
       case AppRouter.forgotPassword:
-        return MaterialPageRoute(builder: (context) => const ForgotPassword());
+        return MaterialPageRoute(builder: (context) => ForgotPassword());
       case AppRouter.emailVerification:
         return MaterialPageRoute(
             builder: (context) => const EmailVerification());
+      case AppRouter.resetPassword:
+        return MaterialPageRoute(builder: (context) => NewPassword());
 
       ///login
       case AppRouter.login:
@@ -200,8 +202,9 @@ class AppRouter {
     AppRouter.onBoardingAnimation: (context) =>
         const OnBoardingScreenAnimation(),
     AppRouter.invitationLink: (context) => const InvitationLink(),
-    AppRouter.forgotPassword: (context) => const ForgotPassword(),
+    AppRouter.forgotPassword: (context) => ForgotPassword(),
     AppRouter.emailVerification: (context) => const EmailVerification(),
+    AppRouter.resetPassword: (context) => NewPassword(),
 
     ///login
     AppRouter.login: (context) => LoginScreen(),

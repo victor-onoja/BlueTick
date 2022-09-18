@@ -7,9 +7,8 @@ import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
 import 'package:bluetick/components/widgets/verifyInputField.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
-import 'package:bluetick/screens/sign_in/login.dart';
+import 'package:bluetick/screens/sign_up/new_password.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -33,22 +32,22 @@ int tokenOtp = int.parse(otp);
 
 class EmailVerification extends HookConsumerWidget {
   final String? email;
-  const EmailVerification({Key? key, this.email}) : super(key: key);
+  final bool? check;
+  const EmailVerification({Key? key, this.email, this.check}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.read(verifyWorkspaceProvider.notifier);
     final state = ref.watch(verifyWorkspaceProvider);
+    final notifier2 = ref.read(verifyPasswordProvider.notifier);
+    // final state2 = ref.watch(verifyPasswordProvider);
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: BackButton(
-          color: darkBlue,
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => LoginScreen())),
-        ),
+            color: darkBlue, onPressed: () => Navigator.pop(context)),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -80,9 +79,6 @@ class EmailVerification extends HookConsumerWidget {
                   VeryInputField(controller: otpController6),
                 ],
               ),
-              // const SizedBox(
-              //   height: 18,
-              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0),
                 child: state.isLoading
@@ -103,8 +99,12 @@ class EmailVerification extends HookConsumerWidget {
                             VerifyWorkspacebody verifyWorkspacebody =
                                 VerifyWorkspacebody(
                                     token: tokenOtp, email: email);
-                            var res = await notifier
-                                .verifyWorkspacerequest(verifyWorkspacebody);
+
+                            var res = check!
+                                ? await notifier2
+                                    .verifyPasswordrequest(verifyWorkspacebody)
+                                : await notifier.verifyWorkspacerequest(
+                                    verifyWorkspacebody);
                             if (res.isLeft) {
                               ErrorModel errorModel = res.left;
                               showSnackBar(
@@ -114,21 +114,33 @@ class EmailVerification extends HookConsumerWidget {
                                   res.right;
                               showSnackBar(
                                   context, verifyWorkspaceresponse.message!);
-
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => HomeTab(),
-                                ),
-                              );
+                              check!
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => NewPassword(
+                                          email: email,
+                                        ),
+                                      ),
+                                    )
+                                  : Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => HomeTab(),
+                                      ),
+                                    );
                             }
-
+                            otpController1.clear();
+                            otpController2.clear();
+                            otpController3.clear();
+                            otpController4.clear();
+                            otpController5.clear();
+                            otpController6.clear();
                             // print(tokenOtp.runtimeType);
                           },
                         ),
                       ),
               ),
-
               const SizedBox(
                 height: 30, //115,
               ),
