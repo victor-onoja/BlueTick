@@ -28,61 +28,64 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CarouselSlider.builder(
-              itemCount: OnBoardingImages.length,
-              itemBuilder: (context, index, realIndex) {
-                index = initValue;
-                final onBImages = OnBoardingImages[index];
-                return OnBoardingScreens(onBImages, index);
-              },
-              options: CarouselOptions(
-                  height: 450,
-                  viewportFraction: 1,
-                  autoPlay: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                  enlargeCenterPage: true,
-                  autoPlayAnimationDuration: const Duration(milliseconds: 1200),
-                  onPageChanged: (index, reason) {
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CarouselSlider.builder(
+                itemCount: OnBoardingImages.length,
+                itemBuilder: (context, index, realIndex) {
+                  index = initValue;
+                  final onBImages = OnBoardingImages[index];
+                  return OnBoardingScreens(onBImages, index);
+                },
+                options: CarouselOptions(
+                    height: 450,
+                    viewportFraction: 1,
+                    autoPlay: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                    enlargeCenterPage: true,
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 1200),
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        initValue = index;
+                      });
+                    }),
+              ),
+              Container(
+                child: AnimatedSmoothIndicator(
+                  activeIndex: initValue,
+                  count: OnBoardingImages.length,
+                  duration: const Duration(milliseconds: 300),
+                  onDotClicked: (index) {
                     setState(() {
                       initValue = index;
                     });
-                  }),
-            ),
-            Container(
-              child: AnimatedSmoothIndicator(
-                activeIndex: initValue,
-                count: OnBoardingImages.length,
-                duration: const Duration(milliseconds: 300),
-                onDotClicked: (index) {
-                  setState(() {
-                    initValue = index;
-                  });
-                },
-                effect: WormEffect(
-                    spacing: 10,
-                    radius: 10,
-                    dotWidth: 10,
-                    dotHeight: 10,
-                    dotColor: AppTheme.blue2),
+                  },
+                  effect: WormEffect(
+                      spacing: 10,
+                      radius: 10,
+                      dotWidth: 10,
+                      dotHeight: 10,
+                      dotColor: AppTheme.blue2),
+                ),
               ),
-            ),
-            // const Spacer(),
-            Container(
-              alignment: Alignment(0, 0.80),
-              child: SignUpButton(
-                onTapButton: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => LoginScreen()));
-                },
-                buttonColor: AppTheme.mainBlue,
-                text: 'Continue',
-                textColor: AppTheme.white,
-              ),
-            )
-          ],
+              // const Spacer(),
+              Container(
+                alignment: Alignment(0, 0.80),
+                child: SignUpButton(
+                  onTapButton: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => LoginScreen()));
+                  },
+                  buttonColor: AppTheme.mainBlue,
+                  text: 'Continue',
+                  textColor: AppTheme.white,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

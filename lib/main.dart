@@ -1,5 +1,6 @@
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/constants/extensions/notification_extension.dart';
+import 'package:bluetick/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       routes: AppRouter.routes,
       onGenerateRoute: AppRouter.generateRoute,
 
-      //  home: ContactUs() //const SplashScreen(),
+      //   home: HomeScreen() //const SplashScreen(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
-import 'package:bluetick/screens/home/homeE.dart';
+import 'package:bluetick/screens/home/home_exports.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

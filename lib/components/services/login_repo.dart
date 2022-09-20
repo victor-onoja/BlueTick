@@ -1,12 +1,13 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:bluetick/components/services/api_models/error_model.dart';
 import 'package:bluetick/components/services/api_models/login.dart';
-import 'package:bluetick/components/services/api_models/signup_api_model.dart';
 import 'package:bluetick/components/states/login_state.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
+import 'api_models/login_response.dart';
 import 'constant.dart';
 
 class LoginRepo extends StateNotifier<LoginState> {
@@ -18,10 +19,11 @@ class LoginRepo extends StateNotifier<LoginState> {
     state = state.update(!state.isLoading);
   }
 
-  Future<Either<ErrorModel, Welcome>> loginRequest(Login login) async {
+  Future<Either<ErrorModel, LoginResponse>> loginRequest(Login login) async {
     state = state.update(true);
 
     try {
+      log('Attempting to signin');
       var response = await http.post(
         Uri.parse('$BASE_URL/login'),
 
@@ -32,10 +34,11 @@ class LoginRepo extends StateNotifier<LoginState> {
 
       if (response.statusCode == HttpStatus.ok) {
         var decodeResponse = jsonDecode(response.body);
-        var responseGotten = Welcome.fromJson(decodeResponse);
+        var responseGotten = LoginResponse.fromLoginResponse(decodeResponse);
 
         return Right(responseGotten);
       } else {
+        log('Resquest was ok but error from json serilization');
         return Left(
           ///Error.fromJson(jsonDecode(response.body))
 

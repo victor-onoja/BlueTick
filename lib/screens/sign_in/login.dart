@@ -10,7 +10,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/config/config_sheet.dart';
-import '../../components/services/api_models/signup_api_model.dart';
+import '../../components/services/api_models/login_response.dart';
 import '../../components/services/providers.dart';
 import '../../components/widgets/widgets.dart';
 import '../sign_up/invitation_link.dart';
@@ -120,9 +120,9 @@ class LoginScreen extends HookConsumerWidget {
                                       print(
                                           'Error from login request ${errorMessage.message!['message']}');
                                     } else {
-                                      Welcome login = result.right;
+                                      LoginResponse login = result.right;
                                       showSnackBar(
-                                          context, login.message['message']);
+                                          context, login.message.toString());
                                       print('success');
                                       Navigator.pushNamed(
                                           context, AppRouter.homeTabs);
