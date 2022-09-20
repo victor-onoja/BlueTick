@@ -24,7 +24,7 @@ class resetPassword extends StateNotifier<LoginState> {
 
     try {
       var response = await http.post(
-        Uri.parse('$BASE_URL/verify'),
+        Uri.parse('$BASE_URL/reset_password'),
         body: jsonEncode(resetPasswordBody.toBody()),
         headers: {'Content-Type': 'application/json'},
       );

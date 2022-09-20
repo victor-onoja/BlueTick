@@ -119,7 +119,7 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => EmailVerification(
-                                        email: emailController.text,
+                                        emailp: emailController.text,
                                         check: true,
                                       ),
                                     ),

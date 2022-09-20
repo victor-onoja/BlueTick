@@ -185,7 +185,7 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => EmailVerification(
-                                            email: aemailController.text,
+                                            emailw: aemailController.text,
                                             check: false,
                                           ) // StaffSignUp(),
                                       ),

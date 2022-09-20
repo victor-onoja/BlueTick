@@ -94,8 +94,7 @@ class AppRouter {
       case AppRouter.forgotPassword:
         return MaterialPageRoute(builder: (context) => ForgotPassword());
       case AppRouter.emailVerification:
-        return MaterialPageRoute(
-            builder: (context) => const EmailVerification());
+        return MaterialPageRoute(builder: (context) => EmailVerification());
       case AppRouter.resetPassword:
         return MaterialPageRoute(builder: (context) => NewPassword());
 
@@ -203,7 +202,7 @@ class AppRouter {
         const OnBoardingScreenAnimation(),
     AppRouter.invitationLink: (context) => const InvitationLink(),
     AppRouter.forgotPassword: (context) => ForgotPassword(),
-    AppRouter.emailVerification: (context) => const EmailVerification(),
+    AppRouter.emailVerification: (context) => EmailVerification(),
     AppRouter.resetPassword: (context) => NewPassword(),
 
     ///login

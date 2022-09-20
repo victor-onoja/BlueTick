@@ -1,4 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
+import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,14 +28,15 @@ class VeryInputField extends StatelessWidget {
           ]),
       alignment: Alignment.center,
       child: Center(
-        child: TextField(
+        child: TextFormField(
+          validator: context.validateFieldNotEmpty,
           controller: controller,
           onChanged: (val) {
             if (val.length == 1) {
               FocusScope.of(context).nextFocus();
             }
           },
-          autofocus: true,
+          // autofocus: true,
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
           cursorColor: AppTheme.darkBlue,

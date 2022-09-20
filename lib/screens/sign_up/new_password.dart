@@ -48,11 +48,16 @@ class NewPassword extends HookConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  'Create Your New Password',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.montserrat(
-                      fontSize: 16, fontWeight: FontWeight.w600, color: white),
+                Padding(
+                  padding: const EdgeInsets.only(top: 200),
+                  child: Text(
+                    'Create Your New Password',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: white),
+                  ),
                 ),
                 const SizedBox(
                   height: 8,
@@ -61,7 +66,7 @@ class NewPassword extends HookConsumerWidget {
                     showPassword: true,
                     validator: context.validatePassword,
                     controller: pController,
-                    hintText: 'Email Address',
+                    hintText: 'New Password',
                     textType: TextInputType.emailAddress),
                 const SizedBox(
                   height: 25,
@@ -73,7 +78,7 @@ class NewPassword extends HookConsumerWidget {
                             ? 'Confirm your password'
                             : null,
                     controller: p2Controller,
-                    hintText: 'Email Address',
+                    hintText: 'Confirm password',
                     textType: TextInputType.emailAddress),
                 Padding(
                   padding: const EdgeInsets.only(top: 155.0),
@@ -81,7 +86,7 @@ class NewPassword extends HookConsumerWidget {
                       ? Center(
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            color: blue2,
+                            color: offWhite,
                             valueColor: AlwaysStoppedAnimation(
                                 mainBlue.withOpacity(0.8)),
                             backgroundColor: Colors.transparent,
@@ -91,6 +96,9 @@ class NewPassword extends HookConsumerWidget {
                           textColor: AppTheme.mainBlue,
                           text: 'Confirm',
                           buttonColor: AppTheme.blue2,
+                          // onTapButton: () {
+                          //   print(email);
+                          // },
                           onTapButton: () async {
                             if (_formkey.currentState!.validate()) {
                               ResetPasswordBody resetPasswordBody =
