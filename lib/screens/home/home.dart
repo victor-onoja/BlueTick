@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../components/app_theme.dart';
@@ -32,7 +38,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+    final workspaceName = ref.read(workspaceProvider);
+    log('workspaceName from Home: $workspaceName');
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
       appBar: AppBar(
@@ -43,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           statusBarColor: Colors.transparent,
         ),
         title: Text(
-          'BlueTick',
+          LoginScreen.myWorkSpaceName ?? 'BlueTick',
           style: GoogleFonts.montserrat(
             fontSize: 23.97,
             fontWeight: FontWeight.w500,

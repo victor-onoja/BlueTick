@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
@@ -18,6 +20,7 @@ import '../sign_up/invitation_link.dart';
 class LoginScreen extends HookConsumerWidget {
   LoginScreen({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
+  static String? myWorkSpaceName = '';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +30,7 @@ class LoginScreen extends HookConsumerWidget {
     ///Declaring provider that was used
     final notifier = ref.read(logInProvider.notifier);
     final state = ref.watch(logInProvider);
+    String workspaceName = ref.watch(workspaceProvider.notifier).state;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -121,9 +125,9 @@ class LoginScreen extends HookConsumerWidget {
                                           'Error from login request ${errorMessage.message!['message']}');
                                     } else {
                                       LoginResponse login = result.right;
-                                      showSnackBar(
-                                          context, login.message.toString());
-                                      print('success');
+                                      showSnackBar(context, login.message!);
+                                      workspaceName = login.workspacename!;
+                                      log('workspace name from login is $workspaceName');
                                       Navigator.pushNamed(
                                           context, AppRouter.homeTabs);
                                     }

@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:textfield_tags/textfield_tags.dart';
@@ -43,7 +46,9 @@ class _InvitationB1State extends State<InvitationB1> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             icon: const Icon(Icons.arrow_back)),
         title: Text(
           'Invite Member',
@@ -204,6 +209,7 @@ class _InvitationB1State extends State<InvitationB1> {
             ),
             InviteButton(
               onTap: () {
+                log('workspaceName is ' + LoginScreen.myWorkSpaceName!);
                 Navigator.pushNamed(context, AppRouter.invitationSent);
               },
               text: 'Send Invite (s)',

@@ -20,7 +20,7 @@ class _InvitationSentState extends State<InvitationSent> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () => Navigator.of(context).pop,
+            onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back)),
         title: Text(
           'Invite Sent',
@@ -59,7 +59,9 @@ class _InvitationSentState extends State<InvitationSent> {
               buttonColor: mainBlue,
             ),
             InviteButton(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, AppRouter.homeTabs);
+              },
               text: 'Home',
               textColor: mainBlue,
               buttonColor: Colors.white,

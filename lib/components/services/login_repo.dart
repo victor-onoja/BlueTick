@@ -26,33 +26,27 @@ class LoginRepo extends StateNotifier<LoginState> {
       log('Attempting to signin');
       var response = await http.post(
         Uri.parse('$BASE_URL/login'),
-
-        ///body:  login.toJson(),
         body: jsonEncode(login.toLogin()),
         headers: {'Content-Type': 'application/json'},
       );
 
-      if (response.statusCode == HttpStatus.ok) {
-        var decodeResponse = jsonDecode(response.body);
-        var responseGotten = LoginResponse.fromLoginResponse(decodeResponse);
+      var decodeResponse = jsonDecode(response.body);
+      var responseGotten = LoginResponse.fromLoginResponse(decodeResponse);
+      log('WorkSpaceName: ' + responseGotten.workspacename!);
 
-        return Right(responseGotten);
-      } else {
-        log('Resquest was ok but error from json serilization');
-        return Left(
-          ///Error.fromJson(jsonDecode(response.body))
-
-          ErrorModel(
-              message: {'message': '${jsonDecode(response.body)['message']}'},
-              code: response.statusCode),
-        );
-      }
+      return Right(responseGotten);
     } on SocketException {
       return Left(ErrorModel(
           message: {'message': 'Sorry, you don\'t have an internet connection'},
           code: 400));
+    } on FormatException {
+      return Left(ErrorModel(
+          message: {'message': 'Please enter a correct email or password'},
+          code: 400));
     } catch (e) {
-      return Left(ErrorModel(message: {'message': e.toString()}, code: 400));
+      log('Error message from catch: ${e.toString()}');
+      return Left(
+          ErrorModel(message: {'message': 'Please try again'}, code: 400));
     } finally {
       state = state.update(false);
     }

@@ -20,3 +20,6 @@ final adminSignupProvider = StateNotifierProvider<adminSignupRepo, LoginState>(
 final verifyWorkspaceProvider =
     StateNotifierProvider<verifyWorkspace, LoginState>(
         (ref) => verifyWorkspace(ref.read));
+
+///HOME
+final workspaceProvider = StateProvider((ref) => 'test');
