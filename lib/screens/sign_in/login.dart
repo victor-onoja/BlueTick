@@ -20,7 +20,6 @@ import '../sign_up/invitation_link.dart';
 class LoginScreen extends HookConsumerWidget {
   LoginScreen({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
-  static String? myWorkSpaceName = '';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,7 +29,6 @@ class LoginScreen extends HookConsumerWidget {
     ///Declaring provider that was used
     final notifier = ref.read(logInProvider.notifier);
     final state = ref.watch(logInProvider);
-    String workspaceName = ref.watch(workspaceProvider.notifier).state;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -126,8 +124,10 @@ class LoginScreen extends HookConsumerWidget {
                                     } else {
                                       LoginResponse login = result.right;
                                       showSnackBar(context, login.message!);
-                                      workspaceName = login.workspacename!;
-                                      log('workspace name from login is $workspaceName');
+                                      ref
+                                          .read(workspaceProvider.notifier)
+                                          .state = login.workspacename!;
+                                      log('workspace name from login is ${ref.read(workspaceProvider.notifier).state}');
                                       Navigator.pushNamed(
                                           context, AppRouter.homeTabs);
                                     }

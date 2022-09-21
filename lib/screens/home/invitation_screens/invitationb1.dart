@@ -1,22 +1,28 @@
 import 'dart:developer';
-
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/api_models/error_model.dart';
+import 'package:bluetick/components/services/api_models/invite_member_body.dart';
+import 'package:bluetick/components/services/api_models/invite_member_response.dart';
+import 'package:bluetick/components/services/invite_member_repo.dart';
 import 'package:bluetick/screens/sign_in/login.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:textfield_tags/textfield_tags.dart';
-
 import '../../../components/config/config_sheet.dart';
+import '../../../components/services/providers.dart';
+import '../../../components/widgets/dialogs.dart';
 import 'invite_button.dart';
 
-class InvitationB1 extends StatefulWidget {
+class InvitationB1 extends ConsumerStatefulWidget {
   const InvitationB1({Key? key}) : super(key: key);
 
   @override
-  State<InvitationB1> createState() => _InvitationB1State();
+  ConsumerState<InvitationB1> createState() => _InvitationB1State();
 }
 
-class _InvitationB1State extends State<InvitationB1> {
+class _InvitationB1State extends ConsumerState<InvitationB1> {
   late double _distanceToField;
   late TextfieldTagsController tagController;
 
@@ -43,6 +49,10 @@ class _InvitationB1State extends State<InvitationB1> {
 
   @override
   Widget build(BuildContext context) {
+    final notifier = ref.read(InviteMemberRepoProvider.notifier);
+    final state = ref.watch(InviteMemberRepoProvider);
+    final String? myWorkspaceName = ref.read(workspaceProvider);
+    List<dynamic> emailList = [];
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -102,6 +112,7 @@ class _InvitationB1State extends State<InvitationB1> {
                 inputfieldBuilder:
                     (context, tec, fn, error, onChanged, onSubmitted) {
                   return ((context, sc, tags, onTagDelete) {
+                    emailList = tags;
                     return TextField(
                       controller: tec,
                       focusNode: fn,
@@ -207,15 +218,42 @@ class _InvitationB1State extends State<InvitationB1> {
                 ),
               ),
             ),
-            InviteButton(
-              onTap: () {
-                log('workspaceName is ' + LoginScreen.myWorkSpaceName!);
-                Navigator.pushNamed(context, AppRouter.invitationSent);
-              },
-              text: 'Send Invite (s)',
-              textColor: Colors.white,
-              buttonColor: mainBlue,
-            ),
+            state.isLoading
+                ? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: mainBlue,
+                      valueColor:
+                          AlwaysStoppedAnimation(mainBlue.withOpacity(0.8)),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  )
+                : InviteButton(
+                    onTap: () async {
+                      log('Email List is: $emailList and workspaceName: $myWorkspaceName ');
+
+                      InviteMemberBody inviteMemberBody = InviteMemberBody(
+                          emailList: emailList, workspacename: myWorkspaceName);
+
+                      Either result =
+                          await notifier.InviteMember(inviteMemberBody);
+
+                      if (result.isLeft) {
+                        log('Error from invitation screen');
+                        ErrorModel errorModel = result.left;
+                        showSnackBar(context, errorModel.message!['message']);
+                      } else {
+                        InviteMemberResponse response = result.right;
+                        log(response.link.toString());
+
+                        showSnackBar(context, response.message!);
+                        Navigator.pushNamed(context, AppRouter.invitationSent);
+                      }
+                    },
+                    text: 'Send Invite (s)',
+                    textColor: Colors.white,
+                    buttonColor: mainBlue,
+                  ),
           ],
         ),
       ),

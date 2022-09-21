@@ -56,6 +56,8 @@ class _InvitationScreenState extends State<InvitationScreen> {
             const SizedBox(
               height: 80,
             ),
+
+            ///This feature has been removed for now
             // GestureDetector(
             //   onTap: () {
             //     Navigator.pushNamed(context, AppRouter.invitationB1);

@@ -41,7 +41,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(
     BuildContext context,
   ) {
-    final workspaceName = ref.read(workspaceProvider);
+    final String? workspaceName = ref.read(workspaceProvider);
     log('workspaceName from Home: $workspaceName');
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
@@ -53,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           statusBarColor: Colors.transparent,
         ),
         title: Text(
-          LoginScreen.myWorkSpaceName ?? 'BlueTick',
+          workspaceName ?? 'BlueTick',
           style: GoogleFonts.montserrat(
             fontSize: 23.97,
             fontWeight: FontWeight.w500,
