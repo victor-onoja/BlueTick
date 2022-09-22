@@ -5,6 +5,7 @@ import 'package:bluetick/components/constants/extensions/validation_extension.da
 import 'package:bluetick/components/services/api_models/admin_signupbody.dart';
 import 'package:bluetick/components/services/api_models/admin_signupresponse.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
+import 'package:bluetick/components/services/mail.dart';
 import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +24,10 @@ class AdminSignUp extends ConsumerStatefulWidget {
 class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
   final _formKey = GlobalKey<FormState>();
 
-  void initState() {
-    super.initState();
-    tz.initializeTimeZones();
-  }
+  // void initState() {
+  //   super.initState();
+  //   tz.initializeTimeZones();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -191,11 +192,15 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                           ) // StaffSignUp(),
                                       ),
                                 );
-                                NotificationExtension().showNotification(
-                                    1,
-                                    'Workspace Verification Token',
-                                    adminsignup.token!,
-                                    3);
+                                sendEmail(
+                                    email: aemailController.text,
+                                    message: 'Your verification token is: ' +
+                                        adminsignup.token!);
+                                // NotificationExtension().showNotification(
+                                //     1,
+                                //     'Workspace Verification Token',
+                                //     adminsignup.token!,
+                                //     3);
                               } else {}
                             }
                           },
