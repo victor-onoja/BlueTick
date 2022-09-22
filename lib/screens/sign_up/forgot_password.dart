@@ -5,6 +5,7 @@ import 'package:bluetick/components/constants/extensions/validation_extension.da
 import 'package:bluetick/components/services/api_models/admin_signupresponse.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
 import 'package:bluetick/components/services/api_models/forgot_password_body.dart';
+import 'package:bluetick/components/services/mail.dart';
 import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
 import 'package:bluetick/screens/sign_up/email_verification.dart';
@@ -23,10 +24,10 @@ class ForgotPassword extends ConsumerStatefulWidget {
 class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
   final _formkey = GlobalKey<FormState>();
 
-  void initState() {
-    super.initState();
-    tz.initializeTimeZones();
-  }
+  // void initState() {
+  //   super.initState();
+  //   tz.initializeTimeZones();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -127,11 +128,15 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                                   );
                                 }
                                 if (adminSignupresponse.token != null) {
-                                  NotificationExtension().showNotification(
-                                      2,
-                                      'Reset Password Token',
-                                      adminSignupresponse.token!,
-                                      3);
+                                  sendEmail(
+                                      email: emailController.text,
+                                      message: 'Your verification token is: ' +
+                                          adminSignupresponse.token!);
+                                  // NotificationExtension().showNotification(
+                                  //     2,
+                                  //     'Reset Password Token',
+                                  //     adminSignupresponse.token!,
+                                  //     3);
                                 }
                               }
                             }
