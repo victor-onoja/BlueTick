@@ -29,11 +29,11 @@ class NewPassword extends HookConsumerWidget {
       backgroundColor: AppTheme.darkBlue,
       //resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: BackButton(
+        //   onPressed: () {
+        //     Navigator.popUntil(context, );
+        //   },
+        // ),
         backgroundColor: AppTheme.darkBlue,
         elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
@@ -101,6 +101,7 @@ class NewPassword extends HookConsumerWidget {
                           // },
                           onTapButton: () async {
                             if (_formkey.currentState!.validate()) {
+                              FocusScope.of(context).unfocus();
                               ResetPasswordBody resetPasswordBody =
                                   ResetPasswordBody(
                                       email: email,

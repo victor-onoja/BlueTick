@@ -96,6 +96,7 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                           buttonColor: AppTheme.blue2,
                           onTapButton: () async {
                             if (_formkey.currentState!.validate()) {
+                              FocusScope.of(context).unfocus();
                               ForgotPasswordBody forgotPasswordBody =
                                   ForgotPasswordBody(
                                       email: emailController.text);

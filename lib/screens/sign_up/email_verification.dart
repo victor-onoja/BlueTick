@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
@@ -40,17 +38,6 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
   late final TextEditingController otpController5;
   late final TextEditingController otpController6;
 
-  // void otp() {
-  //   String otpvalue = otpController1.text +
-  //       otpController2.text +
-  //       otpController3.text +
-  //       otpController4.text +
-  //       otpController5.text +
-  //       otpController6.text;
-  // }
-
-  // int tokenOtp() => int.parse(otp());
-
   @override
   void initState() {
     otpController1 = TextEditingController();
@@ -70,21 +57,11 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
     otpController4.dispose();
     otpController5.dispose();
     otpController6.dispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    String otpvalue = otpController1.text +
-        otpController2.text +
-        otpController3.text +
-        otpController4.text +
-        otpController5.text +
-        otpController6.text;
-    int otpint = int.parse(otpvalue);
-    log('otp: ${otpvalue}');
-    log('otp2: ${otpint}');
     final _formkey = GlobalKey<FormState>();
     final notifier = ref.read(verifyWorkspaceProvider.notifier);
     final state = ref.watch(verifyWorkspaceProvider);
@@ -150,19 +127,27 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
                               buttonColor: mainBlue,
                               onTapButton: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  // print(tokenOtp);
+                                  String otp = otpController1.text +
+                                      otpController2.text +
+                                      otpController3.text +
+                                      otpController4.text +
+                                      otpController5.text +
+                                      otpController6.text;
+                                  int tokin = int.parse(otp);
+                                  // print(tokin);
                                   // print(emailp);
                                   VerifyWorkspacebody verifyWorkspacebody =
                                       VerifyWorkspacebody(
-                                          token: otpint, email: widget.emailp);
-
+                                          token: tokin, email: widget.emailp);
                                   var res =
                                       await notifier2.verifyPasswordrequest(
                                           verifyWorkspacebody);
                                   if (res.isLeft) {
                                     ErrorModel errorModel = res.left;
-                                    showSnackBar(context,
-                                        errorModel.message!['message']);
+                                    showSnackBar(
+                                        context,
+                                        errorModel.message!['message'] +
+                                            '. Or re-enter your token');
                                   } else {
                                     VerifyWorkspaceresponse
                                         verifyWorkspaceresponse = res.right;
@@ -204,18 +189,27 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
                               buttonColor: mainBlue,
                               onTapButton: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  // print(tokenOtp);
-                                  // print(emailw);
+                                  String otp = otpController1.text +
+                                      otpController2.text +
+                                      otpController3.text +
+                                      otpController4.text +
+                                      otpController5.text +
+                                      otpController6.text;
+                                  int tokin = int.parse(otp);
+                                  // print(tokin);
+                                  // print(widget.emailw);
                                   VerifyWorkspacebody verifyWorkspacebody =
                                       VerifyWorkspacebody(
-                                          token: otpint, email: widget.emailw);
+                                          token: tokin, email: widget.emailw);
                                   var res =
                                       await notifier.verifyWorkspacerequest(
                                           verifyWorkspacebody);
                                   if (res.isLeft) {
                                     ErrorModel errorModel = res.left;
-                                    showSnackBar(context,
-                                        errorModel.message!['message']);
+                                    showSnackBar(
+                                        context,
+                                        errorModel.message!['message'] +
+                                            '. Or re-enter your token');
                                   } else {
                                     VerifyWorkspaceresponse
                                         verifyWorkspaceresponse = res.right;

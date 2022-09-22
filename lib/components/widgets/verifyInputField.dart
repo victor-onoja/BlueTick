@@ -1,7 +1,6 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class VeryInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -41,10 +40,10 @@ class VeryInputField extends StatelessWidget {
           textAlign: TextAlign.center,
           cursorColor: AppTheme.darkBlue,
           style: TextStyle(fontSize: 20),
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(1),
-            FilteringTextInputFormatter.digitsOnly
-          ],
+          // inputFormatters: [
+          //   LengthLimitingTextInputFormatter(1),
+          //   FilteringTextInputFormatter.digitsOnly
+          // ],
           decoration: InputDecoration(
             helperMaxLines: 1,
             errorMaxLines: 1,

@@ -161,6 +161,7 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                           buttonColor: AppTheme.blue2,
                           onTapButton: () async {
                             if (_formKey.currentState!.validate()) {
+                              FocusScope.of(context).unfocus();
                               AdminSignupbody adminSignupbody = AdminSignupbody(
                                   email: aemailController.text,
                                   password1: apasswordController.text,
