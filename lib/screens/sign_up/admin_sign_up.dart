@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/constants/extensions/notification_extension.dart';
@@ -15,7 +13,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/widgets/widgets.dart';
 import 'email_verification.dart';
-import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
 class AdminSignUp extends ConsumerStatefulWidget {
@@ -164,6 +161,7 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                           buttonColor: AppTheme.blue2,
                           onTapButton: () async {
                             if (_formKey.currentState!.validate()) {
+                              FocusScope.of(context).unfocus();
                               AdminSignupbody adminSignupbody = AdminSignupbody(
                                   email: aemailController.text,
                                   password1: apasswordController.text,
@@ -188,12 +186,16 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => EmailVerification(
-                                            email: aemailController.text,
+                                            emailw: aemailController.text,
+                                            check: false,
                                           ) // StaffSignUp(),
                                       ),
                                 );
                                 NotificationExtension().showNotification(
-                                    1, 'Your Token', adminsignup.token!, 3);
+                                    1,
+                                    'Workspace Verification Token',
+                                    adminsignup.token!,
+                                    3);
                               } else {}
                             }
                           },
