@@ -1,24 +1,30 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
-import 'package:bluetick/screens/home/todo_screen.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../components/app_theme.dart';
 import '../../components/config/config_sheet.dart';
 import 'home_drawer.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   String? date;
   String? dateTime;
 
@@ -32,12 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+    final String? workspaceName = ref.read(workspaceProvider);
+    log('workspaceName from Home: $workspaceName');
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
-      appBar:
-          // GeneralAppBar(),
-          AppBar(
+      appBar: AppBar(
         centerTitle: true,
         elevation: 0,
         backgroundColor: AppTheme.mainBlue,
@@ -45,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           statusBarColor: Colors.transparent,
         ),
         title: Text(
-          'BlueTick',
+          workspaceName ?? 'BlueTick',
           style: GoogleFonts.montserrat(
             fontSize: 23.97,
             fontWeight: FontWeight.w500,
@@ -491,42 +499,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  AppBar GeneralAppBar() {
-    return AppBar(
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: const [0.0, 68.11],
-                colors: [linearBlue1, darkBlue])),
-      ),
-      centerTitle: true,
-      leading: IconButton(
-        icon: const ImageIcon(AssetImage('Assets/images/Group 7.png')),
-        onPressed: () => null,
-      ),
-      title: const Text(
-        'BlueTick',
-        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 23.96),
-      ),
-      actions: [
-        GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Image.asset(
-              'Assets/images/Ellipse 20.png',
-              fit: BoxFit.contain,
-            ),
-          ),
-          //     const CircleAvatar(
-          //   backgroundImage: AssetImage(''),
-          // ),
-        )
-      ],
     );
   }
 }
