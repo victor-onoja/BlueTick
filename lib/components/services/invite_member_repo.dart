@@ -10,27 +10,40 @@ import 'package:either_dart/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'constant.dart';
+import 'mail.dart';
 
 class InviteMemberRepo extends StateNotifier<LoginState> {
   Reader reader;
   InviteMemberRepo(this.reader) : super(LoginState());
 
   Future<Either<ErrorModel, InviteMemberResponse>> InviteMember(
-      InviteMemberBody inviteMemberBody) async {
+    InviteMemberBody inviteMemberBody,
+    List<dynamic> emailList, {
+    required String myWorkspaceName,
+  }) async {
     state = state.update(true);
     try {
       log('Attempting to send invite');
 
-      /// https: //bluetick-backend.herokuapp.com/api/addmem
-      http.Response response = await http.post(
-        Uri.parse('$BASE_URL/addmem'),
-        body: inviteMemberBody.toJson(),
-        headers: {'Content-Type': 'application/json'},
-      );
+      http.Response response = await http.post(Uri.parse('$BASE_URL/addmem'),
+          body: inviteMemberBody.toJson(),
+          headers: {'Content-Type': 'application/json'});
 
       var decodeResponse = jsonDecode(response.body);
       log('Decoded Response: ${decodeResponse.toString()}');
       var responseGotten = InviteMemberResponse.fromMap(decodeResponse);
+
+      ///Sending mails to the email
+      List inviteLinks = responseGotten.link ?? [];
+      for (int index = 0; inviteLinks.length > index; index++) {
+        log('In the inviteLink loop');
+        await sendEmail(email: emailList[index], message: '''
+                             You just got invited to join $myWorkspaceName,
+                             click on the link below to get started
+                             ${inviteLinks[index]}
+                            ''');
+        log('${inviteLinks[index]} sent to ${emailList[index]} successfully');
+      }
 
       return Right(responseGotten);
     } on SocketException {
