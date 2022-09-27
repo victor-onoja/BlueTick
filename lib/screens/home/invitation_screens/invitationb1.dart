@@ -235,8 +235,9 @@ class _InvitationB1State extends ConsumerState<InvitationB1> {
                       InviteMemberBody inviteMemberBody = InviteMemberBody(
                           emailList: emailList, workspacename: myWorkspaceName);
 
-                      Either result =
-                          await notifier.InviteMember(inviteMemberBody);
+                      Either result = await notifier.InviteMember(
+                          inviteMemberBody, emailList,
+                          myWorkspaceName: myWorkspaceName!);
 
                       if (result.isLeft) {
                         log('Error from invitation screen');
@@ -244,21 +245,6 @@ class _InvitationB1State extends ConsumerState<InvitationB1> {
                         showSnackBar(context, errorModel.message!['message']);
                       } else {
                         InviteMemberResponse response = result.right;
-                        log(response.link.toString());
-
-                        List inviteLinks = response.link ?? [];
-
-                        for (int index = 0;
-                            inviteLinks.length > index;
-                            index++) {
-                          log('In the inviteLink loop');
-                          await sendEmail(email: emailList[index], message: '''
-                             You just got invited to join $myWorkspaceName,
-                             click on the link below to get started
-                             ${inviteLinks[index]}
-                            ''');
-                          log('${inviteLinks[index]} sent to ${emailList[index]} successfully');
-                        }
                         showSnackBar(context, response.message!);
                         Navigator.pushNamed(context, AppRouter.invitationSent);
                       }
