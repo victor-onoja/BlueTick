@@ -3,7 +3,7 @@ import 'package:bluetick/screens/chatScreen/chatScreen.dart';
 import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
 import 'package:bluetick/screens/home/about.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
-import 'package:bluetick/screens/home/homeE.dart';
+import 'package:bluetick/screens/home/home_exports.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitation_screen.dart';
 import 'package:bluetick/screens/home/invitation_screens/invitationb1.dart';

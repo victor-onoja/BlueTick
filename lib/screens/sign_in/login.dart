@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
@@ -10,7 +12,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/config/config_sheet.dart';
-import '../../components/services/api_models/signup_api_model.dart';
+import '../../components/services/api_models/login_response.dart';
 import '../../components/services/providers.dart';
 import '../../components/widgets/widgets.dart';
 import '../sign_up/invitation_link.dart';
@@ -120,10 +122,12 @@ class LoginScreen extends HookConsumerWidget {
                                       print(
                                           'Error from login request ${errorMessage.message!['message']}');
                                     } else {
-                                      Welcome login = result.right;
-                                      showSnackBar(
-                                          context, login.message['message']);
-                                      print('success');
+                                      LoginResponse login = result.right;
+                                      showSnackBar(context, login.message!);
+                                      ref
+                                          .read(workspaceProvider.notifier)
+                                          .state = login.workspacename!;
+                                      log('workspace name from login is ${ref.read(workspaceProvider.notifier).state}');
                                       Navigator.pushNamed(
                                           context, AppRouter.homeTabs);
                                     }

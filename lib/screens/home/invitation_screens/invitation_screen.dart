@@ -56,17 +56,19 @@ class _InvitationScreenState extends State<InvitationScreen> {
             const SizedBox(
               height: 80,
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, AppRouter.invitationB1);
-                //  Navigator.push(context,
-                //    MaterialPageRoute(builder: (_) => InvitationB1()));
-              },
-              child: InvitationCard(
-                  imagePath: 'Assets/icons/admin_invite_photo.png',
-                  cardLabel: 'Manage employees\n and workspace',
-                  cardStatus: 'Admin'),
-            ),
+
+            ///This feature has been removed for now
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.pushNamed(context, AppRouter.invitationB1);
+            //     //  Navigator.push(context,
+            //     //    MaterialPageRoute(builder: (_) => InvitationB1()));
+            //   },
+            //   child: InvitationCard(
+            //       imagePath: 'Assets/icons/admin_invite_photo.png',
+            //       cardLabel: 'Manage employees\n and workspace',
+            //       cardStatus: 'Admin'),
+            // ),
             GestureDetector(
               onTap: () => Navigator.pushNamed(context, AppRouter.invitationB1),
               child: InvitationCard(
