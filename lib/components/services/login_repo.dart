@@ -35,7 +35,8 @@ class LoginRepo extends StateNotifier<LoginState> {
       log('WorkSpaceName: ' + responseGotten.workspacename!);
 
       return Right(responseGotten);
-    } on SocketException {
+    } 
+    on SocketException {
       return Left(ErrorModel(
           message: {'message': 'Sorry, you don\'t have an internet connection'},
           code: 400));

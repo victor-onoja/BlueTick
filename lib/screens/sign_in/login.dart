@@ -119,8 +119,6 @@ class LoginScreen extends HookConsumerWidget {
 
                                       showSnackBar(context,
                                           errorMessage.message!['message']);
-                                      print(
-                                          'Error from login request ${errorMessage.message!['message']}');
                                     } else {
                                       LoginResponse login = result.right;
                                       showSnackBar(context, login.message!);
