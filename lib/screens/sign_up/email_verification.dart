@@ -15,10 +15,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/widgets/widgets.dart';
 
 class EmailVerification extends ConsumerStatefulWidget {
-  //emailp - email from forgotpassword screen
+  ///emailp - email from forgotpassword screen
   final String? emailp;
 
-  //emailw - email from adminsignup screen
+  ///emailw - email from adminsignup screen
   final String? emailw;
 
   final bool? check;
@@ -196,8 +196,7 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
                                       otpController5.text +
                                       otpController6.text;
                                   int tokin = int.parse(otp);
-                                  // print(tokin);
-                                  // print(widget.emailw);
+
                                   VerifyWorkspacebody verifyWorkspacebody =
                                       VerifyWorkspacebody(
                                           token: tokin, email: widget.emailw);
