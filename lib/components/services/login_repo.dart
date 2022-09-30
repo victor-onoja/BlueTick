@@ -30,13 +30,13 @@ class LoginRepo extends StateNotifier<LoginState> {
         headers: {'Content-Type': 'application/json'},
       );
 
-      var decodeResponse = jsonDecode(response.body);
-      var responseGotten = LoginResponse.fromLoginResponse(decodeResponse);
+      var responseGotten = LoginResponse.fromJson(response.body);
       log('WorkSpaceName: ' + responseGotten.workspacename!);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(responseGotten);
       } else {
+        log('message');
         return Left(
           ErrorModel(message: {'message': responseGotten.message}, code: 400),
         );
