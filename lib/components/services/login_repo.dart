@@ -34,9 +34,14 @@ class LoginRepo extends StateNotifier<LoginState> {
       var responseGotten = LoginResponse.fromLoginResponse(decodeResponse);
       log('WorkSpaceName: ' + responseGotten.workspacename!);
 
-      return Right(responseGotten);
-    } 
-    on SocketException {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(responseGotten);
+      } else {
+        return Left(
+          ErrorModel(message: {'message': responseGotten.message}, code: 400),
+        );
+      }
+    } on SocketException {
       return Left(ErrorModel(
           message: {'message': 'Sorry, you don\'t have an internet connection'},
           code: 400));

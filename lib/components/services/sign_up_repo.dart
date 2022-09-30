@@ -17,7 +17,7 @@ class SignUpRepo extends StateNotifier<LoginState> {
   Future<Either<ErrorModel, SignUpResponse>> signUp(
       SignUpBody signUpBody) async {
     try {
-         state = state.update(true);
+      state = state.update(true);
       log('Attemping to send details');
       var response = await http.post(
         Uri.parse('$BASE_URL/signup'),
@@ -26,7 +26,15 @@ class SignUpRepo extends StateNotifier<LoginState> {
       );
       var resonponseData = SignUpResponse.fromJson(response.body);
       log('Expected data $resonponseData');
-      return Right(resonponseData);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(resonponseData);
+      } else {
+        log('Try else block');
+        return Left(
+          ErrorModel(message: {'message': resonponseData.message}, code: 400),
+        );
+      }
     } on SocketException {
       return Left(
         ErrorModel(message: {

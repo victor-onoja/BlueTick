@@ -29,7 +29,14 @@ class StaffSignUpRepo extends StateNotifier<LoginState> {
       var decodeResponse = jsonDecode(response.body);
       var responseGotten = StaffSignUpResponse.fromMap(decodeResponse);
       log('The gotten response is ${responseGotten.message}');
-      return Right(responseGotten);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+        return Right(responseGotten);
+      } else {
+       
+        return Left(
+          ErrorModel(message: {'message': responseGotten.message}, code: 400),
+        );
+      }
     } on SocketException {
       return Left(
         ErrorModel(message: {
