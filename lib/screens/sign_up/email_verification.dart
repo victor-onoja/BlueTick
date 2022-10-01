@@ -7,6 +7,7 @@ import 'package:bluetick/components/services/providers.dart';
 import 'package:bluetick/components/widgets/dialogs.dart';
 import 'package:bluetick/components/widgets/verifyInputField.dart';
 import 'package:bluetick/screens/home/home_tabs.dart';
+import 'package:bluetick/screens/sign_in/login.dart';
 import 'package:bluetick/screens/sign_up/new_password.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -217,7 +218,7 @@ class _RiverpodEmailVerificationState extends ConsumerState<EmailVerification> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (_) => HomeTab(),
+                                        builder: (_) => LoginScreen(),
                                       ),
                                     );
                                   }

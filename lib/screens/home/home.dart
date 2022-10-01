@@ -1,20 +1,17 @@
-import 'dart:developer';
-
+import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/api_models/get_staff_response/get_staff_response.dart';
 import 'package:bluetick/components/services/providers.dart';
-import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
-import 'package:bluetick/screens/sign_in/login.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import '../../components/app_theme.dart';
-import '../../components/config/config_sheet.dart';
+import '../../components/services/api_models/error_model.dart';
 import 'home_drawer.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -27,22 +24,21 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   String? date;
   String? dateTime;
+  String? workspaceName;
 
   @override
   void initState() {
     date = DateFormat.yMd().format(DateTime.now());
     dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
-
-    // TODO: implement initState
     super.initState();
   }
 
+  // static final customCacheManager = CacheManager(Config('customCacheKey',
+  //     stalePeriod: const Duration(days: 15), maxNrOfCacheObjects: 100));
+
   @override
-  Widget build(
-    BuildContext context,
-  ) {
-    final String? workspaceName = ref.read(workspaceProvider);
-    log('workspaceName from Home: $workspaceName');
+  Widget build(BuildContext context) {
+    workspaceName = ref.read(workspaceProvider);
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
       appBar: AppBar(
@@ -72,14 +68,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               height: 45, //31.95,
               width: 45, //31.96,
               margin: EdgeInsets.only(right: 11),
-              decoration: const BoxDecoration(
-                  // image: DecorationImage(
-                  //   image: AssetImage(
-                  //     'hello',
-                  //   ),
-                  //   fit: BoxFit.contain,
-                  // ),
-                  ),
               child: Image.asset(
                 'Assets/sample_pic.png',
                 fit: BoxFit.contain,
@@ -88,58 +76,51 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20.17,
-            ),
-            checkInHeader(context),
-            searchStaff(),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  //todo fix this page
-                  AppRouter.staffProfileAdmin,
-                  // AppRouter.personalProfile,
-                  //     MaterialPageRoute(builder: (_) => StaffProfileAdmin()),
-                );
-              },
-              child: onlineStaff(
-                name: 'John Mac',
-                time: "8:11",
+      body: RefreshIndicator(
+        onRefresh: () {
+          return Future.delayed(Duration(milliseconds: 1000), () {
+            ref.refresh(getStaffProvider);
+          });
+        },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20.17,
               ),
-            ),
-            onlineStaff(
-              name: 'Sandra Who',
-              time: "11:00",
-            ),
-            onlineStaff(
-              name: 'Johnson Grace',
-              time: "5:00",
-            ),
-            onlineStaff(
-              name: 'Edoki Chuks',
-              time: "1:00",
-            ),
-            offlineStaff(
-              name: 'John Mac',
-              time: "8:11",
-            ),
-            offlineStaff(
-              name: 'Sandra Who',
-              time: "11:00",
-            ),
-            offlineStaff(
-              name: 'Johnson Grace',
-              time: "5:00",
-            ),
-            offlineStaff(
-              name: 'Edoki Chuks',
-              time: "1:00",
-            ),
-          ],
+              checkInHeader(context),
+              searchStaff(),
+              Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  AsyncValue<Either<ErrorModel, GetStaffResponse>> listview =
+                      ref.watch(getStaffProvider);
+                  return listview.when(
+                    data: (Either<ErrorModel, GetStaffResponse> data) =>
+                        ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: _staffList,
+                      itemCount: data.right.allStaffDetails!.length,
+                    ),
+                    error: (Object error, StackTrace? stackTrace) =>
+                        Center(child: Text('something went wrong',style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.red,
+                ),)),
+                    loading: () => CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: mainBlue,
+                      valueColor:
+                          AlwaysStoppedAnimation(mainBlue.withOpacity(0.8)),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
       drawer: const HomeDrawer(),
@@ -271,13 +252,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         fontSize: 16),
                   ),
                 ),
-                // Text(
-                //   dateTime ?? 'Tuesday',
-                //   style: GoogleFonts.montserrat(
-                //       color: AppTheme.white,
-                //       fontWeight: FontWeight.w600,
-                //       fontSize: 16),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: Text(
@@ -314,7 +288,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         borderRadius: BorderRadius.circular(4),
                         color: AppTheme.offWhite),
                     child: Center(
-                      child: Text('28',
+                      child: Text('0',
                           style: GoogleFonts.montserrat(
                               color: AppTheme.mainBlue,
                               fontWeight: FontWeight.w600,
@@ -346,11 +320,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         borderRadius: BorderRadius.circular(4),
                         color: AppTheme.offWhite),
                     child: Center(
-                      child: Text('52',
-                          style: GoogleFonts.montserrat(
-                              color: AppTheme.mainBlue,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 24)),
+                      child: Consumer(
+                        builder: (BuildContext context, WidgetRef ref,
+                            Widget? child) {
+                          AsyncValue<Either<ErrorModel, GetStaffResponse>>
+                              numStaff = ref.watch(getStaffProvider);
+                          return numStaff.when(
+                            data: (Either<ErrorModel, GetStaffResponse> data) =>
+                                Text(data.right.staffNumber.toString(),
+                                    style: GoogleFonts.montserrat(
+                                        color: AppTheme.mainBlue,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 24)),
+                            error: (Object error, StackTrace? stackTrace) =>
+                                Text(
+                              'X',
+                              style: GoogleFonts.montserrat(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 24),
+                            ),
+                            loading: () => CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: mainBlue,
+                              valueColor: AlwaysStoppedAnimation(
+                                  mainBlue.withOpacity(0.8)),
+                              backgroundColor: Colors.transparent,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   )
                 ],
@@ -362,121 +361,39 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Container onlineStaff({required String name, required String time}) {
-    return Container(
-      margin: const EdgeInsets.only(top: 4),
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-      height: 51.97,
-      color: AppTheme.mainBlue,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  //top: 2, bottom: 2,
-                  right: 25.96,
-                ),
-                child: Container(
-                  height: 31.95,
-                  width: 31.96,
-                  decoration: const BoxDecoration(
-                      // image: DecorationImage(
-                      //   image: AssetImage(
-                      //     //todo Change is image
-                      //     'Assets/saasdklmple_pic.png',
-                      //   ),
-                      //   fit: BoxFit.contain,
-                      // ),
-                      ),
-                  child: Image.asset(
-                    'Assets/sample_pic.png',
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    name,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      color: AppTheme.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Online',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.normal,
-                      color: AppTheme.white,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Text(
-            'Clock in ${time}am',
-            style: GoogleFonts.montserrat(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              fontStyle: FontStyle.normal,
-              color: AppTheme.white,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container offlineStaff({required String name, required String time}) {
-    return Container(
-      margin: const EdgeInsets.only(top: 4),
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-      height: 51.97,
-      color: AppTheme.blue2,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              //top: 2, bottom: 2,
-              right: 25.96,
-            ),
-            child: Container(
-              height: 31.95,
-              width: 31.96,
-              decoration: const BoxDecoration(
-                  // image: DecorationImage(
-                  //   image: AssetImage(
-                  //     'Assets/sample_pic.png',
-                  //   ),
+  Widget _staffList(BuildContext context, int index) {
+    return Consumer(
+        builder: (BuildContext context, WidgetRef ref, Widget? child) {
+      AsyncValue<Either<ErrorModel, GetStaffResponse>> stafflist =
+          ref.watch(getStaffProvider);
+      return stafflist.when(
+        data: (Either<ErrorModel, GetStaffResponse> data) => Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 4),
+          height: 51.97,
+          color: AppTheme.mainBlue,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+            child: ListTile(
+              // leading:
+                  // CachedNetworkImage(
+                  //   cacheManager: customCacheManager,
+                  //   key: UniqueKey(),
+                  //   imageUrl: data.right.allStaffDetails![index].profileimg!,
+                  //   errorWidget: (context, url, error) => Icon(Icons.error),
+                  //   placeholder: (context, url) => CircularProgressIndicator(),
                   //   fit: BoxFit.contain,
                   // ),
-                  ),
-              child: Image.asset(
-                'Assets/sample_pic.png',
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                name,
+              //     Image.network(
+              //   data.right.allStaffDetails![index].profileimg!,
+              //   fit: BoxFit.contain,
+              //   errorBuilder:
+              //       (BuildContext context, Object exception, StackTrace) {
+              //     return Icon(Icons.error, color: Colors.red,);
+              //   },
+              // ),
+              title: Text(
+                data.right.allStaffDetails![index].fullname!,
                 style: GoogleFonts.montserrat(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -485,20 +402,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Text(
-                'Offline',
-                style: GoogleFonts.montserrat(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+              // subtitle: Text(''),
+              // trailing: Text(''),
+            ),
           ),
-        ],
-      ),
-    );
+        ),
+        error: (Object error, StackTrace? stackTrace) =>
+            Center(child: Text('something went wrong',style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.red
+                ),)),
+        loading: () => CircularProgressIndicator(
+          strokeWidth: 2,
+          color: mainBlue,
+          valueColor: AlwaysStoppedAnimation(mainBlue.withOpacity(0.8)),
+          backgroundColor: Colors.transparent,
+        ),
+      );
+    });
   }
 }
