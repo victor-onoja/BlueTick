@@ -43,6 +43,8 @@ final forgotPasswordProvider =
 final resetPasswordProvider = StateNotifierProvider<resetPassword, LoginState>(
     (ref) => resetPassword(ref.read));
 
-final getStaffProvider = FutureProvider<Either<ErrorModel, GetStaffResponse>>((ref) => getStaffrequest(ref.read(getstaffbodyProvider)));
+final getStaffProvider = FutureProvider<Either<ErrorModel, GetStaffResponse>>(
+    (ref) => getStaffRequest(ref.read(getStaffBodyProvider)));
 
-final getstaffbodyProvider = StateProvider<GetStaffBody>((ref) => GetStaffBody(workspacename: ref.read(workspaceProvider)));
+final getStaffBodyProvider = StateProvider<GetStaffBody>(
+    (ref) => GetStaffBody(workspacename: ref.read(workspaceProvider)));

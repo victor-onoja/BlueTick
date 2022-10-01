@@ -96,19 +96,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   AsyncValue<Either<ErrorModel, GetStaffResponse>> listview =
                       ref.watch(getStaffProvider);
                   return listview.when(
-                    data: (Either<ErrorModel, GetStaffResponse> data) =>
-                        ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: _staffList,
-                      itemCount: data.right.allStaffDetails!.length,
-                    ),
-                    error: (Object error, StackTrace? stackTrace) =>
-                        Center(child: Text('something went wrong',style: GoogleFonts.montserrat(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  color: Colors.red,
-                ),)),
+                    data: (Either<ErrorModel, GetStaffResponse> data) {
+                      if (data.isRight) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemBuilder: _staffList,
+                          itemCount: data.right.allStaffDetails!.length,
+                        );
+                      } else {
+                        return Center(
+                            child: Text('You have no network connections'));
+                      }
+                    },
+                    error: (Object error, StackTrace? stackTrace) => Center(
+                        child: Text(
+                      'something went wrong',
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.normal,
+                        color: Colors.red,
+                      ),
+                    )),
                     loading: () => CircularProgressIndicator(
                       strokeWidth: 2,
                       color: mainBlue,
@@ -326,12 +335,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           AsyncValue<Either<ErrorModel, GetStaffResponse>>
                               numStaff = ref.watch(getStaffProvider);
                           return numStaff.when(
-                            data: (Either<ErrorModel, GetStaffResponse> data) =>
-                                Text(data.right.staffNumber.toString(),
+                            data: (Either<ErrorModel, GetStaffResponse> data) {
+                              if (data.isRight) {
+                                return Text(data.right.staffNumber.toString(),
                                     style: GoogleFonts.montserrat(
                                         color: AppTheme.mainBlue,
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 24)),
+                                        fontSize: 24));
+                              } else {
+                                return Text('0',
+                                    style: GoogleFonts.montserrat(
+                                        color: AppTheme.mainBlue,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 24));
+                              }
+                            },
                             error: (Object error, StackTrace? stackTrace) =>
                                 Text(
                               'X',
@@ -376,14 +394,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
             child: ListTile(
               // leading:
-                  // CachedNetworkImage(
-                  //   cacheManager: customCacheManager,
-                  //   key: UniqueKey(),
-                  //   imageUrl: data.right.allStaffDetails![index].profileimg!,
-                  //   errorWidget: (context, url, error) => Icon(Icons.error),
-                  //   placeholder: (context, url) => CircularProgressIndicator(),
-                  //   fit: BoxFit.contain,
-                  // ),
+              // CachedNetworkImage(
+              //   cacheManager: customCacheManager,
+              //   key: UniqueKey(),
+              //   imageUrl: data.right.allStaffDetails![index].profileimg!,
+              //   errorWidget: (context, url, error) => Icon(Icons.error),
+              //   placeholder: (context, url) => CircularProgressIndicator(),
+              //   fit: BoxFit.contain,
+              // ),
               //     Image.network(
               //   data.right.allStaffDetails![index].profileimg!,
               //   fit: BoxFit.contain,
@@ -407,13 +425,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
         ),
-        error: (Object error, StackTrace? stackTrace) =>
-            Center(child: Text('something went wrong',style: GoogleFonts.montserrat(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  color: Colors.red
-                ),)),
+        error: (Object error, StackTrace? stackTrace) => Center(
+            child: Text(
+          'something went wrong',
+          style: GoogleFonts.montserrat(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal,
+              color: Colors.red),
+        )),
         loading: () => CircularProgressIndicator(
           strokeWidth: 2,
           color: mainBlue,
