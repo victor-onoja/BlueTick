@@ -20,24 +20,22 @@ class adminSignupRepo extends StateNotifier<LoginState> {
 
   Future<Either<ErrorModel, AdminSignupresponse>> adminSignuprequest(
       AdminSignupbody adminSignupbody) async {
-    state = state.update(true);
 
     try {
+    state = state.update(true);
       var response = await http.post(
         Uri.parse('$BASE_URL/createworkspace'),
         body: jsonEncode(adminSignupbody.toBody()),
         headers: {'Content-Type': 'application/json'},
       );
+      var decodedResponse = jsonDecode(response.body);
+      var responseGotten = AdminSignupresponse.fromResponse(decodedResponse);
 
-      if (response.statusCode == HttpStatus.ok) {
-        var decodedResponse = jsonDecode(response.body);
-        var responseGotten = AdminSignupresponse.fromResponse(decodedResponse);
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(responseGotten);
       } else {
         return Left(
-          ErrorModel(
-              message: {'message': '${jsonDecode(response.body)['message']}'},
-              code: response.statusCode),
+          ErrorModel(message: {'message': responseGotten.message}, code: 400),
         );
       }
     } on SocketException {

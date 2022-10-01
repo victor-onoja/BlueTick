@@ -21,7 +21,7 @@ class _OnBoardingScreenAnimationState extends State<OnBoardingScreenAnimation> {
     'Assets/splash3.png',
   ];
   int initValue = 0;
-  final lg = 'Assets/logo.png';
+
 
   @override
   Widget build(BuildContext context) {
