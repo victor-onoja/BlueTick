@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:bluetick/components/services/api_models/error_model.dart';
 import 'package:bluetick/components/services/api_models/get_staff_body.dart';
 import 'package:bluetick/components/services/api_models/get_staff_response/get_staff_response.dart';
@@ -8,7 +7,7 @@ import 'package:bluetick/components/services/constant.dart';
 import 'package:either_dart/either.dart';
 import 'package:http/http.dart' as http;
 
-Future<Either<ErrorModel, GetStaffResponse>> getStaffrequest(
+Future<Either<ErrorModel, GetStaffResponse>> getStaffRequest(
     GetStaffBody getStaffBody) async {
   try {
     var response = await http.post(
