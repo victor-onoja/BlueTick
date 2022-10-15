@@ -186,10 +186,11 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                       ),
                                 );
                                 sendEmail(
+                                    title: 'Workspace Verification',
                                     email: aemailController.text,
-                                    message: 'Your verification token is: ' +
-                                        adminsignup.token!);
-                                
+                                    message:
+                                        'Admin are one step away from successfully creating your workspace. Kindly confirm your email address & password using the token ' +
+                                            adminsignup.token!);
                               } else {}
                             }
                           },

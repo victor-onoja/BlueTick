@@ -33,28 +33,25 @@ class InviteMemberRepo extends StateNotifier<LoginState> {
       log('Decoded Response: ${decodeResponse.toString()}');
       var responseGotten = InviteMemberResponse.fromMap(decodeResponse);
 
-   
-
       if (response.statusCode == 200 || response.statusCode == 201) {
-           ///Sending mails to the email
-      List inviteLinks = responseGotten.link ?? [];
-      for (int index = 0; inviteLinks.length > index; index++) {
-        log('In the inviteLink loop');
-        await sendEmail(email: emailList[index], message: '''
-                             You just got invited to join $myWorkspaceName,
-                             click on the link below to get started
+        ///Sending mails to the email
+        List inviteLinks = responseGotten.link ?? [];
+        for (int index = 0; inviteLinks.length > index; index++) {
+          await sendEmail(
+              email: emailList[index],
+              title: 'Staff Invitation From $myWorkspaceName',
+              message:
+                  '''You just got invited to join $myWorkspaceName workspace at BlueTick,click on the link below to get started
                              ${inviteLinks[index]}          
                             ''');
-        log('${inviteLinks[index]} sent to ${emailList[index]} successfully');
-      }
+          log('${inviteLinks[index]} sent to ${emailList[index]} successfully');
+        }
         return Right(responseGotten);
       } else {
         return Left(
           ErrorModel(message: {'message': responseGotten.message}, code: 400),
         );
       }
-
-      
     } on SocketException {
       return Left(ErrorModel(
           message: {'message': 'Sorry, you don\'t have an internet connection'},
