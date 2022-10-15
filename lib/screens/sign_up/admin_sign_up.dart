@@ -1,6 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
-import 'package:bluetick/components/constants/extensions/notification_extension.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:bluetick/components/services/api_models/admin_signupbody.dart';
 import 'package:bluetick/components/services/api_models/admin_signupresponse.dart';
@@ -14,7 +13,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../components/widgets/widgets.dart';
 import 'email_verification.dart';
-import 'package:timezone/data/latest.dart' as tz;
 
 class AdminSignUp extends ConsumerStatefulWidget {
   @override
@@ -23,11 +21,6 @@ class AdminSignUp extends ConsumerStatefulWidget {
 
 class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
   final _formKey = GlobalKey<FormState>();
-
-  // void initState() {
-  //   super.initState();
-  //   tz.initializeTimeZones();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -193,14 +186,11 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                       ),
                                 );
                                 sendEmail(
+                                    title: 'Workspace Verification',
                                     email: aemailController.text,
-                                    message: 'Your verification token is: ' +
-                                        adminsignup.token!);
-                                // NotificationExtension().showNotification(
-                                //     1,
-                                //     'Workspace Verification Token',
-                                //     adminsignup.token!,
-                                //     3);
+                                    message:
+                                        'Admin are one step away from successfully creating your workspace. Kindly confirm your email address & password using the token ' +
+                                            adminsignup.token!);
                               } else {}
                             }
                           },

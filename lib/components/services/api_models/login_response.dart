@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class LoginResponse extends Equatable {
+
 	final String? message;
 	final String? workspacename;
 	final bool? isAdmin;
@@ -33,17 +34,22 @@ class LoginResponse extends Equatable {
 				'token': token,
 			};
 
+
   /// `dart:convert`
   ///
   /// Parses the string and returns the resulting Json object as [LoginResponse].
-	factory LoginResponse.fromJson(String data) {
-		return LoginResponse.fromLoginResponse(json.decode(data) as Map<String, dynamic>);
-	}
+  factory LoginResponse.fromJson(String data) {
+    return LoginResponse.fromLoginResponse(
+        json.decode(data) as Map<String, dynamic>);
+  }
+
   /// `dart:convert`
   ///
   /// Converts [LoginResponse] to a JSON string.
-	String toJson() => json.encode(toLoginResponse());
+  String toJson() => json.encode(toLoginResponse());
+
 
 	@override
 	List<Object?> get props => [message, workspacename, isAdmin, token];
+
 }

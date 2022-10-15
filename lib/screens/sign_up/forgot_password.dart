@@ -1,6 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
 import 'package:bluetick/components/config/config_sheet.dart';
-import 'package:bluetick/components/constants/extensions/notification_extension.dart';
 import 'package:bluetick/components/constants/extensions/validation_extension.dart';
 import 'package:bluetick/components/services/api_models/admin_signupresponse.dart';
 import 'package:bluetick/components/services/api_models/error_model.dart';
@@ -13,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:timezone/data/latest.dart' as tz;
 import '../../components/widgets/widgets.dart';
 
 class ForgotPassword extends ConsumerStatefulWidget {
@@ -129,9 +127,10 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                                 }
                                 if (adminSignupresponse.token != null) {
                                   sendEmail(
+                                      title: 'Forgotten password verification',
                                       email: emailController.text,
-                                      message: 'Your verification token is: ' +
-                                          adminSignupresponse.token!);
+                                      message:
+                                          'You sent a request to reset your password. Use this verification token ${adminSignupresponse.token!} to reset the password:');
                                   // NotificationExtension().showNotification(
                                   //     2,
                                   //     'Reset Password Token',

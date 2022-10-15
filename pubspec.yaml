@@ -51,8 +51,8 @@ dependencies:
   hooks_riverpod: ^1.0.3
   equatable: ^2.0.5
   either_dart: ^0.2.0
-  flutter_local_notifications: ^9.9.1
-  timezone: ^0.8.0
+  # cached_network_image: ^3.2.0
+  # flutter_cache_manager: ^3.3.0
 
 dev_dependencies:
   flutter_test:

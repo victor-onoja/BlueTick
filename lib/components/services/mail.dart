@@ -6,10 +6,11 @@ Future sendEmail({
   required String email,
   // required String subject,
   required String message,
+  required String title,
 }) async {
-  final serviceId = 'service_qty2br4';
-  final templateId = 'template_fa6eeat';
-  final userId = 'ZUbIVWZRA_ifLXnam';
+  final serviceId = 'service_z8tyt5n';
+  final templateId = 'template_s8wyior';
+  final userId = 'RLZJl-9aapjcOeLYo';
 
   var url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
   try {
@@ -25,6 +26,7 @@ Future sendEmail({
           'template_params': {
             'message': message,
             'email': email,
+            'title': title,
           }
         }));
     print(response.body);
