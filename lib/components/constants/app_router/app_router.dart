@@ -2,6 +2,7 @@ import 'package:bluetick/screens/chatScreen/adminBroadcastScreen.dart';
 import 'package:bluetick/screens/chatScreen/chatScreen.dart';
 import 'package:bluetick/screens/groupchat/groupchatScreen.dart';
 import 'package:bluetick/screens/home/about.dart';
+import 'package:bluetick/screens/home/co_wokers/co_wokers_home_tab.dart';
 import 'package:bluetick/screens/home/co_wokers/co_workers_call_screen.dart';
 import 'package:bluetick/screens/home/home_exports.dart';
 import 'package:bluetick/screens/home/invitation_screens/inivitation_sent.dart';
@@ -90,7 +91,7 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (context) => const OnBoardingScreenAnimation());
       case AppRouter.invitationLink:
-        return MaterialPageRoute(builder: (context) =>  InvitationLink());
+        return MaterialPageRoute(builder: (context) => InvitationLink());
       case AppRouter.forgotPassword:
         return MaterialPageRoute(builder: (context) => ForgotPassword());
       case AppRouter.emailVerification:
@@ -142,7 +143,7 @@ class AppRouter {
 
       ///Co workers
       case AppRouter.coWorkersHomeTab:
-        return MaterialPageRoute(builder: (context) => const ContactUs());
+        return MaterialPageRoute(builder: (context) => const CoWorkerHomeTab());
       case AppRouter.coWorkersAddToCall:
         return MaterialPageRoute(builder: (context) => const GroupCallScreen());
       case AppRouter.coWorkerCreateGroup:
@@ -200,7 +201,7 @@ class AppRouter {
     AppRouter.adminSignUp: (context) => AdminSignUp(),
     AppRouter.onBoardingAnimation: (context) =>
         const OnBoardingScreenAnimation(),
-    AppRouter.invitationLink: (context) =>  InvitationLink(),
+    AppRouter.invitationLink: (context) => InvitationLink(),
     AppRouter.forgotPassword: (context) => ForgotPassword(),
     AppRouter.emailVerification: (context) => EmailVerification(),
     AppRouter.resetPassword: (context) => NewPassword(),
@@ -230,7 +231,7 @@ class AppRouter {
     AppRouter.invitationSent: (context) => const InvitationSent(),
 
     ///Co workers
-    AppRouter.coWorkersHomeTab: (context) => const ContactUs(),
+    AppRouter.coWorkersHomeTab: (context) => const CoWorkerHomeTab(),
     AppRouter.coWorkersAddToCall: (context) => const GroupCallScreen(),
     AppRouter.coWorkerCreateGroup: (context) => const HelpCenter(),
     AppRouter.coWorkersProfile: (context) => const HomeScreen(),
