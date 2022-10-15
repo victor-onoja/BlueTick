@@ -29,6 +29,7 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
     final password2Controller = TextEditingController();
     final phoneController = TextEditingController();
     final workspacenameController = TextEditingController();
+    final fullnameController = TextEditingController();
     final notifier = ref.read(adminSignupProvider.notifier);
     final state = ref.watch(adminSignupProvider);
     return Scaffold(
@@ -51,6 +52,14 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
               children: [
                 const SizedBox(
                   height: 20,
+                ),
+                GeneralTextField(
+                    controller: fullnameController,
+                    validator: context.validateFieldNotEmpty,
+                    hintText: 'Full Name',
+                    textType: TextInputType.name),
+                const SizedBox(
+                  height: 25,
                 ),
                 GeneralTextField(
                   validator: context.validateEmailAddress,
@@ -161,7 +170,8 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                   password1: apasswordController.text,
                                   password2: password2Controller.text,
                                   phone: phoneController.text,
-                                  workspaceName: workspacenameController.text);
+                                  workspaceName: workspacenameController.text,
+                                  fullName: fullnameController.text);
                               var res = await notifier
                                   .adminSignuprequest(adminSignupbody);
                               if (res.isLeft) {
@@ -189,7 +199,6 @@ class _RiverpodAdminSignUpState extends ConsumerState<AdminSignUp> {
                                     email: aemailController.text,
                                     message: 'Your verification token is: ' +
                                         adminsignup.token!);
-                                
                               } else {}
                             }
                           },
