@@ -2,8 +2,10 @@ import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/services/api_models/get_staff_response/get_staff_response.dart';
 import 'package:bluetick/components/services/providers.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,8 +35,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
   }
 
-  // static final customCacheManager = CacheManager(Config('customCacheKey',
-  //     stalePeriod: const Duration(days: 15), maxNrOfCacheObjects: 100));
+  static final customCacheManager = CacheManager(Config('customCacheKey',
+      stalePeriod: const Duration(days: 15), maxNrOfCacheObjects: 100));
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +70,43 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               height: 45, //31.95,
               width: 45, //31.96,
               margin: EdgeInsets.only(right: 11),
-              child: Image.asset(
-                'Assets/sample_pic.png',
-                fit: BoxFit.contain,
+              child: Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  AsyncValue<Either<ErrorModel, GetStaffResponse>> adminDp =
+                      ref.watch(getStaffProvider);
+                  return adminDp.when(
+                    data: (Either<ErrorModel, GetStaffResponse> data) {
+                      if (data.isRight) {
+                        return CachedNetworkImage(
+                          imageUrl: data.right.allStaffDetails![0].profileimg!,
+                          cacheManager: customCacheManager,
+                          key: UniqueKey(),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          fit: BoxFit.contain,
+                          imageBuilder: (context, imageProvider) {
+                            return CircleAvatar(
+                              backgroundImage: imageProvider,
+                            );
+                          },
+                        );
+                      } else {
+                        return Icon(Icons.error);
+                      }
+                    },
+                    error: (Object error, StackTrace? stackTrace) =>
+                        Icon(Icons.error),
+                    loading: () => CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: mainBlue,
+                      valueColor:
+                          AlwaysStoppedAnimation(mainBlue.withOpacity(0.8)),
+                      backgroundColor: Colors.transparent,
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -387,42 +423,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       return stafflist.when(
         data: (Either<ErrorModel, GetStaffResponse> data) => Container(
           width: double.infinity,
-          margin: const EdgeInsets.only(top: 4),
+          margin: const EdgeInsets.only(bottom: 4),
           height: 51.97,
           color: AppTheme.mainBlue,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-            child: ListTile(
-              // leading:
-              // CachedNetworkImage(
-              //   cacheManager: customCacheManager,
-              //   key: UniqueKey(),
-              //   imageUrl: data.right.allStaffDetails![index].profileimg!,
-              //   errorWidget: (context, url, error) => Icon(Icons.error),
-              //   placeholder: (context, url) => CircularProgressIndicator(),
-              //   fit: BoxFit.contain,
-              // ),
-              //     Image.network(
-              //   data.right.allStaffDetails![index].profileimg!,
-              //   fit: BoxFit.contain,
-              //   errorBuilder:
-              //       (BuildContext context, Object exception, StackTrace) {
-              //     return Icon(Icons.error, color: Colors.red,);
-              //   },
-              // ),
-              title: Text(
-                data.right.allStaffDetails![index].fullname!,
-                style: GoogleFonts.montserrat(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  color: AppTheme.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              // subtitle: Text(''),
-              // trailing: Text(''),
+          child: ListTile(
+            leading: CachedNetworkImage(
+              cacheManager: customCacheManager,
+              key: UniqueKey(),
+              imageUrl: data.right.allStaffDetails![index].profileimg!,
+              errorWidget: (context, url, error) => Icon(Icons.error),
+              placeholder: (context, url) => CircularProgressIndicator(),
+              fit: BoxFit.contain,
+              imageBuilder: (context, imageProvider) {
+                return CircleAvatar(
+                  backgroundImage: imageProvider,
+                );
+              },
             ),
+            title: Text(
+              data.right.allStaffDetails![index].fullname!,
+              style: GoogleFonts.montserrat(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                fontStyle: FontStyle.normal,
+                color: AppTheme.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            // subtitle: Text(''),
+            // trailing: Text(''),
           ),
         ),
         error: (Object error, StackTrace? stackTrace) => Center(

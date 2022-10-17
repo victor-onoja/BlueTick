@@ -8,6 +8,7 @@ class AdminSignupbody extends Equatable {
   final String? password2;
   final String? phone;
   final String? workspaceName;
+  final String? fullName;
 
   const AdminSignupbody({
     this.email,
@@ -15,6 +16,7 @@ class AdminSignupbody extends Equatable {
     this.password2,
     this.phone,
     this.workspaceName,
+    this.fullName,
   });
 
   factory AdminSignupbody.fromBody(Map<String, dynamic> data) {
@@ -24,6 +26,7 @@ class AdminSignupbody extends Equatable {
       password2: data['password2'] as String?,
       phone: data['phone'] as String?,
       workspaceName: data['workspace_name'] as String?,
+      fullName: data['full_name'] as String?,
     );
   }
 
@@ -33,6 +36,7 @@ class AdminSignupbody extends Equatable {
         'password2': password2,
         'phone': phone,
         'workspace_name': workspaceName,
+        'full_name': fullName,
       };
 
   /// `dart:convert`
@@ -58,6 +62,7 @@ class AdminSignupbody extends Equatable {
       password2,
       phone,
       workspaceName,
+      fullName,
     ];
   }
 }
