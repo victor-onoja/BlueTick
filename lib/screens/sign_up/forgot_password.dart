@@ -127,9 +127,10 @@ class _ForgotPasswordState extends ConsumerState<ForgotPassword> {
                                 }
                                 if (adminSignupresponse.token != null) {
                                   sendEmail(
+                                      title: 'Forgotten password verification',
                                       email: emailController.text,
-                                      message: 'Your verification token is: ' +
-                                          adminSignupresponse.token!);
+                                      message:
+                                          'You sent a request to reset your password. Use this verification token ${adminSignupresponse.token!} to reset the password:');
                                   // NotificationExtension().showNotification(
                                   //     2,
                                   //     'Reset Password Token',

@@ -3,22 +3,37 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class LoginResponse extends Equatable {
-  final String? message;
-  final String? workspacename;
 
-  const LoginResponse({this.message, this.workspacename});
+	final String? message;
+	final String? workspacename;
+	final bool? isAdmin;
+	final String? token;
 
-  factory LoginResponse.fromLoginResponse(Map<String, dynamic> data) {
-    return LoginResponse(
-      message: data['message'] as String?,
-      workspacename: data['workspacename'] as String?,
-    );
-  }
+	const LoginResponse({
+		this.message, 
+		this.workspacename, 
+		this.isAdmin, 
+		this.token, 
+	});
 
-  Map<String, dynamic> toLoginResponse() => {
-        'message': message,
-        'workspacename': workspacename,
-      };
+	factory LoginResponse.fromLoginResponse(Map<String, dynamic> data) {
+		return LoginResponse(
+			message: data['message'] as String?,
+			workspacename: data['workspacename'] as String?,
+			isAdmin: data['is_admin'] as bool?,
+			token: data['token'] as String?,
+		);
+	}
+
+
+
+	Map<String, dynamic> toLoginResponse() => {
+				'message': message,
+				'workspacename': workspacename,
+				'is_admin': isAdmin,
+				'token': token,
+			};
+
 
   /// `dart:convert`
   ///
@@ -33,6 +48,8 @@ class LoginResponse extends Equatable {
   /// Converts [LoginResponse] to a JSON string.
   String toJson() => json.encode(toLoginResponse());
 
-  @override
-  List<Object?> get props => [message, workspacename];
+
+	@override
+	List<Object?> get props => [message, workspacename, isAdmin, token];
+
 }
