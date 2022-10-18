@@ -24,11 +24,11 @@ class StaffHomePageState extends State<StaffHomePage> {
   Timer? timer;
   Duration? duration = const Duration(hours: 00);
 
-  // @override
-  // void setState(VoidCallback fn) {
-  //   super.setState(fn);
-  //
-  // }
+  @override
+  void setState(VoidCallback fn) {
+    super.setState(fn);
+  
+  }
 
   void startTimer() {
     timer = Timer.periodic(const Duration(seconds: 1), (_) {

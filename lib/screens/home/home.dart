@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/components/services/api_models/get_staff_response/all_staff_detail.dart';
 import 'package:bluetick/components/services/api_models/get_staff_response/get_staff_response.dart';
 import 'package:bluetick/components/services/providers.dart';
 import 'package:either_dart/either.dart';
@@ -22,6 +25,12 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  late final TextEditingController searchController;
+  List<AllStaffDetail> searchedStaff = [];
+  List<AllStaffDetail> staffList = [];
+
+  bool isSearching = false;
+
   String? date;
   String? dateTime;
   String? workspaceName;
@@ -30,7 +39,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void initState() {
     date = DateFormat.yMd().format(DateTime.now());
     dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
+    searchController = TextEditingController();
+    searchController.addListener(searchStaffListener);
     super.initState();
+  }
+
+  void searchStaffListener() {
+    if (searchController.text.trim().isNotEmpty) {
+      String searchQuery = searchController.text.trim().toLowerCase();
+
+      List<AllStaffDetail> tempList = [];
+
+      for (int i = 0; i < staffList.length; i++) {
+        final singleStaff = staffList[i];
+
+        if (singleStaff.fullname!.toLowerCase().contains(searchQuery)) {
+          tempList.add(singleStaff);
+        }
+      }
+      setState(() {
+        searchedStaff = tempList;
+        isSearching = true;
+      });
+    } else {
+      setState(() {
+        isSearching = false;
+      });
+    }
+  }
+  @override
+  void setState(VoidCallback fn) {
+    date = DateFormat.yMd().format(DateTime.now());
+    dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
+    super.setState(fn);
+  
   }
 
   // static final customCacheManager = CacheManager(Config('customCacheKey',
@@ -38,6 +80,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log('screen rebuild count');
     workspaceName = ref.read(workspaceProvider);
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
@@ -98,11 +141,70 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   return listview.when(
                     data: (Either<ErrorModel, GetStaffResponse> data) {
                       if (data.isRight) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          itemBuilder: _staffList,
-                          itemCount: data.right.allStaffDetails!.length,
-                        );
+                        staffList = data.right.allStaffDetails!;
+
+                        return isSearching && searchedStaff.isEmpty
+                            ? Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const SizedBox(
+                                      height: 100,
+                                    ),
+                                    Icon(
+                                      Icons.search_off,
+                                      size: 100,
+                                      color: AppTheme.blue2,
+                                    ),
+                                    Text(
+                                      'No results found',
+                                      style: TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppTheme.blue2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            :
+
+                            ///if isearching is true
+                            isSearching
+                                ? ListView.builder(
+                                    shrinkWrap: true,
+                                    itemBuilder: ((context, index) {
+                                      return Container(
+                                        width: double.infinity,
+                                        margin: const EdgeInsets.only(top: 4),
+                                        height: 51.97,
+                                        color: AppTheme.mainBlue,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 4, horizontal: 16),
+                                          child: ListTile(
+                                            title: Text(
+                                              searchedStaff[index].fullname!,
+                                              style: GoogleFonts.montserrat(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle: FontStyle.normal,
+                                                color: AppTheme.white,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                    itemCount: searchedStaff.length,
+                                  )
+                                : ListView.builder(
+                                    shrinkWrap: true,
+                                    itemBuilder: _staffList,
+                                    itemCount:
+                                        data.right.allStaffDetails!.length,
+                                  );
                       } else {
                         return Center(
                             child: Text('You have no network connections'));
@@ -161,6 +263,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Expanded(
             child: TextField(
               keyboardType: TextInputType.name,
+              controller: searchController,
               decoration: InputDecoration(
                 hintText: 'Search for a staff',
                 hintStyle: GoogleFonts.montserrat(
