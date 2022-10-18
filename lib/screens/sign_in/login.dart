@@ -126,7 +126,8 @@ class LoginScreen extends HookConsumerWidget {
                                           .read(workspaceProvider.notifier)
                                           .state = login.workspacename!;
                                       log('workspace name from login is ${ref.read(workspaceProvider.notifier).state}');
-                                      login.isAdmin ?? true
+                                      log('Is-Admin: ${login.isAdmin}');
+                                      login.isAdmin ?? false
                                           ? Navigator.pushNamed(
                                               context, AppRouter.homeTabs)
                                           : Navigator.pushReplacementNamed(
