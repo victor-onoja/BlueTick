@@ -1,4 +1,5 @@
 import 'package:bluetick/components/app_theme.dart';
+import 'package:bluetick/components/services/api_models/get_staff_response/all_staff_detail.dart';
 import 'package:bluetick/screens/home/co_wokers/co_worker_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,12 @@ class MemberTab extends StatelessWidget {
           },
           child: GestureDetector(
             onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (_) => WorkerScreen())),
+                context,
+                MaterialPageRoute(
+                    builder: (_) => WorkerScreen(
+                      ///remove this...use a global variable to get the staff details
+                          allStaffDetail: AllStaffDetail(),
+                        ))),
             child: onlineStaff(
               name: 'John Mac',
             ),
