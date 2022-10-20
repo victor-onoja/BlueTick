@@ -1,11 +1,12 @@
-import 'package:bluetick/screens/home/home_tabs.dart';
+import 'package:bluetick/components/services/api_models/get_staff_response/all_staff_detail.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/config/config_sheet.dart';
-import '../../../components/ui/ui_utils.dart';
 
 class WorkerScreen extends StatelessWidget {
-  WorkerScreen();
+  final AllStaffDetail allStaffDetail;
+  WorkerScreen({required this.allStaffDetail});
 
   @override
   Widget build(BuildContext context) {
@@ -61,15 +62,26 @@ class WorkerScreen extends StatelessWidget {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(
-                            radius: 42,
-                            child: Image.asset('Assets/images/Ellipse 11.png'),
+                          CachedNetworkImage(
+                            key: UniqueKey(),
+                            imageUrl: allStaffDetail.profileimg!,
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            fit: BoxFit.contain,
+                            imageBuilder: (context, imageProvider) {
+                              return CircleAvatar(
+                                backgroundImage: imageProvider,
+                                radius: 42,
+                              );
+                            },
                           ),
                           Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 5),
                               child: Text(
-                                userName,
+                                allStaffDetail.fullname!,
                                 style: const TextStyle(
                                   fontSize: 24,
                                 ),
@@ -103,7 +115,7 @@ class WorkerScreen extends StatelessWidget {
                 height: 170,
                 child: ListView(
                   // physics: const NeverScrollableScrollPhysics(),
-                  children: const [
+                  children: [
                     SizedBox(
                         height: 42,
                         child: ListTile(
@@ -128,7 +140,7 @@ class WorkerScreen extends StatelessWidget {
                             color: Colors.white,
                           ),
                           title: Text(
-                            'Role in the company',
+                            allStaffDetail.role!,
                             style: TextStyle(color: Colors.white),
                           ),
                         )),
@@ -144,7 +156,7 @@ class WorkerScreen extends StatelessWidget {
                             color: Colors.white,
                           ),
                           title: Text(
-                            'Email Address ',
+                            allStaffDetail.email!,
                             style: TextStyle(color: Colors.white),
                           ),
                         ))
