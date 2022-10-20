@@ -7,6 +7,7 @@ class AllStaffDetail extends Equatable {
   final String? email;
   final String? role;
   final bool? isStaff;
+  final bool? isAdmin;
   final String? workspace;
   final String? fullname;
   final String? profileimg;
@@ -16,6 +17,7 @@ class AllStaffDetail extends Equatable {
     this.email,
     this.role,
     this.isStaff,
+    this.isAdmin,
     this.workspace,
     this.fullname,
     this.profileimg,
@@ -27,6 +29,7 @@ class AllStaffDetail extends Equatable {
       email: data['email'] as String?,
       role: data['role'] as String?,
       isStaff: data['is_staff'] as bool?,
+      isAdmin: data['is_admin'] as bool?,
       workspace: data['workspace'] as String?,
       fullname: data['fullname'] as String?,
       profileimg: data['profileimg'] as String?,
@@ -38,6 +41,7 @@ class AllStaffDetail extends Equatable {
         'email': email,
         'role': role,
         'is_staff': isStaff,
+        'is_admin': isAdmin,
         'workspace': workspace,
         'fullname': fullname,
         'profileimg': profileimg,
@@ -66,6 +70,7 @@ class AllStaffDetail extends Equatable {
       email,
       role,
       isStaff,
+      isAdmin,
       workspace,
       fullname,
       profileimg,
