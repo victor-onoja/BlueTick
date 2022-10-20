@@ -1,14 +1,15 @@
-import 'dart:developer';
-
 import 'package:bluetick/components/config/config_sheet.dart';
 import 'package:bluetick/components/constants/app_router/app_router.dart';
 import 'package:bluetick/components/services/api_models/get_staff_response/all_staff_detail.dart';
 import 'package:bluetick/components/services/api_models/get_staff_response/get_staff_response.dart';
 import 'package:bluetick/components/services/providers.dart';
+import 'package:bluetick/screens/home/co_wokers/coworkers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -46,7 +47,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     super.initState();
   }
 
-
   void searchStaffListener() {
     if (searchController.text.trim().isNotEmpty) {
       String searchQuery = searchController.text.trim().toLowerCase();
@@ -70,22 +70,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       });
     }
   }
+
   @override
   void setState(VoidCallback fn) {
     date = DateFormat.yMd().format(DateTime.now());
     dateTime = DateFormat('EEEE,').add_jm().format(DateTime.now());
     super.setState(fn);
-  
   }
-
 
   static final customCacheManager = CacheManager(Config('customCacheKey',
       stalePeriod: const Duration(days: 15), maxNrOfCacheObjects: 100));
 
-
   @override
   Widget build(BuildContext context) {
-    log('screen rebuild count');
     workspaceName = ref.read(workspaceProvider);
     return Scaffold(
       backgroundColor: AppTheme.offWhite,
@@ -206,22 +203,50 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   ],
                                 ),
                               )
-                            :
-
-                            ///if isearching is true
-                            isSearching
+                            : isSearching
                                 ? ListView.builder(
                                     shrinkWrap: true,
                                     itemBuilder: ((context, index) {
-                                      return Container(
-                                        width: double.infinity,
-                                        margin: const EdgeInsets.only(top: 4),
-                                        height: 51.97,
-                                        color: AppTheme.mainBlue,
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 4, horizontal: 16),
+                                      return InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (_) => WorkerScreen(
+                                                allStaffDetail:
+                                                    searchedStaff[index],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          margin: const EdgeInsets.only(top: 4),
+                                          height: 51.97,
+                                          color: AppTheme.mainBlue,
                                           child: ListTile(
+                                            leading: CachedNetworkImage(
+                                              cacheManager:
+                                                  customCacheManager,
+                                              key: UniqueKey(),
+                                              imageUrl: data
+                                                  .right
+                                                  .allStaffDetails![index]
+                                                  .profileimg!,
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(),
+                                              fit: BoxFit.contain,
+                                              imageBuilder:
+                                                  (context, imageProvider) {
+                                                return CircleAvatar(
+                                                  backgroundImage:
+                                                      imageProvider,
+                                                );
+                                              },
+                                            ),
                                             title: Text(
                                               searchedStaff[index].fullname!,
                                               style: GoogleFonts.montserrat(
@@ -230,7 +255,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                 fontStyle: FontStyle.normal,
                                                 color: AppTheme.white,
                                               ),
-                                              textAlign: TextAlign.center,
                                             ),
                                           ),
                                         ),
@@ -527,37 +551,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       AsyncValue<Either<ErrorModel, GetStaffResponse>> stafflist =
           ref.watch(getStaffProvider);
       return stafflist.when(
-        data: (Either<ErrorModel, GetStaffResponse> data) => Container(
-          width: double.infinity,
-          margin: const EdgeInsets.only(bottom: 4),
-          height: 51.97,
-          color: AppTheme.mainBlue,
-          child: ListTile(
-            leading: CachedNetworkImage(
-              cacheManager: customCacheManager,
-              key: UniqueKey(),
-              imageUrl: data.right.allStaffDetails![index].profileimg!,
-              errorWidget: (context, url, error) => Icon(Icons.error),
-              placeholder: (context, url) => CircularProgressIndicator(),
-              fit: BoxFit.contain,
-              imageBuilder: (context, imageProvider) {
-                return CircleAvatar(
-                  backgroundImage: imageProvider,
-                );
-              },
-            ),
-            title: Text(
-              data.right.allStaffDetails![index].fullname!,
-              style: GoogleFonts.montserrat(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                fontStyle: FontStyle.normal,
-                color: AppTheme.white,
+        data: (Either<ErrorModel, GetStaffResponse> data) => InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => WorkerScreen(
+                  allStaffDetail: staffList[index],
+                ),
               ),
-              textAlign: TextAlign.center,
+            );
+          },
+          child: Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 4),
+            height: 51.97,
+            color: AppTheme.mainBlue,
+            child: ListTile(
+              leading: CachedNetworkImage(
+                cacheManager: customCacheManager,
+                key: UniqueKey(),
+                imageUrl: data.right.allStaffDetails![index].profileimg!,
+                errorWidget: (context, url, error) => Icon(Icons.error),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                fit: BoxFit.contain,
+                imageBuilder: (context, imageProvider) {
+                  return CircleAvatar(
+                    backgroundImage: imageProvider,
+                  );
+                },
+              ),
+              title: Text(
+                data.right.allStaffDetails![index].fullname!,
+                style: GoogleFonts.montserrat(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  color: AppTheme.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              // subtitle: Text(''),
+              // trailing: Text(''),
             ),
-            // subtitle: Text(''),
-            // trailing: Text(''),
           ),
         ),
         error: (Object error, StackTrace? stackTrace) => Center(

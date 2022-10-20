@@ -1,4 +1,7 @@
 import 'package:bluetick/components/constants/app_router/app_router.dart';
+import 'package:bluetick/screens/home/co_wokers/co_worker_profile.dart';
+import 'package:bluetick/screens/home/sub_home/personal_profile.dart';
+import 'package:bluetick/screens/home/sub_home/staff_profile_admin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -34,6 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AppRouter.splashScreen,
       routes: AppRouter.routes,
+      
       onGenerateRoute: AppRouter.generateRoute,
 
       //   home: HomeScreen() //const SplashScreen(),
