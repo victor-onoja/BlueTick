@@ -142,6 +142,19 @@ class LoginScreen extends HookConsumerWidget {
                                 textColor: AppTheme.white,
                               ),
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRouter.homeTabs);
+                        },
+                        child: Text(
+                          "Or\nExplore as Guest",
+                          style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: AppTheme.mainBlue,
+                              decoration: TextDecoration.underline),
+                        ),
+                      ),
                       Container(
                           padding: const EdgeInsets.only(top: 50, bottom: 10),
                           child: Wrap(
